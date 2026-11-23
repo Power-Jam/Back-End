@@ -1,0 +1,15 @@
+# Replace paths and User with your actual Raspberry Pi account before installing.
+[Unit]
+Description=PPS energy forecasting prototype
+After=network.target
+[Service]
+Type=simple
+User=student
+WorkingDirectory=/home/student/Smart-Energy-AI
+ExecStart=/home/student/Smart-Energy-AI/.venv/bin/python -m energy_ai serve --host 127.0.0.1 --port 8000
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+[Install]
+WantedBy=multi-user.target

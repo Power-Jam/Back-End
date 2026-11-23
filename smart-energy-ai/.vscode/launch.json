@@ -1,0 +1,1 @@
+{"version":"0.2.0","configurations":[{"name":"Smart Energy API","type":"debugpy","request":"launch","module":"energy_ai","args":["serve"],"cwd":"${workspaceFolder}","console":"integratedTerminal"}]}
