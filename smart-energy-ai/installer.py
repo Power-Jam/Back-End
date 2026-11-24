@@ -5,7 +5,8 @@ One-file starter for smart-energy-ai.
 Usage (run from anywhere, the script switches to its own folder):
     python start.py                 # setup + checks + train (if needed) + serve
     python start.py --retrain       # force re-training of the demo model
-    python start.py --skip-install  # skip pip install (faster restarts)
+    python start.py --skip-install  # never run pip install
+    python start.py --force-install # run pip install even if packages are present
     python start.py --test          # also install pytest and run the tests
     python start.py --no-serve      # do everything except starting the API
 
@@ -73,7 +74,6 @@ def ensure_venv():
 
 
 def install_requirements():
-    step("2/5 Installing requirements")
     if not REQUIREMENTS.exists():
         fail(f"requirements.txt not found in {ROOT}. Put start.py in the smart-energy-ai folder.")
     py = venv_python()
@@ -81,8 +81,7 @@ def install_requirements():
     run([py, "-m", "pip", "install", "-r", REQUIREMENTS])
 
 
-def check_installs():
-    step("3/5 Checking installed packages")
+def find_missing():
     py = venv_python()
     code = (
         "import importlib.util, sys\n"
@@ -91,12 +90,13 @@ def check_installs():
         "print(','.join(missing))\n"
     )
     out = subprocess.run([str(py), "-c", code], cwd=ROOT, capture_output=True, text=True)
-    missing = [m for m in out.stdout.strip().split(",") if m]
     if out.returncode != 0:
         fail(f"Package check crashed:\n{out.stderr}")
-    if missing:
-        pkgs = ", ".join(REQUIRED_MODULES[m] for m in missing)
-        fail(f"Missing packages in .venv: {pkgs}. Re-run without --skip-install.")
+    return [m for m in out.stdout.strip().split(",") if m]
+
+
+def report_installs():
+    py = venv_python()
     for mod, pkg in REQUIRED_MODULES.items():
         ver = subprocess.run(
             [str(py), "-c", f"import {mod}; print(getattr({mod}, '__version__', '?'))"],
@@ -106,6 +106,30 @@ def check_installs():
     if not (ROOT / "energy_ai").is_dir():
         fail("The 'energy_ai' package folder was not found next to start.py.")
     print("  OK  energy_ai package found")
+
+
+def ensure_packages(force, skip):
+    step("2/5 Checking packages")
+    missing = find_missing()
+    if missing:
+        names = ", ".join(REQUIRED_MODULES[m] for m in missing)
+        print(f"  Missing: {names}")
+    else:
+        print("  All required packages are already installed.")
+
+    if skip:
+        print("  Skipping install (--skip-install).")
+    elif missing or force:
+        print("  Installing requirements ...")
+        install_requirements()
+        missing = find_missing()
+    else:
+        print("  Nothing to install.")
+
+    if missing:
+        pkgs = ", ".join(REQUIRED_MODULES[m] for m in missing)
+        fail(f"Still missing in .venv: {pkgs}. Re-run without --skip-install.")
+    report_installs()
 
 
 def run_tests():
@@ -139,7 +163,8 @@ def serve():
 
 def main():
     parser = argparse.ArgumentParser(description="Set up and start smart-energy-ai.")
-    parser.add_argument("--skip-install", action="store_true", help="skip pip install")
+    parser.add_argument("--skip-install", action="store_true", help="never run pip install")
+    parser.add_argument("--force-install", action="store_true", help="run pip install even if everything is present")
     parser.add_argument("--retrain", action="store_true", help="force model re-training")
     parser.add_argument("--test", action="store_true", help="install pytest and run tests")
     parser.add_argument("--no-serve", action="store_true", help="do not start the API")
@@ -147,12 +172,7 @@ def main():
 
     os.chdir(ROOT)
     ensure_venv()
-    if args.skip_install:
-        step("2/5 Installing requirements")
-        print("  Skipped (--skip-install).")
-    else:
-        install_requirements()
-    check_installs()
+    ensure_packages(args.force_install, args.skip_install)
     if args.test:
         run_tests()
     prepare_data_and_model(args.retrain)
