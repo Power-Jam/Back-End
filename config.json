@@ -1,0 +1,17 @@
+{
+  "location": "Pretoria, South Africa (reference location)",
+  "latitude": -25.7423,
+  "longitude": 28.1694,
+  "timezone": "Africa/Johannesburg",
+  "battery_capacity_wh": 500,
+  "panel_rated_w": 100,
+  "panel_derate": 0.80,
+  "idle_w": 5,
+  "active_w": 65,
+  "charge_efficiency": 0.90,
+  "discharge_efficiency": 0.95,
+  "reserve_pct": 20,
+  "warning_pct": 35,
+  "lesson_start_hour": 8,
+  "lesson_end_hour": 17
+}
