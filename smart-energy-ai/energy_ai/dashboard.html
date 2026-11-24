@@ -1,14 +1,406 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>PPS | Smart Energy Assistant</title><style>
-:root{color-scheme:light;--ink:#162b34;--muted:#536b75;--line:#d9e5e8;--accent:#08766b;--bg:#eef5f5}*{box-sizing:border-box}body{margin:0;background:var(--bg);font:15px system-ui,sans-serif;color:var(--ink)}header{background:#173c42;color:white;padding:28px max(20px,calc((100vw - 1160px)/2));}header p{color:#b9d5d6;margin:.5em 0 0}h1{font-size:clamp(23px,4vw,34px);margin:0}main{max-width:1200px;margin:auto;padding:20px;display:grid;gap:16px}section{background:white;border:1px solid var(--line);border-radius:14px;padding:20px}h2{font-size:18px;margin:0 0 14px}h3{font-size:15px}small,.muted{color:var(--muted)}.controls,.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:14px}label{display:grid;gap:8px;font-weight:600}input,select,button{font:inherit;border:1px solid #b8cdd0;border-radius:8px;padding:10px;background:white;color:var(--ink);min-width:0}button{background:var(--accent);color:white;border:0;font-weight:bold;cursor:pointer;align-self:end}button:disabled{opacity:.6}.metric{padding:15px;border:1px solid var(--line);border-radius:10px}.metric strong{display:block;font-size:27px;margin:8px 0;color:#174f4c}.notice{border-left:4px solid #c58a28;background:#fff8e8;padding:12px 16px;border-radius:5px;line-height:1.5}.recommend{border-left:5px solid var(--accent);padding:12px 15px;background:#f0f8f5;border-radius:7px}.recommend.warn{background:#fff8e8;border-color:#c58a28}.recommend.stop{background:#fff1f0;border-color:#bd5048}#chart{width:100%;height:auto;min-height:180px}#error{color:#ad332c;font-weight:600}table{border-collapse:collapse;width:100%;font-size:13px;text-align:right}th,td{padding:9px;border-bottom:1px solid var(--line);white-space:nowrap}th:first-child,td:first-child{text-align:left}th{background:#f1f6f6}.scroll{overflow:auto;max-height:300px}a{color:var(--accent)}.legend{display:flex;gap:20px;flex-wrap:wrap;font-size:13px}.dot{display:inline-block;width:12px;height:3px;vertical-align:middle;margin-right:6px}.pill{display:inline-block;background:#ddecdf;color:#1e5d43;padding:5px 10px;border-radius:18px;font-weight:600;font-size:12px}.foot{font-size:12px;color:var(--muted)}@media(max-width:540px){section{padding:13px}main{padding:10px}header{padding:20px}}
-</style></head><body><header><h1>Smart Energy Assistant</h1><p>Prime Power Solutions • Educational device • Pretoria, South Africa</p></header><main>
-<div id="provenance" class="notice" role="status">Prototype • loading model and weather provenance…</div>
-<section><h2>Plan device usage</h2><form id="form" class="controls"><label>Current battery (%)<input id="battery" type="number" min="0" max="100" step="1" value="65" required></label><label>Active minutes per lesson hour<input id="minutes" type="number" min="0" max="60" value="45" required></label><label>Weather source<select id="source"><option value="demo">Simulated (offline)</option><option value="live">Open-Meteo cache</option></select></label><label>Demo weather<select id="scenario"><option value="mixed">Mixed</option><option value="sunny">Sunny</option><option value="cloudy">Cloudy</option></select></label><label>Forecast horizon<select id="hours"><option value="48">48 hourly points</option><option value="24">24 hourly points</option><option value="6">6 hourly points</option></select></label><button id="run">Forecast energy</button></form><p class="muted" id="schedule"></p><p id="error" role="alert"></p></section>
-<section id="results" hidden><h2>Energy outlook</h2><div class="metrics"><div class="metric"><small>Current battery (manual)</small><strong id="current">—</strong></div><div class="metric"><small>Time until reserve</small><strong id="reserve">—</strong></div><div class="metric"><small>Tomorrow's lowest estimate</small><strong id="tomorrow">—</strong><small id="tomorrowNote"></small></div><div class="metric"><small>Battery at end of forecast</small><strong id="end">—</strong></div></div><div id="recommend" class="recommend" role="status" style="margin-top:15px"><strong id="status"></strong><div id="message"></div><p id="timing" class="muted"></p></div></section>
-<section id="graph" hidden><h2>Battery level forecast</h2><div class="legend"><span><i class="dot" style="background:#08766b"></i>Estimated battery</span><span><i class="dot" style="background:#b35b46"></i>Configured reserve</span></div><svg id="chart" viewBox="0 0 860 260" role="img" aria-label="Battery percentage forecast over time"></svg><p class="muted">Time shown in South African local time. Estimates assume the selected usage schedule and no additional external charging.</p></section>
-<section id="details" hidden><h2>Hourly details</h2><div class="scroll"><table><thead><tr><th>Local interval end</th><th>Battery %</th><th>Solar W</th><th>Load W</th><th>Radiation W/m²</th><th>Cloud %</th><th>Action</th></tr></thead><tbody id="rows"></tbody></table></div></section>
-<section><h2>Model evaluation & integration</h2><p id="modelMetrics" class="muted">Loading…</p><p><a href="/docs">Interactive REST API documentation</a> · <a href="/api/metrics">Full evaluation JSON</a> · <a href="/api/health">Health check</a></p><p class="foot">Advisory prototype only. Do not use it as a battery protection system. Battery limits and charging instructions require PPS approval and real hardware validation.</p></section></main><script>
-const $=id=>document.getElementById(id);const fmt=n=>Number(n).toFixed(1);const local=t=>t.slice(0,16).replace('T',' ');const ns='http://www.w3.org/2000/svg';
-function draw(d){let s=$('chart');s.replaceChildren();let L=50,R=835,T=18,B=218;function el(tag,a,text){let e=document.createElementNS(ns,tag);Object.entries(a).forEach(([k,v])=>e.setAttribute(k,v));if(text!==undefined)e.textContent=text;s.append(e);return e}let start=Date.parse(d.generated_at),end=Date.parse(d.forecast.at(-1).timestamp);let x=t=>L+(R-L)*(Date.parse(t)-start)/(end-start),y=v=>B-(B-T)*v/100;for(let v=0;v<=100;v+=25){el('line',{x1:L,x2:R,y1:y(v),y2:y(v),stroke:'#d9e5e8'});el('text',{x:L-8,y:y(v)+4,'text-anchor':'end','font-size':12,fill:'#536b75'},v+'%')}el('line',{x1:L,x2:R,y1:y(d.reserve_pct),y2:y(d.reserve_pct),stroke:'#b35b46','stroke-dasharray':'6 5'});let points=[[L,y(d.initial_battery_pct)],...d.forecast.map(r=>[x(r.timestamp),y(r.battery_pct)])];el('polyline',{points:points.map(p=>p.join(',')).join(' '),fill:'none',stroke:'#08766b','stroke-width':3,'stroke-linejoin':'round'});el('text',{x:L,y:242,'font-size':12,fill:'#536b75'},'Now');for(let i=0;i<4;i++){let r=d.forecast[Math.floor((d.forecast.length-1)*(i+1)/4)];if(x(r.timestamp)-L<75)continue;el('text',{x:x(r.timestamp),y:242,'font-size':11,'text-anchor':i===3?'end':'middle',fill:'#536b75'},r.local_time.slice(5,16).replace('T',' '))}}
-async function run(e){if(e)e.preventDefault();$('run').disabled=true;$('error').textContent='';try{let q=new URLSearchParams({battery_pct:$('battery').value,active_minutes:$('minutes').value,hours:$('hours').value,weather_source:$('source').value,scenario:$('scenario').value});let r=await fetch('/api/forecast?'+q);let d=await r.json();if(!r.ok)throw Error(typeof d.detail==='string'?d.detail:'Invalid request');$('provenance').textContent=`Model: ${d.model_source==='synthetic_demo'?'SIMULATED training data — not field validated':'Measured training CSV — independently validate before deployment'} | Weather: ${d.weather_source} | Battery: manual scenario input.${d.weather_fetched_at?' Cached at '+d.weather_fetched_at:''}`;$('current').textContent=fmt(d.initial_battery_pct)+'%';$('reserve').textContent=d.hours_to_reserve===null?'Not reached':fmt(d.hours_to_reserve)+' h';$('tomorrow').textContent=d.tomorrow_min_pct===null?'Not covered':fmt(d.tomorrow_min_pct)+'%';$('tomorrowNote').textContent=`${d.tomorrow_local_date} • ${d.tomorrow_points} hourly points`;$('end').textContent=fmt(d.forecast.at(-1).battery_pct)+'%';$('schedule').textContent='Assumed usage: '+d.usage_schedule;$('status').textContent={CONTINUE:'Continue learning',CHARGE_SOON:'Charging recommended',STOP_OR_SAVE:'Save work / stop soon'}[d.status];$('message').textContent=d.recommendation;$('timing').textContent='Plan to charge by: '+(d.charge_by_local?local(d.charge_by_local):'not reached in forecast')+' • Stop/save at reserve: '+(d.reserve_at_local?local(d.reserve_at_local):'not reached in forecast')+' (local time, if no extra charging).';$('recommend').className='recommend '+(d.status==='CONTINUE'?'':d.status==='CHARGE_SOON'?'warn':'stop');$('rows').replaceChildren();d.forecast.forEach(row=>{let tr=document.createElement('tr');[local(row.local_time),fmt(row.battery_pct),fmt(row.solar_w),fmt(row.load_w),fmt(row.radiation_w_m2),fmt(row.cloud_pct),row.status].forEach(v=>{let td=document.createElement('td');td.textContent=v;tr.append(td)});$('rows').append(tr)});draw(d);['results','graph','details'].forEach(id=>$(id).hidden=false)}catch(err){$('error').textContent=err.message;['results','graph','details'].forEach(id=>$(id).hidden=true)}finally{$('run').disabled=false}}
-$('form').addEventListener('submit',run);$('source').addEventListener('change',()=>{$('scenario').disabled=$('source').value==='live'});fetch('/api/metrics').then(r=>r.json()).then(d=>{$('modelMetrics').textContent=Object.entries(d.metrics).map(([k,m])=>`${k}: ${m.selected.replaceAll('_',' ')} (test MAE ${fmt(m.test[m.selected].mae_w)} W)`).join(' • ')+'. '+d.scope}).catch(()=>{$('modelMetrics').textContent='Metrics unavailable.'});run();
-</script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Energy Assistant</title>
+  <style>
+    :root {
+      --page: #f3f3f1;
+      --paper: #faf8ef;
+      --card: #eeeadb;
+      --card-light: #f5f1e5;
+      --green: #286b4c;
+      --green-dark: #173f32;
+      --green-soft: #e5eddf;
+      --yellow: #f5c94e;
+      --ink: #20372f;
+      --muted: #7e8980;
+      --line: #dedbcf;
+      --red: #d77b68;
+      --shadow: 0 5px 18px rgba(42, 63, 48, .045);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--page);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 14px;
+    }
+    button, input, select { font: inherit; }
+    button { cursor: pointer; }
+    /* The website itself fills the viewport — no Figma artboard/frame around it. */
+    .page { width: 100%; margin: 0; }
+    .page-label { display: none; }
+    .app {
+      width: 100%;
+      min-height: 100vh;
+      background: var(--paper);
+      border: 0;
+      border-radius: 0;
+      box-shadow: none;
+    }
+    .topbar {
+      min-height: 58px;
+      padding: 10px 22px;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+      gap: 12px;
+    }
+    .brand { display: flex; align-items: center; gap: 9px; color: var(--green-dark); font-weight: 750; }
+    .brand-mark {
+      width: 27px; height: 27px; display: grid; place-items: center;
+      border-radius: 9px; background: var(--green); color: white; font-size: 14px;
+    }
+    .topbar h1 { font-size: 16px; margin: 0; font-weight: 700; text-align: center; }
+    .top-actions { display: flex; justify-content: flex-end; align-items: center; gap: 8px; }
+    .chip {
+      display: inline-flex; align-items: center; gap: 6px;
+      border: 1px solid transparent; border-radius: 20px;
+      background: var(--green-soft); color: var(--green-dark);
+      padding: 7px 11px; font-size: 11px; font-weight: 650;
+      white-space: nowrap;
+    }
+    .chip.yellow { background: var(--yellow); color: #51451e; }
+    .avatar {
+      width: 31px; height: 31px; border-radius: 50%; display: grid; place-items: center;
+      border: 2px solid var(--green); background: #fff; font-size: 16px;
+    }
+    .content { padding: 28px 34px 36px; }
+    .intro { display: flex; justify-content: space-between; align-items: end; gap: 16px; margin-bottom: 22px; }
+    .eyebrow { color: var(--green); font-size: 11px; font-weight: 750; letter-spacing: .08em; text-transform: uppercase; margin: 0 0 5px; }
+    h2 { margin: 0; font-size: 23px; letter-spacing: -.035em; color: var(--green-dark); }
+    .subtitle { margin: 6px 0 0; color: var(--muted); font-size: 12px; }
+    .button-outline, .button-primary {
+      border-radius: 9px; padding: 9px 13px; font-size: 11px; font-weight: 700;
+    }
+    .button-outline { border: 1px solid var(--green); color: var(--green-dark); background: transparent; }
+    .button-primary { border: 1px solid var(--green); background: var(--green); color: white; }
+    .dashboard {
+      display: grid; grid-template-columns: 1.05fr 1fr 1fr; gap: 14px;
+      margin-bottom: 15px;
+    }
+    .panel { background: var(--card); border-radius: 15px; padding: 18px; min-width: 0; }
+    .panel h3 { margin: 0 0 5px; font-size: 13px; color: var(--green-dark); }
+    .panel-note { color: var(--muted); font-size: 10px; margin: 0 0 14px; }
+    .battery-panel { display: flex; flex-direction: column; justify-content: space-between; min-height: 205px; }
+    .battery-visual { display: flex; align-items: center; gap: 16px; margin: 12px 0 8px; }
+    .battery-icon {
+      width: 72px; height: 94px; border: 3px solid var(--green); border-radius: 10px;
+      padding: 5px; position: relative; display: flex; align-items: end;
+      background: rgba(255,255,255,.35);
+    }
+    .battery-icon:before { content: ""; position: absolute; width: 25px; height: 6px; background: var(--green); border-radius: 4px 4px 0 0; top: -8px; left: 21px; }
+    .battery-fill { width: 100%; background: #85a66c; border-radius: 4px; transition: height .3s; }
+    .battery-number { font-size: 29px; font-weight: 750; color: var(--green-dark); letter-spacing: -.05em; }
+    .battery-caption { color: var(--muted); font-size: 10px; margin-top: 2px; }
+    .progress-track { height: 7px; background: #d8d7c9; border-radius: 10px; overflow: hidden; margin-top: 12px; }
+    .progress-bar { height: 100%; background: var(--green); border-radius: inherit; width: 65%; }
+    .metric-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .metric { background: rgba(255,255,255,.38); border-radius: 11px; padding: 12px; min-height: 83px; }
+    .metric span { display: block; color: var(--muted); font-size: 10px; }
+    .metric strong { display: block; margin-top: 9px; color: var(--green-dark); font-size: 20px; letter-spacing: -.04em; }
+    .recommendation { min-height: 205px; display: flex; flex-direction: column; }
+    .status-line { display: flex; align-items: center; gap: 8px; margin: 10px 0; }
+    .status-dot { width: 9px; height: 9px; border-radius: 50%; background: #80a66d; }
+    .status-title { font-size: 16px; font-weight: 750; color: var(--green-dark); }
+    .recommendation p { color: #66766a; font-size: 11px; line-height: 1.6; margin: 3px 0 14px; }
+    .recommendation .button-primary { align-self: flex-start; margin-top: auto; }
+    .section-heading { display: flex; justify-content: space-between; align-items: end; margin: 28px 0 12px; gap: 12px; }
+    .section-heading h3 { margin: 0; color: var(--green-dark); font-size: 16px; }
+    .section-heading p { margin: 4px 0 0; color: var(--muted); font-size: 10px; }
+    .forecast-panel { background: var(--card); border-radius: 15px; padding: 18px 20px 12px; }
+    .chart-legend { display: flex; gap: 17px; flex-wrap: wrap; color: var(--muted); font-size: 10px; margin-bottom: 8px; }
+    .legend-mark { display: inline-block; width: 14px; height: 3px; vertical-align: middle; margin-right: 5px; border-radius: 3px; background: var(--green); }
+    .legend-mark.reserve { background: var(--red); }
+    #chart { width: 100%; height: auto; display: block; min-height: 180px; }
+    .form-panel { background: var(--card-light); border: 1px solid var(--line); border-radius: 15px; padding: 18px; }
+    .form-grid { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 12px; align-items: end; }
+    label { display: grid; gap: 7px; color: var(--green-dark); font-size: 10px; font-weight: 700; }
+    input, select {
+      width: 100%; min-width: 0; border: 1px solid #d6d4c8; border-radius: 8px;
+      background: #fffdf7; color: var(--ink); padding: 10px; outline-color: var(--green);
+    }
+    .form-grid button { min-height: 37px; }
+    #error { color: #a84438; font-size: 11px; font-weight: 650; min-height: 16px; margin: 10px 0 0; }
+    .details { margin-top: 14px; background: var(--card-light); border-radius: 13px; padding: 16px; }
+    .details summary { color: var(--green-dark); font-weight: 700; font-size: 12px; cursor: pointer; }
+    .scroll { overflow-x: auto; margin-top: 12px; }
+    table { border-collapse: collapse; width: 100%; font-size: 10px; text-align: right; }
+    th, td { padding: 9px 8px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+    th:first-child, td:first-child { text-align: left; }
+    th { color: var(--green-dark); }
+    .foot { color: var(--muted); font-size: 10px; line-height: 1.5; margin: 20px 0 0; }
+    .notice { background: #f8f0d9; border: 1px solid #eadcae; color: #776331; border-radius: 9px; padding: 10px 13px; font-size: 10px; margin-bottom: 16px; }
+    [hidden] { display: none !important; }
+
+    @media (max-width: 780px) {
+      .dashboard { grid-template-columns: 1fr 1fr; }
+      .battery-panel { grid-row: span 2; }
+      .form-grid { grid-template-columns: 1fr 1fr; }
+      .content { padding: 23px 20px 28px; }
+    }
+    @media (max-width: 540px) {
+      .page { width: 100%; margin: 0; }
+      .topbar { grid-template-columns: 1fr auto; padding: 10px 12px; }
+      .topbar h1 { display: none; }
+      .brand { font-size: 12px; }
+      .top-actions { gap: 5px; }
+      .chip { padding: 7px 8px; }
+      .content { padding: 20px 13px 24px; }
+      .intro { align-items: flex-start; flex-direction: column; }
+      .dashboard { grid-template-columns: 1fr; }
+      .battery-panel { grid-row: auto; min-height: 175px; }
+      .recommendation { min-height: 175px; }
+      .form-grid { grid-template-columns: 1fr 1fr; }
+      .form-grid button { grid-column: span 2; }
+      h2 { font-size: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="app">
+      <nav class="topbar">
+        <div class="brand"><span class="brand-mark">✦</span> Prime Power Solutions</div>
+        <h1>Energy overview</h1>
+        <div class="top-actions">
+          <span class="chip" title="Current battery level">▰ <span id="topBattery">65%</span></span>
+          <a class="chip" href="/docs" style="text-decoration:none">ⓘ Help</a>
+          <span class="avatar" aria-label="User profile">☀</span>
+        </div>
+      </nav>
+
+      <main class="content">
+        <div id="provenance" class="notice" role="status">Prototype · Loading model and weather information…</div>
+
+        <div class="intro">
+          <div>
+            <p class="eyebrow">Your energy companion</p>
+            <h2>Good day! Let's plan your energy.</h2>
+            <p class="subtitle">Check your battery forecast and find the best time to use your device.</p>
+          </div>
+          <button class="button-outline" type="button" onclick="document.getElementById('planner').scrollIntoView({behavior:'smooth'})">⚙ Adjust plan</button>
+        </div>
+
+        <div class="dashboard">
+          <section class="panel battery-panel">
+            <div>
+              <h3>Your battery</h3>
+              <p class="panel-note">Current battery level · manual input</p>
+              <div class="battery-visual">
+                <div class="battery-icon"><div class="battery-fill" id="batteryFill" style="height:65%"></div></div>
+                <div><div class="battery-number" id="current">65%</div><div class="battery-caption">Available energy</div></div>
+              </div>
+            </div>
+            <div><div class="progress-track"><div class="progress-bar" id="batteryProgress"></div></div><p class="panel-note" style="margin:7px 0 0">Keep an eye on your reserve level.</p></div>
+          </section>
+
+          <section class="panel">
+            <h3>Energy outlook</h3>
+            <p class="panel-note">Based on your selected schedule</p>
+            <div class="metric-grid">
+              <div class="metric"><span>Time until reserve</span><strong id="reserve">—</strong></div>
+              <div class="metric"><span>Tomorrow's lowest</span><strong id="tomorrow">—</strong></div>
+              <div class="metric"><span>End of forecast</span><strong id="end">—</strong></div>
+              <div class="metric"><span>Forecast horizon</span><strong id="horizon">48 h</strong></div>
+            </div>
+          </section>
+
+          <section class="panel recommendation">
+            <h3>Energy recommendation</h3>
+            <p class="panel-note">A little guidance for your next lesson</p>
+            <div class="status-line"><span class="status-dot" id="statusDot"></span><span class="status-title" id="status">Ready to forecast</span></div>
+            <p id="message">Run a forecast to see whether you can continue learning or should save energy.</p>
+            <p id="timing" class="panel-note"></p>
+            <button class="button-primary" type="button" onclick="document.getElementById('planner').scrollIntoView({behavior:'smooth'})">Plan device usage →</button>
+          </section>
+        </div>
+
+        <div class="section-heading">
+          <div><h3>Your battery journey</h3><p>Estimated battery level over the selected forecast period</p></div>
+          <span class="chip">Live forecast</span>
+        </div>
+        <section class="forecast-panel" id="graph" hidden>
+          <div class="chart-legend"><span><i class="legend-mark"></i>Estimated battery</span><span><i class="legend-mark reserve"></i>Reserve level</span></div>
+          <svg id="chart" viewBox="0 0 860 260" role="img" aria-label="Battery percentage forecast over time"></svg>
+          <p class="panel-note">Estimates assume the selected usage schedule and no additional external charging.</p>
+        </section>
+        <section class="forecast-panel" id="emptyGraph">
+          <p class="panel-note" style="margin:0">Your forecast chart will appear here after the first successful calculation.</p>
+        </section>
+
+        <div class="section-heading" id="planner">
+          <div><h3>Plan device usage</h3><p>Adjust the values to explore different energy scenarios</p></div>
+        </div>
+        <section class="form-panel">
+          <form id="form" class="form-grid">
+            <label>Current battery (%)
+              <input id="battery" type="number" min="0" max="100" step="1" value="65" required>
+            </label>
+            <label>Active minutes per lesson hour
+              <input id="minutes" type="number" min="0" max="60" value="45" required>
+            </label>
+            <label>Weather source
+              <select id="source"><option value="demo">Simulated (offline)</option><option value="live">Open-Meteo cache</option></select>
+            </label>
+            <label>Demo weather
+              <select id="scenario"><option value="mixed">Mixed</option><option value="sunny">Sunny</option><option value="cloudy">Cloudy</option></select>
+            </label>
+            <label>Forecast horizon
+              <select id="hours"><option value="48">48 hourly points</option><option value="24">24 hourly points</option><option value="6">6 hourly points</option></select>
+            </label>
+            <button class="button-primary" id="run" type="submit">Forecast energy →</button>
+          </form>
+          <p id="schedule" class="panel-note" style="margin:12px 0 0"></p>
+          <p id="error" role="alert"></p>
+        </section>
+
+        <details class="details" id="details" hidden>
+          <summary>View hourly forecast details</summary>
+          <div class="scroll"><table><thead><tr><th>Local interval end</th><th>Battery %</th><th>Solar W</th><th>Load W</th><th>Radiation W/m²</th><th>Cloud %</th><th>Action</th></tr></thead><tbody id="rows"></tbody></table></div>
+        </details>
+
+        <p class="foot" id="modelMetrics">Loading model evaluation…</p>
+        <p class="foot">Advisory prototype only. Do not use it as a battery protection system. Battery limits and charging instructions require PPS approval and real hardware validation. · <a href="/api/health">System health</a> · <a href="/api/metrics">Evaluation data</a> · <a href="/docs">API documentation</a></p>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    const $ = id => document.getElementById(id);
+    const fmt = value => Number(value).toFixed(1);
+    const local = value => value.slice(0, 16).replace('T', ' ');
+    const svgNS = 'http://www.w3.org/2000/svg';
+
+    function drawChart(data) {
+      const svg = $('chart');
+      svg.replaceChildren();
+      const left = 50, right = 835, top = 18, bottom = 218;
+      const start = Date.parse(data.generated_at);
+      const end = Date.parse(data.forecast.at(-1).timestamp);
+      const x = time => left + (right - left) * (Date.parse(time) - start) / (end - start || 1);
+      const y = value => bottom - (bottom - top) * value / 100;
+
+      function add(tag, attrs, content) {
+        const element = document.createElementNS(svgNS, tag);
+        Object.entries(attrs).forEach(([key, value]) => element.setAttribute(key, value));
+        if (content !== undefined) element.textContent = content;
+        svg.append(element);
+        return element;
+      }
+
+      for (let value = 0; value <= 100; value += 25) {
+        add('line', { x1: left, x2: right, y1: y(value), y2: y(value), stroke: '#d5d3c6' });
+        add('text', { x: left - 9, y: y(value) + 4, 'text-anchor': 'end', 'font-size': 12, fill: '#7e8980' }, value + '%');
+      }
+      add('line', { x1: left, x2: right, y1: y(data.reserve_pct), y2: y(data.reserve_pct), stroke: '#d77b68', 'stroke-dasharray': '6 5' });
+
+      const points = [[left, y(data.initial_battery_pct)], ...data.forecast.map(row => [x(row.timestamp), y(row.battery_pct)])];
+      add('polyline', {
+        points: points.map(point => point.join(',')).join(' '),
+        fill: 'none', stroke: '#286b4c', 'stroke-width': 3, 'stroke-linejoin': 'round', 'stroke-linecap': 'round'
+      });
+      add('text', { x: left, y: 244, 'font-size': 12, fill: '#7e8980' }, 'Now');
+
+      for (let i = 0; i < 4; i++) {
+        const row = data.forecast[Math.floor((data.forecast.length - 1) * (i + 1) / 4)];
+        if (!row) continue;
+        add('text', {
+          x: x(row.timestamp), y: 244, 'font-size': 11,
+          'text-anchor': i === 3 ? 'end' : 'middle', fill: '#7e8980'
+        }, row.local_time.slice(5, 16).replace('T', ' '));
+      }
+    }
+
+    async function runForecast(event) {
+      if (event) event.preventDefault();
+      $('run').disabled = true;
+      $('error').textContent = '';
+
+      try {
+        const params = new URLSearchParams({
+          battery_pct: $('battery').value,
+          active_minutes: $('minutes').value,
+          hours: $('hours').value,
+          weather_source: $('source').value,
+          scenario: $('scenario').value
+        });
+
+        const response = await fetch('/api/forecast?' + params);
+        const data = await response.json();
+        if (!response.ok) throw new Error(typeof data.detail === 'string' ? data.detail : 'Invalid request');
+
+        const battery = Number(data.initial_battery_pct);
+        $('provenance').textContent =
+          `Prototype · Model: ${data.model_source === 'synthetic_demo' ? 'Simulated training data — not field validated' : 'Measured training CSV — validate before deployment'} · Weather: ${data.weather_source}` +
+          (data.weather_fetched_at ? ` · Cached at ${data.weather_fetched_at}` : '');
+
+        $('current').textContent = fmt(battery) + '%';
+        $('topBattery').textContent = Math.round(battery) + '%';
+        $('batteryFill').style.height = battery + '%';
+        $('batteryProgress').style.width = battery + '%';
+        $('reserve').textContent = data.hours_to_reserve === null ? 'Not reached' : fmt(data.hours_to_reserve) + ' h';
+        $('tomorrow').textContent = data.tomorrow_min_pct === null ? '—' : fmt(data.tomorrow_min_pct) + '%';
+        $('end').textContent = fmt(data.forecast.at(-1).battery_pct) + '%';
+        $('horizon').textContent = data.forecast.length + ' h';
+        $('schedule').textContent = 'Assumed usage schedule: ' + data.usage_schedule;
+
+        const statusLabels = {
+          CONTINUE: 'Continue learning',
+          CHARGE_SOON: 'Charging recommended',
+          STOP_OR_SAVE: 'Save work / stop soon'
+        };
+        $('status').textContent = statusLabels[data.status] || 'Forecast ready';
+        $('message').textContent = data.recommendation;
+        $('timing').textContent =
+          'Plan to charge by: ' + (data.charge_by_local ? local(data.charge_by_local) : 'not reached in forecast') +
+          ' · Save work at reserve: ' + (data.reserve_at_local ? local(data.reserve_at_local) : 'not reached in forecast');
+
+        $('statusDot').style.background = data.status === 'CONTINUE' ? '#80a66d' : data.status === 'CHARGE_SOON' ? '#d2a33e' : '#d77b68';
+
+        $('rows').replaceChildren();
+        data.forecast.forEach(row => {
+          const tr = document.createElement('tr');
+          [local(row.local_time), fmt(row.battery_pct), fmt(row.solar_w), fmt(row.load_w),
+            fmt(row.radiation_w_m2), fmt(row.cloud_pct), row.status].forEach(value => {
+            const td = document.createElement('td');
+            td.textContent = value;
+            tr.append(td);
+          });
+          $('rows').append(tr);
+        });
+
+        drawChart(data);
+        $('graph').hidden = false;
+        $('emptyGraph').hidden = true;
+        $('details').hidden = false;
+      } catch (error) {
+        $('error').textContent = error.message;
+      } finally {
+        $('run').disabled = false;
+      }
+    }
+
+    $('form').addEventListener('submit', runForecast);
+    $('source').addEventListener('change', () => {
+      $('scenario').disabled = $('source').value === 'live';
+    });
+
+    fetch('/api/metrics')
+      .then(response => response.json())
+      .then(data => {
+        $('modelMetrics').textContent = Object.entries(data.metrics)
+          .map(([name, metric]) => `${name}: ${metric.selected.replaceAll('_', ' ')} (test MAE ${fmt(metric.test[metric.selected].mae_w)} W)`)
+          .join(' · ') + '. ' + data.scope;
+      })
+      .catch(() => { $('modelMetrics').textContent = 'Model evaluation metrics are currently unavailable.'; });
+
+    runForecast();
+  </script>
+</body>
+</html>
