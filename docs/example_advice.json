@@ -1,0 +1,498 @@
+{
+  "location": "Pretoria, South Africa (reference location)",
+  "model_source": "synthetic_demo",
+  "model": "forest_direct",
+  "battery_source": "manual scenario input",
+  "weather_source": "SIMULATED weather",
+  "weather_fetched_at": null,
+  "prediction_time_local": "2026-11-25T08:00:00+02:00",
+  "learning_start_local": "2026-11-25T14:00:00+02:00",
+  "learning_end_local": "2026-11-25T17:00:00+02:00",
+  "current_battery_pct": 41.0,
+  "predicted_start_level": 87.23,
+  "margin_pp": 5,
+  "reserve_pct": 10.0,
+  "drain_per_lesson_pp": 2.5,
+  "lesson_duration_minutes": 5,
+  "max_sessions": 8,
+  "max_lessons": 32,
+  "max_learning_minutes": 160,
+  "learning_window_minutes": 180,
+  "unallocated_window_minutes": 20,
+  "session_duration_minutes": 20,
+  "lessons_per_session": 4,
+  "session_drain_pp": 10.0,
+  "learning_start": "14:00",
+  "learning_end": "17:00",
+  "recommended_lessons": 28,
+  "recommended_sessions": 7,
+  "additional_lessons": 0,
+  "available_learning_minutes": 140,
+  "prediction_reliability": {
+    "target_coverage": 0.9,
+    "radius_pp": 6.1146386716420835,
+    "calibration_days": 37,
+    "test_days": 73,
+    "test_interval_hits": 67,
+    "test_interval_coverage": 0.9178082191780822,
+    "mae_pp": 2.5453331772743684,
+    "exact_rate": 0.410958904109589,
+    "too_many_rate": 0.0136986301369863,
+    "too_few_rate": 0.5753424657534246,
+    "mean_lessons_lost_per_prediction": 1.4246575342465753,
+    "session_exact_rate": 0.589041095890411,
+    "session_too_many_rate": 0.0136986301369863,
+    "session_too_few_rate": 0.3972602739726027,
+    "n": 73,
+    "within_5pp_rate": 0.8356164383561644,
+    "lower_battery_pct": 81.11,
+    "upper_battery_pct": 93.34,
+    "evaluation_source": "synthetic_demo",
+    "field_validated": false,
+    "prediction_hour": 8,
+    "interpretation": "Historical held-out performance, not the probability that this individual forecast is correct. Simulated data or forecast/domain shift can invalidate coverage."
+  },
+  "hardware_profile": {
+    "battery_wh": 180.0,
+    "panel_w": 25.0,
+    "start_hour": 14,
+    "end_hour": 17,
+    "session_minutes": 20,
+    "session_drain_pp": 10.0,
+    "lesson_minutes": 5,
+    "reserve_pct": 10.0,
+    "max_sessions": 8,
+    "max_lessons": 32
+  },
+  "estimated_remaining_pct": 17.23,
+  "estimated_remaining_with_margin_pct": 12.23,
+  "status": "READY",
+  "reason": "Forecast charging window has 4711 Wh/m\u00b2 radiation and 12% average cloud cover. Expected battery at 14:00 is 87.2%. With a 10% reserve and 5 pp model margin, the estimate allows 28 five-minute lessons (7 full twenty-minute sessions and 0 extra lessons), within the teacher\u2019s limit of 8 sessions / 32 lessons. Charge when sunlight is available before 14:00; do not use while charging. Recheck actual battery before learning.",
+  "features": {
+    "morning_level": 41.0,
+    "hours_until_session": 6,
+    "window_radiation_sum": 4710.994930075241,
+    "window_cloud_mean": 12.0,
+    "window_temp_mean": 23.004870674751675,
+    "day_of_year": 329
+  },
+  "energy_analysis": {
+    "method": "Original energy balance and solar planner adapted to team profile; physical baseline, not a second ML prediction.",
+    "profile": {
+      "battery_wh": 180.0,
+      "panel_w": 25.0,
+      "panel_derate": 0.8,
+      "learning_battery_side_w": 54.0,
+      "charging_load_w": 0.0
+    },
+    "physics_start_level": 93.34,
+    "ml_start_level": 87.23,
+    "ml_minus_physics_pp": -6.12,
+    "potential_solar_energy_wh": 94.22,
+    "stored_energy_gain_wh": 94.22,
+    "best_charging_window": {
+      "start_local": "2026-11-25T12:00:00+02:00",
+      "end_local": "2026-11-25T13:00:00+02:00",
+      "solar_w": 17.852,
+      "load_w": 0.0,
+      "net_power_w": 17.852,
+      "battery_gain_wh": 17.852
+    },
+    "charging_intervals": [
+      {
+        "start_local": "2026-11-25T08:00:00+02:00",
+        "end_local": "2026-11-25T09:00:00+02:00",
+        "duration_hours": 1.0,
+        "solar_w": 10.961213799964534,
+        "load_w": 0.0,
+        "net_power_w": 10.961213799964534,
+        "radiation_w_m2": 548.0606899982267,
+        "battery_gain_wh": 10.96121379996454,
+        "mode": "charging",
+        "battery_pct": 47.09
+      },
+      {
+        "start_local": "2026-11-25T09:00:00+02:00",
+        "end_local": "2026-11-25T10:00:00+02:00",
+        "duration_hours": 1.0,
+        "solar_w": 14.284931941250953,
+        "load_w": 0.0,
+        "net_power_w": 14.284931941250953,
+        "radiation_w_m2": 714.2465970625475,
+        "battery_gain_wh": 14.28493194125096,
+        "mode": "charging",
+        "battery_pct": 55.03
+      },
+      {
+        "start_local": "2026-11-25T10:00:00+02:00",
+        "end_local": "2026-11-25T11:00:00+02:00",
+        "duration_hours": 1.0,
+        "solar_w": 16.63515557770732,
+        "load_w": 0.0,
+        "net_power_w": 16.63515557770732,
+        "radiation_w_m2": 831.757778885366,
+        "battery_gain_wh": 16.635155577707323,
+        "mode": "charging",
+        "battery_pct": 64.27
+      },
+      {
+        "start_local": "2026-11-25T11:00:00+02:00",
+        "end_local": "2026-11-25T12:00:00+02:00",
+        "duration_hours": 1.0,
+        "solar_w": 17.851720852437346,
+        "load_w": 0.0,
+        "net_power_w": 17.851720852437346,
+        "radiation_w_m2": 892.5860426218673,
+        "battery_gain_wh": 17.85172085243734,
+        "mode": "charging",
+        "battery_pct": 74.19
+      },
+      {
+        "start_local": "2026-11-25T12:00:00+02:00",
+        "end_local": "2026-11-25T13:00:00+02:00",
+        "duration_hours": 1.0,
+        "solar_w": 17.851720852437346,
+        "load_w": 0.0,
+        "net_power_w": 17.851720852437346,
+        "radiation_w_m2": 892.5860426218673,
+        "battery_gain_wh": 17.851720852437353,
+        "mode": "charging",
+        "battery_pct": 84.1
+      },
+      {
+        "start_local": "2026-11-25T13:00:00+02:00",
+        "end_local": "2026-11-25T14:00:00+02:00",
+        "duration_hours": 1.0,
+        "solar_w": 16.635155577707323,
+        "load_w": 0.0,
+        "net_power_w": 16.635155577707323,
+        "radiation_w_m2": 831.7577788853661,
+        "battery_gain_wh": 16.635155577707337,
+        "mode": "charging",
+        "battery_pct": 93.34
+      }
+    ],
+    "learning_intervals": [
+      {
+        "lesson": 1,
+        "session": 1,
+        "start_local": "2026-11-25T14:00:00+02:00",
+        "end_local": "2026-11-25T14:05:00+02:00",
+        "mode": "learning",
+        "solar_w": 0.0,
+        "load_w": 54.0,
+        "battery_pct": 84.73
+      },
+      {
+        "lesson": 2,
+        "session": 1,
+        "start_local": "2026-11-25T14:05:00+02:00",
+        "end_local": "2026-11-25T14:10:00+02:00",
+        "mode": "learning",
+        "solar_w": 0.0,
+        "load_w": 54.0,
+        "battery_pct": 82.23
+      },
+      {
+        "lesson": 3,
+        "session": 1,
+        "start_local": "2026-11-25T14:10:00+02:00",
+        "end_local": "2026-11-25T14:15:00+02:00",
+        "mode": "learning",
+        "solar_w": 0.0,
+        "load_w": 54.0,
+        "battery_pct": 79.73
+      },
+      {
+        "lesson": 4,
+        "session": 1,
+        "start_local": "2026-11-25T14:15:00+02:00",
+        "end_local": "2026-11-25T14:20:00+02:00",
+        "mode": "learning",
+        "solar_w": 0.0,
+        "load_w": 54.0,
+        "battery_pct": 77.23
+      },
+      {
+        "lesson": 5,
+        "session": 2,
+        "start_local": "2026-11-25T14:20:00+02:00",
+        "end_local": "2026-11-25T14:25:00+02:00",
+        "mode": "learning",
+        "solar_w": 0.0,
+        "load_w": 54.0,
+        "battery_pct": 74.73
+      },
+      {
+        "lesson": 6,
+        "session": 2,
+        "start_local": "2026-11-25T14:25:00+02:00",
+        "end_local": "2026-11-25T14:30:00+02:00",
+        "mode": "learning",
+        "solar_w": 0.0,
+        "load_w": 54.0,
+        "battery_pct": 72.23
+      },
+      {
+        "lesson": 7,
+        "session": 2,
+        "start_local": "2026-11-25T14:30:00+02:00",
+        "end_local": "2026-11-25T14:35:00+02:00",
+        "mode": "learning",
+        "solar_w": 0.0,
+        "load_w": 54.0,
+        "battery_pct": 69.73
+      },
+      {
+        "lesson": 8,
+        "session": 2,
+        "start_local": "2026-11-25T14:35:00+02:00",
+        "end_local": "2026-11-25T14:40:00+02:00",
+        "mode": "learning",
+        "solar_w": 0.0,
+        "load_w": 54.0,
+        "battery_pct": 67.23
+      },
+      {
+        "lesson": 9,
+        "session": 3,
+        "start_local": "2026-11-25T14:40:00+02:00",
+        "end_local": "2026-11-25T14:45:00+02:00",
+        "mode": "learning",
+        "solar_w": 0.0,
+        "load_w": 54.0,
+        "battery_pct": 64.73
+      },
+      {
+        "lesson": 10,
+        "session": 3,
+        "start_local": "2026-11-25T14:45:00+02:00",
+        "end_local": "2026-11-25T14:50:00+02:00",
+        "mode": "learning",
+        "solar_w": 0.0,
+        "load_w": 54.0,
+        "battery_pct": 62.23
+      },
+      {
+        "lesson": 11,
+        "session": 3,
+        "start_local": "2026-11-25T14:50:00+02:00",
+        "end_local": "2026-11-25T14:55:00+02:00",
+        "mode": "learning",
+        "solar_w": 0.0,
+        "load_w": 54.0,
+        "battery_pct": 59.73
+      },
+      {
+        "lesson": 12,
+        "session": 3,
+        "start_local": "2026-11-25T14:55:00+02:00",
+        "end_local": "2026-11-25T15:00:00+02:00",
+        "mode": "learning",
+        "solar_w": 0.0,
+        "load_w": 54.0,
+        "battery_pct": 57.23
+      },
+      {
+        "lesson": 13,
+        "session": 4,
+        "start_local": "2026-11-25T15:00:00+02:00",
+        "end_local": "2026-11-25T15:05:00+02:00",
+        "mode": "learning",
+        "solar_w": 0.0,
+        "load_w": 54.0,
+        "battery_pct": 54.73
+      },
+      {
+        "lesson": 14,
+        "session": 4,
+        "start_local": "2026-11-25T15:05:00+02:00",
+        "end_local": "2026-11-25T15:10:00+02:00",
+        "mode": "learning",
+        "solar_w": 0.0,
+        "load_w": 54.0,
+        "battery_pct": 52.23
+      },
+      {
+        "lesson": 15,
+        "session": 4,
+        "start_local": "2026-11-25T15:10:00+02:00",
+        "end_local": "2026-11-25T15:15:00+02:00",
+        "mode": "learning",
+        "solar_w": 0.0,
+        "load_w": 54.0,
+        "battery_pct": 49.73
+      },
+      {
+        "lesson": 16,
+        "session": 4,
+        "start_local": "2026-11-25T15:15:00+02:00",
+        "end_local": "2026-11-25T15:20:00+02:00",
+        "mode": "learning",
+        "solar_w": 0.0,
+        "load_w": 54.0,
+        "battery_pct": 47.23
+      },
+      {
+        "lesson": 17,
+        "session": 5,
+        "start_local": "2026-11-25T15:20:00+02:00",
+        "end_local": "2026-11-25T15:25:00+02:00",
+        "mode": "learning",
+        "solar_w": 0.0,
+        "load_w": 54.0,
+        "battery_pct": 44.73
+      },
+      {
+        "lesson": 18,
+        "session": 5,
+        "start_local": "2026-11-25T15:25:00+02:00",
+        "end_local": "2026-11-25T15:30:00+02:00",
+        "mode": "learning",
+        "solar_w": 0.0,
+        "load_w": 54.0,
+        "battery_pct": 42.23
+      },
+      {
+        "lesson": 19,
+        "session": 5,
+        "start_local": "2026-11-25T15:30:00+02:00",
+        "end_local": "2026-11-25T15:35:00+02:00",
+        "mode": "learning",
+        "solar_w": 0.0,
+        "load_w": 54.0,
+        "battery_pct": 39.73
+      },
+      {
+        "lesson": 20,
+        "session": 5,
+        "start_local": "2026-11-25T15:35:00+02:00",
+        "end_local": "2026-11-25T15:40:00+02:00",
+        "mode": "learning",
+        "solar_w": 0.0,
+        "load_w": 54.0,
+        "battery_pct": 37.23
+      },
+      {
+        "lesson": 21,
+        "session": 6,
+        "start_local": "2026-11-25T15:40:00+02:00",
+        "end_local": "2026-11-25T15:45:00+02:00",
+        "mode": "learning",
+        "solar_w": 0.0,
+        "load_w": 54.0,
+        "battery_pct": 34.73
+      },
+      {
+        "lesson": 22,
+        "session": 6,
+        "start_local": "2026-11-25T15:45:00+02:00",
+        "end_local": "2026-11-25T15:50:00+02:00",
+        "mode": "learning",
+        "solar_w": 0.0,
+        "load_w": 54.0,
+        "battery_pct": 32.23
+      },
+      {
+        "lesson": 23,
+        "session": 6,
+        "start_local": "2026-11-25T15:50:00+02:00",
+        "end_local": "2026-11-25T15:55:00+02:00",
+        "mode": "learning",
+        "solar_w": 0.0,
+        "load_w": 54.0,
+        "battery_pct": 29.73
+      },
+      {
+        "lesson": 24,
+        "session": 6,
+        "start_local": "2026-11-25T15:55:00+02:00",
+        "end_local": "2026-11-25T16:00:00+02:00",
+        "mode": "learning",
+        "solar_w": 0.0,
+        "load_w": 54.0,
+        "battery_pct": 27.23
+      },
+      {
+        "lesson": 25,
+        "session": 7,
+        "start_local": "2026-11-25T16:00:00+02:00",
+        "end_local": "2026-11-25T16:05:00+02:00",
+        "mode": "learning",
+        "solar_w": 0.0,
+        "load_w": 54.0,
+        "battery_pct": 24.73
+      },
+      {
+        "lesson": 26,
+        "session": 7,
+        "start_local": "2026-11-25T16:05:00+02:00",
+        "end_local": "2026-11-25T16:10:00+02:00",
+        "mode": "learning",
+        "solar_w": 0.0,
+        "load_w": 54.0,
+        "battery_pct": 22.23
+      },
+      {
+        "lesson": 27,
+        "session": 7,
+        "start_local": "2026-11-25T16:10:00+02:00",
+        "end_local": "2026-11-25T16:15:00+02:00",
+        "mode": "learning",
+        "solar_w": 0.0,
+        "load_w": 54.0,
+        "battery_pct": 19.73
+      },
+      {
+        "lesson": 28,
+        "session": 7,
+        "start_local": "2026-11-25T16:15:00+02:00",
+        "end_local": "2026-11-25T16:20:00+02:00",
+        "mode": "learning",
+        "solar_w": 0.0,
+        "load_w": 54.0,
+        "battery_pct": 17.23
+      }
+    ],
+    "limitations": "Independent physics reference, not an accuracy measurement. Assumes zero charging-mode load and fixed derating, no taper or standby drain; no charging during learning. Afternoon trajectory starts from ML prediction and is not a measured schedule."
+  },
+  "strongest_sunlight_window": {
+    "start": "2026-11-25T11:00:00+02:00",
+    "end": "2026-11-25T12:00:00+02:00",
+    "radiation_w_m2": 892.6
+  },
+  "hourly_sunlight": [
+    {
+      "start_local": "2026-11-25T08:00:00+02:00",
+      "end_local": "2026-11-25T09:00:00+02:00",
+      "radiation_w_m2": 548.1
+    },
+    {
+      "start_local": "2026-11-25T09:00:00+02:00",
+      "end_local": "2026-11-25T10:00:00+02:00",
+      "radiation_w_m2": 714.2
+    },
+    {
+      "start_local": "2026-11-25T10:00:00+02:00",
+      "end_local": "2026-11-25T11:00:00+02:00",
+      "radiation_w_m2": 831.8
+    },
+    {
+      "start_local": "2026-11-25T11:00:00+02:00",
+      "end_local": "2026-11-25T12:00:00+02:00",
+      "radiation_w_m2": 892.6
+    },
+    {
+      "start_local": "2026-11-25T12:00:00+02:00",
+      "end_local": "2026-11-25T13:00:00+02:00",
+      "radiation_w_m2": 892.6
+    },
+    {
+      "start_local": "2026-11-25T13:00:00+02:00",
+      "end_local": "2026-11-25T14:00:00+02:00",
+      "radiation_w_m2": 831.8
+    }
+  ],
+  "limitations": "Advisory estimate, not battery protection. Team profile: 180 Wh, 25 W, 10 pp per 20-minute session, 10% end reserve. All require hardware validation; the reported 11 h charge and 3 h runtime are references only. Model margin is not a safety guarantee. Mock training is not real battery validation. Live predictions discard partial-hour charging.",
+  "measurement": null
+}

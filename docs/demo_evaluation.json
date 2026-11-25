@@ -1,0 +1,57 @@
+{
+  "source": "synthetic_demo",
+  "input_rows": 2160,
+  "valid_rows": 2160,
+  "train_rows": 1296,
+  "validation_rows": 432,
+  "test_rows": 432,
+  "train_end": "2025-02-24 00:00:00+00:00",
+  "test_start": "2025-03-14 01:00:00+00:00",
+  "metrics": {
+    "solar_w": {
+      "selected": "linear_regression",
+      "validation_mae_w": {
+        "linear_regression": 0.7816499713784877,
+        "random_forest": 0.8206028189853357,
+        "physical_baseline": 0.7872485730394099
+      },
+      "test": {
+        "linear_regression": {
+          "mae_w": 0.7809541742002445,
+          "rmse_w": 1.4008947535522511
+        },
+        "random_forest": {
+          "mae_w": 0.8201681800448462,
+          "rmse_w": 1.501327216345346
+        },
+        "physical_baseline": {
+          "mae_w": 0.7939313679115493,
+          "rmse_w": 1.4166375510483606
+        }
+      }
+    },
+    "load_w": {
+      "selected": "physical_baseline",
+      "validation_mae_w": {
+        "linear_regression": 1.507803983644874,
+        "random_forest": 1.6123705931899095,
+        "physical_baseline": 1.5075918510482493
+      },
+      "test": {
+        "linear_regression": {
+          "mae_w": 1.5805621456797023,
+          "rmse_w": 2.017616671424807
+        },
+        "random_forest": {
+          "mae_w": 1.6198231046996934,
+          "rmse_w": 2.0566311891369375
+        },
+        "physical_baseline": {
+          "mae_w": 1.581336311915696,
+          "rmse_w": 2.01828184644055
+        }
+      }
+    }
+  },
+  "scope": "Hourly solar/load prediction; historical weather and measured usage are known covariates, not archived day-ahead forecasts. Operational forecast errors can be larger."
+}
