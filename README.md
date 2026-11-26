@@ -1,3 +1,19 @@
+<<<<<<< HEAD
+=======
+> Release 3.2: complete team CSV included. `train-all` trains all three model pipelines. See [START_HERE.md](START_HERE.md) for current instructions.
+
+> Release 3.1: read [START_HERE.md](START_HERE.md) first. This earlier development document is retained for research history; current routes and verification are in the release guide.
+
+# Smart Energy AI — Complete A–Z workspace
+
+**One project, one server, one primary dashboard.** Open [START_HERE.md](START_HERE.md) for the complete installation and integration guide. The original hourly dashboard is preserved at `/research`; `/energy` uses the unified planner. The integrated `/` and `/daily` dashboard now reuses the original energy-balance and solar-planning code on the team profile and shares exactly the daily model weather window and battery input. The existing `/api/forecast` remains a legacy research endpoint.
+
+
+**Start with [DAILY_QUICKSTART.md](DAILY_QUICKSTART.md).** The new primary learning planner is `/daily`; the original hourly research dashboard below is retained with its original assumptions, not operational suitcase advice. See [daily method and results](docs/DAILY_LEARNING_PLAN.md) and [teacher demonstration guide](docs/DEMO_GUIDE.md). **Latest teacher policy: 8 sessions, 32 lessons, 160 minutes maximum.**
+
+---
+
+>>>>>>> origin/Final_Version
 # PPS Smart Energy Assistant
 **Python prototype | Global Acting in IT | Pretoria, South Africa**
 
@@ -12,10 +28,18 @@ This is an end-to-end, locally runnable prototype of the team's battery forecast
 py -3.12 -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r requirements.txt
 .\.venv\Scripts\python.exe -m energy_ai train-demo
+<<<<<<< HEAD
 .\.venv\Scripts\python.exe -m energy_ai serve
 ```
 
 3. Open **http://127.0.0.1:8000** in your browser. Leave the terminal running. Press Ctrl+C to stop. The API docs are at http://127.0.0.1:8000/docs.
+=======
+.\.venv\Scripts\python.exe -m energy_ai train-daily-demo
+.\.venv\Scripts\python.exe -m energy_ai serve
+```
+
+3. Open **http://127.0.0.1:8000/daily** in your browser (the original hourly research dashboard is at `/energy`). Leave the terminal running. Press Ctrl+C to stop. The API docs are at http://127.0.0.1:8000/docs.
+>>>>>>> origin/Final_Version
 
 If `py -3.12` is unavailable, check `py -0p` or `python --version` and use an installed Python 3.11/3.12 interpreter. No activation is needed with the explicit interpreter commands. Alternatively `start.ps1` performs setup, demo training and server launch; the manual commands avoid PowerShell script execution-policy issues. If port 8000 is occupied use `-m energy_ai serve --port 8001` and visit port 8001.
 
@@ -65,7 +89,12 @@ See `docs/METHOD.md`. Linear regression and random forest regression are compare
 
 | Endpoint | Description |
 |---|---|
+<<<<<<< HEAD
 | `GET /` | Local browser dashboard |
+=======
+| `GET /` or `/daily` | Integrated workspace |
+| `GET /energy` | Original hourly research dashboard |
+>>>>>>> origin/Final_Version
 | `GET /api/health` | Service and model health |
 | `GET /api/config` | Device/location profile |
 | `GET /api/metrics` | Chronological holdout metrics and provenance |

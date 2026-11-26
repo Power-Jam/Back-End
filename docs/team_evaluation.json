@@ -1,0 +1,6160 @@
+{
+  "source": "team_mock",
+  "location": "Pretoria, South Africa (reference location)",
+  "timezone": "Africa/Johannesburg",
+  "scope": "Team prototype battery dataset and weather proxy; hardware validation pending.",
+  "weather_training": "Team prototype CSV; weather provenance supplied by team",
+  "split": {
+    "train_days": 156,
+    "validation_days": 26,
+    "calibration_days": 26,
+    "test_days": 52,
+    "train_rows": 1248,
+    "validation_rows": 208,
+    "calibration_rows": 208,
+    "test_rows": 416,
+    "train_end": "2026-06-29",
+    "selection_end": "2026-08-04",
+    "calibration_start": "2026-08-05",
+    "calibration_end": "2026-09-09",
+    "test_start": "2026-09-10"
+  },
+  "cv": [
+    {
+      "model": "average_gain",
+      "params": null,
+      "cv_mae_pp": 6.408013545509475
+    },
+    {
+      "model": "linear_direct",
+      "params": null,
+      "cv_mae_pp": 5.0528775659932785
+    },
+    {
+      "model": "linear_gain",
+      "params": null,
+      "cv_mae_pp": 5.052877565993371
+    },
+    {
+      "model": "forest_direct",
+      "params": {
+        "max_depth": 4,
+        "min_samples_leaf": 3
+      },
+      "cv_mae_pp": 7.916632112920719
+    },
+    {
+      "model": "forest_direct",
+      "params": {
+        "max_depth": 4,
+        "min_samples_leaf": 8
+      },
+      "cv_mae_pp": 7.895045153869236
+    },
+    {
+      "model": "forest_direct",
+      "params": {
+        "max_depth": 8,
+        "min_samples_leaf": 3
+      },
+      "cv_mae_pp": 5.15095056366756
+    },
+    {
+      "model": "forest_direct",
+      "params": {
+        "max_depth": 8,
+        "min_samples_leaf": 8
+      },
+      "cv_mae_pp": 5.551540769792132
+    },
+    {
+      "model": "forest_direct",
+      "params": {
+        "max_depth": null,
+        "min_samples_leaf": 3
+      },
+      "cv_mae_pp": 5.114406200613892
+    },
+    {
+      "model": "forest_direct",
+      "params": {
+        "max_depth": null,
+        "min_samples_leaf": 8
+      },
+      "cv_mae_pp": 5.55317958174233
+    },
+    {
+      "model": "forest_gain",
+      "params": {
+        "max_depth": 4,
+        "min_samples_leaf": 3
+      },
+      "cv_mae_pp": 1.254253744048451
+    },
+    {
+      "model": "forest_gain",
+      "params": {
+        "max_depth": 4,
+        "min_samples_leaf": 8
+      },
+      "cv_mae_pp": 1.2496962219567809
+    },
+    {
+      "model": "forest_gain",
+      "params": {
+        "max_depth": 8,
+        "min_samples_leaf": 3
+      },
+      "cv_mae_pp": 0.966581519469672
+    },
+    {
+      "model": "forest_gain",
+      "params": {
+        "max_depth": 8,
+        "min_samples_leaf": 8
+      },
+      "cv_mae_pp": 1.0170128192211425
+    },
+    {
+      "model": "forest_gain",
+      "params": {
+        "max_depth": null,
+        "min_samples_leaf": 3
+      },
+      "cv_mae_pp": 0.9738093834813987
+    },
+    {
+      "model": "forest_gain",
+      "params": {
+        "max_depth": null,
+        "min_samples_leaf": 8
+      },
+      "cv_mae_pp": 1.0176852076740797
+    }
+  ],
+  "settings": {
+    "average_gain": null,
+    "linear_direct": null,
+    "linear_gain": null,
+    "forest_direct": {
+      "max_depth": null,
+      "min_samples_leaf": 3
+    },
+    "forest_gain": {
+      "max_depth": 8,
+      "min_samples_leaf": 3
+    }
+  },
+  "selected": "forest_gain",
+  "margin_pp": 2,
+  "reserve_pct": 10.0,
+  "over_advice_target": 0.05,
+  "validation_08": {
+    "average_gain": {
+      "mae_pp": 5.007073374542126,
+      "exact_rate": 0.15384615384615385,
+      "too_many_rate": 0.8076923076923077,
+      "too_few_rate": 0.038461538461538464,
+      "mean_lessons_lost_per_prediction": 0.038461538461538464,
+      "session_exact_rate": 0.34615384615384615,
+      "session_too_many_rate": 0.6538461538461539,
+      "session_too_few_rate": 0.0,
+      "n": 26,
+      "within_5pp_rate": 0.4230769230769231
+    },
+    "linear_direct": {
+      "mae_pp": 1.7069112291422597,
+      "exact_rate": 0.2692307692307692,
+      "too_many_rate": 0.07692307692307693,
+      "too_few_rate": 0.6538461538461539,
+      "mean_lessons_lost_per_prediction": 0.9230769230769231,
+      "session_exact_rate": 0.6923076923076923,
+      "session_too_many_rate": 0.0,
+      "session_too_few_rate": 0.3076923076923077,
+      "n": 26,
+      "within_5pp_rate": 0.9615384615384616
+    },
+    "linear_gain": {
+      "mae_pp": 1.706911229142253,
+      "exact_rate": 0.2692307692307692,
+      "too_many_rate": 0.07692307692307693,
+      "too_few_rate": 0.6538461538461539,
+      "mean_lessons_lost_per_prediction": 0.9230769230769231,
+      "session_exact_rate": 0.6923076923076923,
+      "session_too_many_rate": 0.0,
+      "session_too_few_rate": 0.3076923076923077,
+      "n": 26,
+      "within_5pp_rate": 0.9615384615384616
+    },
+    "forest_direct": {
+      "mae_pp": 7.180797035950155,
+      "exact_rate": 0.038461538461538464,
+      "too_many_rate": 0.8076923076923077,
+      "too_few_rate": 0.15384615384615385,
+      "mean_lessons_lost_per_prediction": 0.3076923076923077,
+      "session_exact_rate": 0.3076923076923077,
+      "session_too_many_rate": 0.6153846153846154,
+      "session_too_few_rate": 0.07692307692307693,
+      "n": 26,
+      "within_5pp_rate": 0.19230769230769232
+    },
+    "forest_gain": {
+      "mae_pp": 0.9293594377540066,
+      "exact_rate": 0.23076923076923078,
+      "too_many_rate": 0.038461538461538464,
+      "too_few_rate": 0.7307692307692307,
+      "mean_lessons_lost_per_prediction": 0.8461538461538461,
+      "session_exact_rate": 0.8846153846153846,
+      "session_too_many_rate": 0.0,
+      "session_too_few_rate": 0.11538461538461539,
+      "n": 26,
+      "within_5pp_rate": 1.0
+    }
+  },
+  "validation_margin_search": [
+    {
+      "model": "average_gain",
+      "margin_pp": 0,
+      "mae_pp": 5.007073374542126,
+      "exact_rate": 0.038461538461538464,
+      "too_many_rate": 0.9615384615384616,
+      "too_few_rate": 0.0,
+      "mean_lessons_lost_per_prediction": 0.0,
+      "session_exact_rate": 0.34615384615384615,
+      "session_too_many_rate": 0.6538461538461539,
+      "session_too_few_rate": 0.0,
+      "n": 26,
+      "within_5pp_rate": 0.4230769230769231
+    },
+    {
+      "model": "average_gain",
+      "margin_pp": 2,
+      "mae_pp": 5.007073374542126,
+      "exact_rate": 0.15384615384615385,
+      "too_many_rate": 0.8076923076923077,
+      "too_few_rate": 0.038461538461538464,
+      "mean_lessons_lost_per_prediction": 0.038461538461538464,
+      "session_exact_rate": 0.34615384615384615,
+      "session_too_many_rate": 0.6538461538461539,
+      "session_too_few_rate": 0.0,
+      "n": 26,
+      "within_5pp_rate": 0.4230769230769231
+    },
+    {
+      "model": "average_gain",
+      "margin_pp": 5,
+      "mae_pp": 5.007073374542126,
+      "exact_rate": 0.5,
+      "too_many_rate": 0.2692307692307692,
+      "too_few_rate": 0.23076923076923078,
+      "mean_lessons_lost_per_prediction": 0.2692307692307692,
+      "session_exact_rate": 0.8076923076923077,
+      "session_too_many_rate": 0.07692307692307693,
+      "session_too_few_rate": 0.11538461538461539,
+      "n": 26,
+      "within_5pp_rate": 0.4230769230769231
+    },
+    {
+      "model": "average_gain",
+      "margin_pp": 8,
+      "mae_pp": 5.007073374542126,
+      "exact_rate": 0.15384615384615385,
+      "too_many_rate": 0.038461538461538464,
+      "too_few_rate": 0.8076923076923077,
+      "mean_lessons_lost_per_prediction": 1.1538461538461537,
+      "session_exact_rate": 0.6923076923076923,
+      "session_too_many_rate": 0.0,
+      "session_too_few_rate": 0.3076923076923077,
+      "n": 26,
+      "within_5pp_rate": 0.4230769230769231
+    },
+    {
+      "model": "average_gain",
+      "margin_pp": 10,
+      "mae_pp": 5.007073374542126,
+      "exact_rate": 0.038461538461538464,
+      "too_many_rate": 0.0,
+      "too_few_rate": 0.9615384615384616,
+      "mean_lessons_lost_per_prediction": 1.9615384615384615,
+      "session_exact_rate": 0.6538461538461539,
+      "session_too_many_rate": 0.0,
+      "session_too_few_rate": 0.34615384615384615,
+      "n": 26,
+      "within_5pp_rate": 0.4230769230769231
+    },
+    {
+      "model": "average_gain",
+      "margin_pp": 15,
+      "mae_pp": 5.007073374542126,
+      "exact_rate": 0.0,
+      "too_many_rate": 0.0,
+      "too_few_rate": 1.0,
+      "mean_lessons_lost_per_prediction": 3.9615384615384617,
+      "session_exact_rate": 0.07692307692307693,
+      "session_too_many_rate": 0.0,
+      "session_too_few_rate": 0.9230769230769231,
+      "n": 26,
+      "within_5pp_rate": 0.4230769230769231
+    },
+    {
+      "model": "average_gain",
+      "margin_pp": 20,
+      "mae_pp": 5.007073374542126,
+      "exact_rate": 0.0,
+      "too_many_rate": 0.0,
+      "too_few_rate": 1.0,
+      "mean_lessons_lost_per_prediction": 5.961538461538462,
+      "session_exact_rate": 0.0,
+      "session_too_many_rate": 0.0,
+      "session_too_few_rate": 1.0,
+      "n": 26,
+      "within_5pp_rate": 0.4230769230769231
+    },
+    {
+      "model": "average_gain",
+      "margin_pp": 30,
+      "mae_pp": 5.007073374542126,
+      "exact_rate": 0.0,
+      "too_many_rate": 0.0,
+      "too_few_rate": 1.0,
+      "mean_lessons_lost_per_prediction": 7.6923076923076925,
+      "session_exact_rate": 0.0,
+      "session_too_many_rate": 0.0,
+      "session_too_few_rate": 1.0,
+      "n": 26,
+      "within_5pp_rate": 0.4230769230769231
+    },
+    {
+      "model": "average_gain",
+      "margin_pp": 40,
+      "mae_pp": 5.007073374542126,
+      "exact_rate": 0.0,
+      "too_many_rate": 0.0,
+      "too_few_rate": 1.0,
+      "mean_lessons_lost_per_prediction": 8.115384615384615,
+      "session_exact_rate": 0.0,
+      "session_too_many_rate": 0.0,
+      "session_too_few_rate": 1.0,
+      "n": 26,
+      "within_5pp_rate": 0.4230769230769231
+    },
+    {
+      "model": "average_gain",
+      "margin_pp": 100,
+      "mae_pp": 5.007073374542126,
+      "exact_rate": 0.0,
+      "too_many_rate": 0.0,
+      "too_few_rate": 1.0,
+      "mean_lessons_lost_per_prediction": 8.461538461538462,
+      "session_exact_rate": 0.0,
+      "session_too_many_rate": 0.0,
+      "session_too_few_rate": 1.0,
+      "n": 26,
+      "within_5pp_rate": 0.4230769230769231
+    },
+    {
+      "model": "linear_direct",
+      "margin_pp": 0,
+      "mae_pp": 1.7069112291422597,
+      "exact_rate": 0.5769230769230769,
+      "too_many_rate": 0.19230769230769232,
+      "too_few_rate": 0.23076923076923078,
+      "mean_lessons_lost_per_prediction": 0.38461538461538464,
+      "session_exact_rate": 0.8461538461538461,
+      "session_too_many_rate": 0.038461538461538464,
+      "session_too_few_rate": 0.11538461538461539,
+      "n": 26,
+      "within_5pp_rate": 0.9615384615384616
+    },
+    {
+      "model": "linear_direct",
+      "margin_pp": 2,
+      "mae_pp": 1.7069112291422597,
+      "exact_rate": 0.2692307692307692,
+      "too_many_rate": 0.07692307692307693,
+      "too_few_rate": 0.6538461538461539,
+      "mean_lessons_lost_per_prediction": 0.9230769230769231,
+      "session_exact_rate": 0.6923076923076923,
+      "session_too_many_rate": 0.0,
+      "session_too_few_rate": 0.3076923076923077,
+      "n": 26,
+      "within_5pp_rate": 0.9615384615384616
+    },
+    {
+      "model": "linear_direct",
+      "margin_pp": 5,
+      "mae_pp": 1.7069112291422597,
+      "exact_rate": 0.0,
+      "too_many_rate": 0.0,
+      "too_few_rate": 1.0,
+      "mean_lessons_lost_per_prediction": 2.1923076923076925,
+      "session_exact_rate": 0.6538461538461539,
+      "session_too_many_rate": 0.0,
+      "session_too_few_rate": 0.34615384615384615,
+      "n": 26,
+      "within_5pp_rate": 0.9615384615384616
+    },
+    {
+      "model": "linear_direct",
+      "margin_pp": 8,
+      "mae_pp": 1.7069112291422597,
+      "exact_rate": 0.0,
+      "too_many_rate": 0.0,
+      "too_few_rate": 1.0,
+      "mean_lessons_lost_per_prediction": 3.230769230769231,
+      "session_exact_rate": 0.5384615384615384,
+      "session_too_many_rate": 0.0,
+      "session_too_few_rate": 0.46153846153846156,
+      "n": 26,
+      "within_5pp_rate": 0.9615384615384616
+    },
+    {
+      "model": "linear_direct",
+      "margin_pp": 10,
+      "mae_pp": 1.7069112291422597,
+      "exact_rate": 0.0,
+      "too_many_rate": 0.0,
+      "too_few_rate": 1.0,
+      "mean_lessons_lost_per_prediction": 4.1923076923076925,
+      "session_exact_rate": 0.038461538461538464,
+      "session_too_many_rate": 0.0,
+      "session_too_few_rate": 0.9615384615384616,
+      "n": 26,
+      "within_5pp_rate": 0.9615384615384616
+    },
+    {
+      "model": "linear_direct",
+      "margin_pp": 15,
+      "mae_pp": 1.7069112291422597,
+      "exact_rate": 0.0,
+      "too_many_rate": 0.0,
+      "too_few_rate": 1.0,
+      "mean_lessons_lost_per_prediction": 6.1923076923076925,
+      "session_exact_rate": 0.0,
+      "session_too_many_rate": 0.0,
+      "session_too_few_rate": 1.0,
+      "n": 26,
+      "within_5pp_rate": 0.9615384615384616
+    },
+    {
+      "model": "linear_direct",
+      "margin_pp": 20,
+      "mae_pp": 1.7069112291422597,
+      "exact_rate": 0.0,
+      "too_many_rate": 0.0,
+      "too_few_rate": 1.0,
+      "mean_lessons_lost_per_prediction": 7.538461538461538,
+      "session_exact_rate": 0.0,
+      "session_too_many_rate": 0.0,
+      "session_too_few_rate": 1.0,
+      "n": 26,
+      "within_5pp_rate": 0.9615384615384616
+    },
+    {
+      "model": "linear_direct",
+      "margin_pp": 30,
+      "mae_pp": 1.7069112291422597,
+      "exact_rate": 0.0,
+      "too_many_rate": 0.0,
+      "too_few_rate": 1.0,
+      "mean_lessons_lost_per_prediction": 8.192307692307692,
+      "session_exact_rate": 0.0,
+      "session_too_many_rate": 0.0,
+      "session_too_few_rate": 1.0,
+      "n": 26,
+      "within_5pp_rate": 0.9615384615384616
+    },
+    {
+      "model": "linear_direct",
+      "margin_pp": 40,
+      "mae_pp": 1.7069112291422597,
+      "exact_rate": 0.0,
+      "too_many_rate": 0.0,
+      "too_few_rate": 1.0,
+      "mean_lessons_lost_per_prediction": 8.346153846153847,
+      "session_exact_rate": 0.0,
+      "session_too_many_rate": 0.0,
+      "session_too_few_rate": 1.0,
+      "n": 26,
+      "within_5pp_rate": 0.9615384615384616
+    },
+    {
+      "model": "linear_direct",
+      "margin_pp": 100,
+      "mae_pp": 1.7069112291422597,
+      "exact_rate": 0.0,
+      "too_many_rate": 0.0,
+      "too_few_rate": 1.0,
+      "mean_lessons_lost_per_prediction": 8.461538461538462,
+      "session_exact_rate": 0.0,
+      "session_too_many_rate": 0.0,
+      "session_too_few_rate": 1.0,
+      "n": 26,
+      "within_5pp_rate": 0.9615384615384616
+    },
+    {
+      "model": "linear_gain",
+      "margin_pp": 0,
+      "mae_pp": 1.706911229142253,
+      "exact_rate": 0.5769230769230769,
+      "too_many_rate": 0.19230769230769232,
+      "too_few_rate": 0.23076923076923078,
+      "mean_lessons_lost_per_prediction": 0.38461538461538464,
+      "session_exact_rate": 0.8461538461538461,
+      "session_too_many_rate": 0.038461538461538464,
+      "session_too_few_rate": 0.11538461538461539,
+      "n": 26,
+      "within_5pp_rate": 0.9615384615384616
+    },
+    {
+      "model": "linear_gain",
+      "margin_pp": 2,
+      "mae_pp": 1.706911229142253,
+      "exact_rate": 0.2692307692307692,
+      "too_many_rate": 0.07692307692307693,
+      "too_few_rate": 0.6538461538461539,
+      "mean_lessons_lost_per_prediction": 0.9230769230769231,
+      "session_exact_rate": 0.6923076923076923,
+      "session_too_many_rate": 0.0,
+      "session_too_few_rate": 0.3076923076923077,
+      "n": 26,
+      "within_5pp_rate": 0.9615384615384616
+    },
+    {
+      "model": "linear_gain",
+      "margin_pp": 5,
+      "mae_pp": 1.706911229142253,
+      "exact_rate": 0.0,
+      "too_many_rate": 0.0,
+      "too_few_rate": 1.0,
+      "mean_lessons_lost_per_prediction": 2.1923076923076925,
+      "session_exact_rate": 0.6538461538461539,
+      "session_too_many_rate": 0.0,
+      "session_too_few_rate": 0.34615384615384615,
+      "n": 26,
+      "within_5pp_rate": 0.9615384615384616
+    },
+    {
+      "model": "linear_gain",
+      "margin_pp": 8,
+      "mae_pp": 1.706911229142253,
+      "exact_rate": 0.0,
+      "too_many_rate": 0.0,
+      "too_few_rate": 1.0,
+      "mean_lessons_lost_per_prediction": 3.230769230769231,
+      "session_exact_rate": 0.5384615384615384,
+      "session_too_many_rate": 0.0,
+      "session_too_few_rate": 0.46153846153846156,
+      "n": 26,
+      "within_5pp_rate": 0.9615384615384616
+    },
+    {
+      "model": "linear_gain",
+      "margin_pp": 10,
+      "mae_pp": 1.706911229142253,
+      "exact_rate": 0.0,
+      "too_many_rate": 0.0,
+      "too_few_rate": 1.0,
+      "mean_lessons_lost_per_prediction": 4.1923076923076925,
+      "session_exact_rate": 0.038461538461538464,
+      "session_too_many_rate": 0.0,
+      "session_too_few_rate": 0.9615384615384616,
+      "n": 26,
+      "within_5pp_rate": 0.9615384615384616
+    },
+    {
+      "model": "linear_gain",
+      "margin_pp": 15,
+      "mae_pp": 1.706911229142253,
+      "exact_rate": 0.0,
+      "too_many_rate": 0.0,
+      "too_few_rate": 1.0,
+      "mean_lessons_lost_per_prediction": 6.1923076923076925,
+      "session_exact_rate": 0.0,
+      "session_too_many_rate": 0.0,
+      "session_too_few_rate": 1.0,
+      "n": 26,
+      "within_5pp_rate": 0.9615384615384616
+    },
+    {
+      "model": "linear_gain",
+      "margin_pp": 20,
+      "mae_pp": 1.706911229142253,
+      "exact_rate": 0.0,
+      "too_many_rate": 0.0,
+      "too_few_rate": 1.0,
+      "mean_lessons_lost_per_prediction": 7.538461538461538,
+      "session_exact_rate": 0.0,
+      "session_too_many_rate": 0.0,
+      "session_too_few_rate": 1.0,
+      "n": 26,
+      "within_5pp_rate": 0.9615384615384616
+    },
+    {
+      "model": "linear_gain",
+      "margin_pp": 30,
+      "mae_pp": 1.706911229142253,
+      "exact_rate": 0.0,
+      "too_many_rate": 0.0,
+      "too_few_rate": 1.0,
+      "mean_lessons_lost_per_prediction": 8.192307692307692,
+      "session_exact_rate": 0.0,
+      "session_too_many_rate": 0.0,
+      "session_too_few_rate": 1.0,
+      "n": 26,
+      "within_5pp_rate": 0.9615384615384616
+    },
+    {
+      "model": "linear_gain",
+      "margin_pp": 40,
+      "mae_pp": 1.706911229142253,
+      "exact_rate": 0.0,
+      "too_many_rate": 0.0,
+      "too_few_rate": 1.0,
+      "mean_lessons_lost_per_prediction": 8.346153846153847,
+      "session_exact_rate": 0.0,
+      "session_too_many_rate": 0.0,
+      "session_too_few_rate": 1.0,
+      "n": 26,
+      "within_5pp_rate": 0.9615384615384616
+    },
+    {
+      "model": "linear_gain",
+      "margin_pp": 100,
+      "mae_pp": 1.706911229142253,
+      "exact_rate": 0.0,
+      "too_many_rate": 0.0,
+      "too_few_rate": 1.0,
+      "mean_lessons_lost_per_prediction": 8.461538461538462,
+      "session_exact_rate": 0.0,
+      "session_too_many_rate": 0.0,
+      "session_too_few_rate": 1.0,
+      "n": 26,
+      "within_5pp_rate": 0.9615384615384616
+    },
+    {
+      "model": "forest_direct",
+      "margin_pp": 0,
+      "mae_pp": 7.180797035950155,
+      "exact_rate": 0.07692307692307693,
+      "too_many_rate": 0.8076923076923077,
+      "too_few_rate": 0.11538461538461539,
+      "mean_lessons_lost_per_prediction": 0.19230769230769232,
+      "session_exact_rate": 0.34615384615384615,
+      "session_too_many_rate": 0.6153846153846154,
+      "session_too_few_rate": 0.038461538461538464,
+      "n": 26,
+      "within_5pp_rate": 0.19230769230769232
+    },
+    {
+      "model": "forest_direct",
+      "margin_pp": 2,
+      "mae_pp": 7.180797035950155,
+      "exact_rate": 0.038461538461538464,
+      "too_many_rate": 0.8076923076923077,
+      "too_few_rate": 0.15384615384615385,
+      "mean_lessons_lost_per_prediction": 0.3076923076923077,
+      "session_exact_rate": 0.3076923076923077,
+      "session_too_many_rate": 0.6153846153846154,
+      "session_too_few_rate": 0.07692307692307693,
+      "n": 26,
+      "within_5pp_rate": 0.19230769230769232
+    },
+    {
+      "model": "forest_direct",
+      "margin_pp": 5,
+      "mae_pp": 7.180797035950155,
+      "exact_rate": 0.11538461538461539,
+      "too_many_rate": 0.6538461538461539,
+      "too_few_rate": 0.23076923076923078,
+      "mean_lessons_lost_per_prediction": 0.6153846153846154,
+      "session_exact_rate": 0.3076923076923077,
+      "session_too_many_rate": 0.5769230769230769,
+      "session_too_few_rate": 0.11538461538461539,
+      "n": 26,
+      "within_5pp_rate": 0.19230769230769232
+    },
+    {
+      "model": "forest_direct",
+      "margin_pp": 8,
+      "mae_pp": 7.180797035950155,
+      "exact_rate": 0.46153846153846156,
+      "too_many_rate": 0.15384615384615385,
+      "too_few_rate": 0.38461538461538464,
+      "mean_lessons_lost_per_prediction": 1.0769230769230769,
+      "session_exact_rate": 0.6538461538461539,
+      "session_too_many_rate": 0.0,
+      "session_too_few_rate": 0.34615384615384615,
+      "n": 26,
+      "within_5pp_rate": 0.19230769230769232
+    },
+    {
+      "model": "forest_direct",
+      "margin_pp": 10,
+      "mae_pp": 7.180797035950155,
+      "exact_rate": 0.19230769230769232,
+      "too_many_rate": 0.0,
+      "too_few_rate": 0.8076923076923077,
+      "mean_lessons_lost_per_prediction": 1.7692307692307692,
+      "session_exact_rate": 0.6153846153846154,
+      "session_too_many_rate": 0.0,
+      "session_too_few_rate": 0.38461538461538464,
+      "n": 26,
+      "within_5pp_rate": 0.19230769230769232
+    },
+    {
+      "model": "forest_direct",
+      "margin_pp": 15,
+      "mae_pp": 7.180797035950155,
+      "exact_rate": 0.0,
+      "too_many_rate": 0.0,
+      "too_few_rate": 1.0,
+      "mean_lessons_lost_per_prediction": 3.769230769230769,
+      "session_exact_rate": 0.5769230769230769,
+      "session_too_many_rate": 0.0,
+      "session_too_few_rate": 0.4230769230769231,
+      "n": 26,
+      "within_5pp_rate": 0.19230769230769232
+    },
+    {
+      "model": "forest_direct",
+      "margin_pp": 20,
+      "mae_pp": 7.180797035950155,
+      "exact_rate": 0.0,
+      "too_many_rate": 0.0,
+      "too_few_rate": 1.0,
+      "mean_lessons_lost_per_prediction": 5.769230769230769,
+      "session_exact_rate": 0.0,
+      "session_too_many_rate": 0.0,
+      "session_too_few_rate": 1.0,
+      "n": 26,
+      "within_5pp_rate": 0.19230769230769232
+    },
+    {
+      "model": "forest_direct",
+      "margin_pp": 30,
+      "mae_pp": 7.180797035950155,
+      "exact_rate": 0.0,
+      "too_many_rate": 0.0,
+      "too_few_rate": 1.0,
+      "mean_lessons_lost_per_prediction": 8.0,
+      "session_exact_rate": 0.0,
+      "session_too_many_rate": 0.0,
+      "session_too_few_rate": 1.0,
+      "n": 26,
+      "within_5pp_rate": 0.19230769230769232
+    },
+    {
+      "model": "forest_direct",
+      "margin_pp": 40,
+      "mae_pp": 7.180797035950155,
+      "exact_rate": 0.0,
+      "too_many_rate": 0.0,
+      "too_few_rate": 1.0,
+      "mean_lessons_lost_per_prediction": 8.153846153846153,
+      "session_exact_rate": 0.0,
+      "session_too_many_rate": 0.0,
+      "session_too_few_rate": 1.0,
+      "n": 26,
+      "within_5pp_rate": 0.19230769230769232
+    },
+    {
+      "model": "forest_direct",
+      "margin_pp": 100,
+      "mae_pp": 7.180797035950155,
+      "exact_rate": 0.0,
+      "too_many_rate": 0.0,
+      "too_few_rate": 1.0,
+      "mean_lessons_lost_per_prediction": 8.461538461538462,
+      "session_exact_rate": 0.0,
+      "session_too_many_rate": 0.0,
+      "session_too_few_rate": 1.0,
+      "n": 26,
+      "within_5pp_rate": 0.19230769230769232
+    },
+    {
+      "model": "forest_gain",
+      "margin_pp": 0,
+      "mae_pp": 0.9293594377540066,
+      "exact_rate": 0.6153846153846154,
+      "too_many_rate": 0.15384615384615385,
+      "too_few_rate": 0.23076923076923078,
+      "mean_lessons_lost_per_prediction": 0.23076923076923078,
+      "session_exact_rate": 0.9615384615384616,
+      "session_too_many_rate": 0.0,
+      "session_too_few_rate": 0.038461538461538464,
+      "n": 26,
+      "within_5pp_rate": 1.0
+    },
+    {
+      "model": "forest_gain",
+      "margin_pp": 2,
+      "mae_pp": 0.9293594377540066,
+      "exact_rate": 0.23076923076923078,
+      "too_many_rate": 0.038461538461538464,
+      "too_few_rate": 0.7307692307692307,
+      "mean_lessons_lost_per_prediction": 0.8461538461538461,
+      "session_exact_rate": 0.8846153846153846,
+      "session_too_many_rate": 0.0,
+      "session_too_few_rate": 0.11538461538461539,
+      "n": 26,
+      "within_5pp_rate": 1.0
+    },
+    {
+      "model": "forest_gain",
+      "margin_pp": 5,
+      "mae_pp": 0.9293594377540066,
+      "exact_rate": 0.0,
+      "too_many_rate": 0.0,
+      "too_few_rate": 1.0,
+      "mean_lessons_lost_per_prediction": 2.076923076923077,
+      "session_exact_rate": 0.7307692307692307,
+      "session_too_many_rate": 0.0,
+      "session_too_few_rate": 0.2692307692307692,
+      "n": 26,
+      "within_5pp_rate": 1.0
+    },
+    {
+      "model": "forest_gain",
+      "margin_pp": 8,
+      "mae_pp": 0.9293594377540066,
+      "exact_rate": 0.0,
+      "too_many_rate": 0.0,
+      "too_few_rate": 1.0,
+      "mean_lessons_lost_per_prediction": 3.1538461538461537,
+      "session_exact_rate": 0.2692307692307692,
+      "session_too_many_rate": 0.0,
+      "session_too_few_rate": 0.7307692307692307,
+      "n": 26,
+      "within_5pp_rate": 1.0
+    },
+    {
+      "model": "forest_gain",
+      "margin_pp": 10,
+      "mae_pp": 0.9293594377540066,
+      "exact_rate": 0.0,
+      "too_many_rate": 0.0,
+      "too_few_rate": 1.0,
+      "mean_lessons_lost_per_prediction": 4.076923076923077,
+      "session_exact_rate": 0.0,
+      "session_too_many_rate": 0.0,
+      "session_too_few_rate": 1.0,
+      "n": 26,
+      "within_5pp_rate": 1.0
+    },
+    {
+      "model": "forest_gain",
+      "margin_pp": 15,
+      "mae_pp": 0.9293594377540066,
+      "exact_rate": 0.0,
+      "too_many_rate": 0.0,
+      "too_few_rate": 1.0,
+      "mean_lessons_lost_per_prediction": 6.076923076923077,
+      "session_exact_rate": 0.0,
+      "session_too_many_rate": 0.0,
+      "session_too_few_rate": 1.0,
+      "n": 26,
+      "within_5pp_rate": 1.0
+    },
+    {
+      "model": "forest_gain",
+      "margin_pp": 20,
+      "mae_pp": 0.9293594377540066,
+      "exact_rate": 0.0,
+      "too_many_rate": 0.0,
+      "too_few_rate": 1.0,
+      "mean_lessons_lost_per_prediction": 7.1923076923076925,
+      "session_exact_rate": 0.0,
+      "session_too_many_rate": 0.0,
+      "session_too_few_rate": 1.0,
+      "n": 26,
+      "within_5pp_rate": 1.0
+    },
+    {
+      "model": "forest_gain",
+      "margin_pp": 30,
+      "mae_pp": 0.9293594377540066,
+      "exact_rate": 0.0,
+      "too_many_rate": 0.0,
+      "too_few_rate": 1.0,
+      "mean_lessons_lost_per_prediction": 7.961538461538462,
+      "session_exact_rate": 0.0,
+      "session_too_many_rate": 0.0,
+      "session_too_few_rate": 1.0,
+      "n": 26,
+      "within_5pp_rate": 1.0
+    },
+    {
+      "model": "forest_gain",
+      "margin_pp": 40,
+      "mae_pp": 0.9293594377540066,
+      "exact_rate": 0.0,
+      "too_many_rate": 0.0,
+      "too_few_rate": 1.0,
+      "mean_lessons_lost_per_prediction": 8.192307692307692,
+      "session_exact_rate": 0.0,
+      "session_too_many_rate": 0.0,
+      "session_too_few_rate": 1.0,
+      "n": 26,
+      "within_5pp_rate": 1.0
+    },
+    {
+      "model": "forest_gain",
+      "margin_pp": 100,
+      "mae_pp": 0.9293594377540066,
+      "exact_rate": 0.0,
+      "too_many_rate": 0.0,
+      "too_few_rate": 1.0,
+      "mean_lessons_lost_per_prediction": 8.461538461538462,
+      "session_exact_rate": 0.0,
+      "session_too_many_rate": 0.0,
+      "session_too_few_rate": 1.0,
+      "n": 26,
+      "within_5pp_rate": 1.0
+    }
+  ],
+  "test_08": {
+    "average_gain": {
+      "mae_pp": 4.471690360463715,
+      "exact_rate": 0.5192307692307693,
+      "too_many_rate": 0.038461538461538464,
+      "too_few_rate": 0.4423076923076923,
+      "mean_lessons_lost_per_prediction": 1.6153846153846154,
+      "session_exact_rate": 0.6153846153846154,
+      "session_too_many_rate": 0.038461538461538464,
+      "session_too_few_rate": 0.34615384615384615,
+      "n": 52,
+      "within_5pp_rate": 0.5769230769230769
+    },
+    "linear_direct": {
+      "mae_pp": 4.433291277681301,
+      "exact_rate": 0.5192307692307693,
+      "too_many_rate": 0.0,
+      "too_few_rate": 0.4807692307692308,
+      "mean_lessons_lost_per_prediction": 1.5961538461538463,
+      "session_exact_rate": 0.6153846153846154,
+      "session_too_many_rate": 0.0,
+      "session_too_few_rate": 0.38461538461538464,
+      "n": 52,
+      "within_5pp_rate": 0.6346153846153846
+    },
+    "linear_gain": {
+      "mae_pp": 4.433291277681285,
+      "exact_rate": 0.5192307692307693,
+      "too_many_rate": 0.0,
+      "too_few_rate": 0.4807692307692308,
+      "mean_lessons_lost_per_prediction": 1.5961538461538463,
+      "session_exact_rate": 0.6153846153846154,
+      "session_too_many_rate": 0.0,
+      "session_too_few_rate": 0.38461538461538464,
+      "n": 52,
+      "within_5pp_rate": 0.6346153846153846
+    },
+    "forest_direct": {
+      "mae_pp": 1.822426082938159,
+      "exact_rate": 0.7115384615384616,
+      "too_many_rate": 0.11538461538461539,
+      "too_few_rate": 0.17307692307692307,
+      "mean_lessons_lost_per_prediction": 0.4807692307692308,
+      "session_exact_rate": 0.8269230769230769,
+      "session_too_many_rate": 0.057692307692307696,
+      "session_too_few_rate": 0.11538461538461539,
+      "n": 52,
+      "within_5pp_rate": 0.9038461538461539
+    },
+    "forest_gain": {
+      "mae_pp": 1.5028329732388446,
+      "exact_rate": 0.7115384615384616,
+      "too_many_rate": 0.17307692307692307,
+      "too_few_rate": 0.11538461538461539,
+      "mean_lessons_lost_per_prediction": 0.21153846153846154,
+      "session_exact_rate": 0.8653846153846154,
+      "session_too_many_rate": 0.07692307692307693,
+      "session_too_few_rate": 0.057692307692307696,
+      "n": 52,
+      "within_5pp_rate": 0.9423076923076923
+    }
+  },
+  "test_all": {
+    "average_gain": {
+      "mae_pp": 3.1203384530240537,
+      "exact_rate": 0.5528846153846154,
+      "too_many_rate": 0.04326923076923077,
+      "too_few_rate": 0.40384615384615385,
+      "mean_lessons_lost_per_prediction": 1.1610576923076923,
+      "session_exact_rate": 0.6947115384615384,
+      "session_too_many_rate": 0.03125,
+      "session_too_few_rate": 0.27403846153846156,
+      "n": 416,
+      "within_5pp_rate": 0.7355769230769231,
+      "mae_nonfull_pp": 5.689309925302254
+    },
+    "linear_direct": {
+      "mae_pp": 3.9342276991541385,
+      "exact_rate": 0.5336538461538461,
+      "too_many_rate": 0.0,
+      "too_few_rate": 0.46634615384615385,
+      "mean_lessons_lost_per_prediction": 1.4615384615384615,
+      "session_exact_rate": 0.6370192307692307,
+      "session_too_many_rate": 0.0,
+      "session_too_few_rate": 0.3629807692307692,
+      "n": 416,
+      "within_5pp_rate": 0.6418269230769231,
+      "mae_nonfull_pp": 5.99624902384745
+    },
+    "linear_gain": {
+      "mae_pp": 3.9342276991541265,
+      "exact_rate": 0.5336538461538461,
+      "too_many_rate": 0.0,
+      "too_few_rate": 0.46634615384615385,
+      "mean_lessons_lost_per_prediction": 1.4615384615384615,
+      "session_exact_rate": 0.6370192307692307,
+      "session_too_many_rate": 0.0,
+      "session_too_few_rate": 0.3629807692307692,
+      "n": 416,
+      "within_5pp_rate": 0.6418269230769231,
+      "mae_nonfull_pp": 5.996249023847436
+    },
+    "forest_direct": {
+      "mae_pp": 1.5771704899659287,
+      "exact_rate": 0.7211538461538461,
+      "too_many_rate": 0.07692307692307693,
+      "too_few_rate": 0.20192307692307693,
+      "mean_lessons_lost_per_prediction": 0.4855769230769231,
+      "session_exact_rate": 0.8485576923076923,
+      "session_too_many_rate": 0.036057692307692304,
+      "session_too_few_rate": 0.11538461538461539,
+      "n": 416,
+      "within_5pp_rate": 0.9182692307692307,
+      "mae_nonfull_pp": 3.0876816753486676
+    },
+    "forest_gain": {
+      "mae_pp": 1.0879076916292652,
+      "exact_rate": 0.7403846153846154,
+      "too_many_rate": 0.11298076923076923,
+      "too_few_rate": 0.1466346153846154,
+      "mean_lessons_lost_per_prediction": 0.22115384615384615,
+      "session_exact_rate": 0.8798076923076923,
+      "session_too_many_rate": 0.057692307692307696,
+      "session_too_few_rate": 0.0625,
+      "n": 416,
+      "within_5pp_rate": 0.9615384615384616,
+      "mae_nonfull_pp": 2.2176410822443855
+    }
+  },
+  "test_by_hour": {
+    "6": {
+      "mae_pp": 1.8597204845644437,
+      "exact_rate": 0.6153846153846154,
+      "too_many_rate": 0.28846153846153844,
+      "too_few_rate": 0.09615384615384616,
+      "mean_lessons_lost_per_prediction": 0.19230769230769232,
+      "session_exact_rate": 0.7692307692307693,
+      "session_too_many_rate": 0.17307692307692307,
+      "session_too_few_rate": 0.057692307692307696,
+      "n": 52,
+      "within_5pp_rate": 0.8846153846153846
+    },
+    "7": {
+      "mae_pp": 1.609871824937162,
+      "exact_rate": 0.7115384615384616,
+      "too_many_rate": 0.19230769230769232,
+      "too_few_rate": 0.09615384615384616,
+      "mean_lessons_lost_per_prediction": 0.19230769230769232,
+      "session_exact_rate": 0.8461538461538461,
+      "session_too_many_rate": 0.09615384615384616,
+      "session_too_few_rate": 0.057692307692307696,
+      "n": 52,
+      "within_5pp_rate": 0.9038461538461539
+    },
+    "8": {
+      "mae_pp": 1.5028329732388446,
+      "exact_rate": 0.7115384615384616,
+      "too_many_rate": 0.17307692307692307,
+      "too_few_rate": 0.11538461538461539,
+      "mean_lessons_lost_per_prediction": 0.21153846153846154,
+      "session_exact_rate": 0.8653846153846154,
+      "session_too_many_rate": 0.07692307692307693,
+      "session_too_few_rate": 0.057692307692307696,
+      "n": 52,
+      "within_5pp_rate": 0.9423076923076923
+    },
+    "9": {
+      "mae_pp": 1.2620772145282462,
+      "exact_rate": 0.6538461538461539,
+      "too_many_rate": 0.19230769230769232,
+      "too_few_rate": 0.15384615384615385,
+      "mean_lessons_lost_per_prediction": 0.2692307692307692,
+      "session_exact_rate": 0.8461538461538461,
+      "session_too_many_rate": 0.09615384615384616,
+      "session_too_few_rate": 0.057692307692307696,
+      "n": 52,
+      "within_5pp_rate": 0.9615384615384616
+    },
+    "10": {
+      "mae_pp": 0.8769591883500075,
+      "exact_rate": 0.7692307692307693,
+      "too_many_rate": 0.038461538461538464,
+      "too_few_rate": 0.19230769230769232,
+      "mean_lessons_lost_per_prediction": 0.25,
+      "session_exact_rate": 0.9038461538461539,
+      "session_too_many_rate": 0.019230769230769232,
+      "session_too_few_rate": 0.07692307692307693,
+      "n": 52,
+      "within_5pp_rate": 1.0
+    },
+    "11": {
+      "mae_pp": 0.7464880067266368,
+      "exact_rate": 0.8461538461538461,
+      "too_many_rate": 0.019230769230769232,
+      "too_few_rate": 0.1346153846153846,
+      "mean_lessons_lost_per_prediction": 0.19230769230769232,
+      "session_exact_rate": 0.9615384615384616,
+      "session_too_many_rate": 0.0,
+      "session_too_few_rate": 0.038461538461538464,
+      "n": 52,
+      "within_5pp_rate": 1.0
+    },
+    "12": {
+      "mae_pp": 0.5998754233620699,
+      "exact_rate": 0.8653846153846154,
+      "too_many_rate": 0.0,
+      "too_few_rate": 0.1346153846153846,
+      "mean_lessons_lost_per_prediction": 0.17307692307692307,
+      "session_exact_rate": 0.9423076923076923,
+      "session_too_many_rate": 0.0,
+      "session_too_few_rate": 0.057692307692307696,
+      "n": 52,
+      "within_5pp_rate": 1.0
+    },
+    "13": {
+      "mae_pp": 0.24543641732671106,
+      "exact_rate": 0.75,
+      "too_many_rate": 0.0,
+      "too_few_rate": 0.25,
+      "mean_lessons_lost_per_prediction": 0.28846153846153844,
+      "session_exact_rate": 0.9038461538461539,
+      "session_too_many_rate": 0.0,
+      "session_too_few_rate": 0.09615384615384616,
+      "n": 52,
+      "within_5pp_rate": 1.0
+    }
+  },
+  "lesson_drain_pp": 2.5,
+  "lesson_duration_min": 5,
+  "full_charge_hours_reference": 11.0,
+  "test_errors": [
+    {
+      "date": "2026-09-10",
+      "hour": 6,
+      "cloud_pct": 24.0,
+      "morning_level": 0.0,
+      "actual": 39.72,
+      "predicted": 43.62622081474191,
+      "error_pp": 3.906220814741914
+    },
+    {
+      "date": "2026-09-10",
+      "hour": 7,
+      "cloud_pct": 27.428571428571427,
+      "morning_level": 0.0,
+      "actual": 39.72,
+      "predicted": 42.62159235142706,
+      "error_pp": 2.9015923514270625
+    },
+    {
+      "date": "2026-09-10",
+      "hour": 8,
+      "cloud_pct": 32.0,
+      "morning_level": 1.97,
+      "actual": 39.72,
+      "predicted": 43.044045122278156,
+      "error_pp": 3.3240451222781573
+    },
+    {
+      "date": "2026-09-10",
+      "hour": 9,
+      "cloud_pct": 32.2,
+      "morning_level": 5.93,
+      "actual": 39.72,
+      "predicted": 42.11596746268652,
+      "error_pp": 2.395967462686521
+    },
+    {
+      "date": "2026-09-10",
+      "hour": 10,
+      "cloud_pct": 32.25,
+      "morning_level": 11.7,
+      "actual": 39.72,
+      "predicted": 40.31576720228688,
+      "error_pp": 0.5957672022868792
+    },
+    {
+      "date": "2026-09-10",
+      "hour": 11,
+      "cloud_pct": 28.666666666666668,
+      "morning_level": 18.42,
+      "actual": 39.72,
+      "predicted": 41.085442402139854,
+      "error_pp": 1.3654424021398555
+    },
+    {
+      "date": "2026-09-10",
+      "hour": 12,
+      "cloud_pct": 27.0,
+      "morning_level": 25.86,
+      "actual": 39.72,
+      "predicted": 41.164290126915205,
+      "error_pp": 1.444290126915206
+    },
+    {
+      "date": "2026-09-10",
+      "hour": 13,
+      "cloud_pct": 18.0,
+      "morning_level": 33.44,
+      "actual": 39.72,
+      "predicted": 40.12092240738707,
+      "error_pp": 0.4009224073870712
+    },
+    {
+      "date": "2026-09-11",
+      "hour": 6,
+      "cloud_pct": 8.75,
+      "morning_level": 0.0,
+      "actual": 40.64,
+      "predicted": 43.60830693561213,
+      "error_pp": 2.9683069356121266
+    },
+    {
+      "date": "2026-09-11",
+      "hour": 7,
+      "cloud_pct": 8.428571428571429,
+      "morning_level": 0.0,
+      "actual": 40.64,
+      "predicted": 43.38520929722866,
+      "error_pp": 2.745209297228662
+    },
+    {
+      "date": "2026-09-11",
+      "hour": 8,
+      "cloud_pct": 9.666666666666666,
+      "morning_level": 2.42,
+      "actual": 40.64,
+      "predicted": 43.541689351057244,
+      "error_pp": 2.901689351057243
+    },
+    {
+      "date": "2026-09-11",
+      "hour": 9,
+      "cloud_pct": 11.6,
+      "morning_level": 6.68,
+      "actual": 40.64,
+      "predicted": 42.41096891303328,
+      "error_pp": 1.770968913033279
+    },
+    {
+      "date": "2026-09-11",
+      "hour": 10,
+      "cloud_pct": 10.0,
+      "morning_level": 12.21,
+      "actual": 40.64,
+      "predicted": 41.65143479401256,
+      "error_pp": 1.0114347940125583
+    },
+    {
+      "date": "2026-09-11",
+      "hour": 11,
+      "cloud_pct": 11.0,
+      "morning_level": 19.5,
+      "actual": 40.64,
+      "predicted": 42.533521570037145,
+      "error_pp": 1.8935215700371444
+    },
+    {
+      "date": "2026-09-11",
+      "hour": 12,
+      "cloud_pct": 13.0,
+      "morning_level": 26.72,
+      "actual": 40.64,
+      "predicted": 42.127627142673695,
+      "error_pp": 1.487627142673695
+    },
+    {
+      "date": "2026-09-11",
+      "hour": 13,
+      "cloud_pct": 13.0,
+      "morning_level": 33.59,
+      "actual": 40.64,
+      "predicted": 40.60346487945266,
+      "error_pp": -0.03653512054734165
+    },
+    {
+      "date": "2026-09-14",
+      "hour": 6,
+      "cloud_pct": 4.0,
+      "morning_level": 46.71,
+      "actual": 89.0,
+      "predicted": 92.5251074415595,
+      "error_pp": 3.5251074415594985
+    },
+    {
+      "date": "2026-09-14",
+      "hour": 7,
+      "cloud_pct": 4.142857142857143,
+      "morning_level": 46.84,
+      "actual": 89.0,
+      "predicted": 91.52689110658181,
+      "error_pp": 2.5268911065818145
+    },
+    {
+      "date": "2026-09-14",
+      "hour": 8,
+      "cloud_pct": 4.666666666666667,
+      "morning_level": 49.44,
+      "actual": 89.0,
+      "predicted": 91.59011202934278,
+      "error_pp": 2.5901120293427766
+    },
+    {
+      "date": "2026-09-14",
+      "hour": 9,
+      "cloud_pct": 4.6,
+      "morning_level": 53.86,
+      "actual": 89.0,
+      "predicted": 89.84365328021977,
+      "error_pp": 0.8436532802197689
+    },
+    {
+      "date": "2026-09-14",
+      "hour": 10,
+      "cloud_pct": 3.75,
+      "morning_level": 59.0,
+      "actual": 89.0,
+      "predicted": 88.6197053607498,
+      "error_pp": -0.38029463925019513
+    },
+    {
+      "date": "2026-09-14",
+      "hour": 11,
+      "cloud_pct": 5.0,
+      "morning_level": 66.98,
+      "actual": 89.0,
+      "predicted": 90.09764763573766,
+      "error_pp": 1.0976476357376583
+    },
+    {
+      "date": "2026-09-14",
+      "hour": 12,
+      "cloud_pct": 7.5,
+      "morning_level": 74.57,
+      "actual": 89.0,
+      "predicted": 90.30401404243818,
+      "error_pp": 1.3040140424381832
+    },
+    {
+      "date": "2026-09-14",
+      "hour": 13,
+      "cloud_pct": 10.0,
+      "morning_level": 82.15,
+      "actual": 89.0,
+      "predicted": 89.29730358531272,
+      "error_pp": 0.2973035853127186
+    },
+    {
+      "date": "2026-09-15",
+      "hour": 6,
+      "cloud_pct": 12.125,
+      "morning_level": 60.39,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-09-15",
+      "hour": 7,
+      "cloud_pct": 11.428571428571429,
+      "morning_level": 60.51,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-09-15",
+      "hour": 8,
+      "cloud_pct": 10.166666666666666,
+      "morning_level": 62.73,
+      "actual": 100.0,
+      "predicted": 99.92204495656654,
+      "error_pp": -0.07795504343346238
+    },
+    {
+      "date": "2026-09-15",
+      "hour": 9,
+      "cloud_pct": 8.6,
+      "morning_level": 67.56,
+      "actual": 100.0,
+      "predicted": 99.51789878773099,
+      "error_pp": -0.4821012122690149
+    },
+    {
+      "date": "2026-09-15",
+      "hour": 10,
+      "cloud_pct": 7.25,
+      "morning_level": 73.32,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-09-15",
+      "hour": 11,
+      "cloud_pct": 7.666666666666667,
+      "morning_level": 80.76,
+      "actual": 100.0,
+      "predicted": 99.96773898250872,
+      "error_pp": -0.03226101749127963
+    },
+    {
+      "date": "2026-09-15",
+      "hour": 12,
+      "cloud_pct": 2.0,
+      "morning_level": 87.67,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-09-15",
+      "hour": 13,
+      "cloud_pct": 4.0,
+      "morning_level": 95.47,
+      "actual": 100.0,
+      "predicted": 99.10436441055289,
+      "error_pp": -0.8956355894471102
+    },
+    {
+      "date": "2026-09-16",
+      "hour": 6,
+      "cloud_pct": 53.625,
+      "morning_level": 25.62,
+      "actual": 62.41,
+      "predicted": 66.81488867625907,
+      "error_pp": 4.404888676259077
+    },
+    {
+      "date": "2026-09-16",
+      "hour": 7,
+      "cloud_pct": 56.0,
+      "morning_level": 25.73,
+      "actual": 62.41,
+      "predicted": 66.36820016528526,
+      "error_pp": 3.9582001652852625
+    },
+    {
+      "date": "2026-09-16",
+      "hour": 8,
+      "cloud_pct": 54.333333333333336,
+      "morning_level": 27.44,
+      "actual": 62.41,
+      "predicted": 64.69553554391328,
+      "error_pp": 2.2855355439132836
+    },
+    {
+      "date": "2026-09-16",
+      "hour": 9,
+      "cloud_pct": 52.8,
+      "morning_level": 31.02,
+      "actual": 62.41,
+      "predicted": 66.12576732083905,
+      "error_pp": 3.715767320839049
+    },
+    {
+      "date": "2026-09-16",
+      "hour": 10,
+      "cloud_pct": 47.0,
+      "morning_level": 35.9,
+      "actual": 62.41,
+      "predicted": 64.07051397341185,
+      "error_pp": 1.6605139734118524
+    },
+    {
+      "date": "2026-09-16",
+      "hour": 11,
+      "cloud_pct": 42.666666666666664,
+      "morning_level": 41.81,
+      "actual": 62.41,
+      "predicted": 64.38961356330799,
+      "error_pp": 1.9796135633079928
+    },
+    {
+      "date": "2026-09-16",
+      "hour": 12,
+      "cloud_pct": 45.5,
+      "morning_level": 49.16,
+      "actual": 62.41,
+      "predicted": 64.44941420722085,
+      "error_pp": 2.039414207220858
+    },
+    {
+      "date": "2026-09-16",
+      "hour": 13,
+      "cloud_pct": 49.0,
+      "morning_level": 56.53,
+      "actual": 62.41,
+      "predicted": 63.26818643767331,
+      "error_pp": 0.8581864376733108
+    },
+    {
+      "date": "2026-09-17",
+      "hour": 6,
+      "cloud_pct": 14.5,
+      "morning_level": 10.61,
+      "actual": 54.57,
+      "predicted": 57.64303212846397,
+      "error_pp": 3.0730321284639714
+    },
+    {
+      "date": "2026-09-17",
+      "hour": 7,
+      "cloud_pct": 16.571428571428573,
+      "morning_level": 10.81,
+      "actual": 54.57,
+      "predicted": 56.17634965227963,
+      "error_pp": 1.6063496522796328
+    },
+    {
+      "date": "2026-09-17",
+      "hour": 8,
+      "cloud_pct": 17.166666666666668,
+      "morning_level": 13.52,
+      "actual": 54.57,
+      "predicted": 55.382509057415916,
+      "error_pp": 0.812509057415916
+    },
+    {
+      "date": "2026-09-17",
+      "hour": 9,
+      "cloud_pct": 15.0,
+      "morning_level": 18.04,
+      "actual": 54.57,
+      "predicted": 53.815410154462604,
+      "error_pp": -0.7545898455373958
+    },
+    {
+      "date": "2026-09-17",
+      "hour": 10,
+      "cloud_pct": 16.25,
+      "morning_level": 24.54,
+      "actual": 54.57,
+      "predicted": 54.099441989461305,
+      "error_pp": -0.4705580105386957
+    },
+    {
+      "date": "2026-09-17",
+      "hour": 11,
+      "cloud_pct": 18.666666666666668,
+      "morning_level": 31.83,
+      "actual": 54.57,
+      "predicted": 54.75882668949888,
+      "error_pp": 0.1888266894988817
+    },
+    {
+      "date": "2026-09-17",
+      "hour": 12,
+      "cloud_pct": 22.0,
+      "morning_level": 40.13,
+      "actual": 54.57,
+      "predicted": 55.52503080810595,
+      "error_pp": 0.9550308081059526
+    },
+    {
+      "date": "2026-09-17",
+      "hour": 13,
+      "cloud_pct": 19.0,
+      "morning_level": 48.06,
+      "actual": 54.57,
+      "predicted": 55.05735450064104,
+      "error_pp": 0.4873545006410396
+    },
+    {
+      "date": "2026-09-18",
+      "hour": 6,
+      "cloud_pct": 8.125,
+      "morning_level": 1.75,
+      "actual": 44.5,
+      "predicted": 49.79109954975944,
+      "error_pp": 5.291099549759437
+    },
+    {
+      "date": "2026-09-18",
+      "hour": 7,
+      "cloud_pct": 9.285714285714286,
+      "morning_level": 1.95,
+      "actual": 44.5,
+      "predicted": 49.51890227805598,
+      "error_pp": 5.018902278055982
+    },
+    {
+      "date": "2026-09-18",
+      "hour": 8,
+      "cloud_pct": 8.333333333333334,
+      "morning_level": 4.71,
+      "actual": 44.5,
+      "predicted": 46.71970088215699,
+      "error_pp": 2.2197008821569923
+    },
+    {
+      "date": "2026-09-18",
+      "hour": 9,
+      "cloud_pct": 7.2,
+      "morning_level": 9.03,
+      "actual": 44.5,
+      "predicted": 46.235158980456966,
+      "error_pp": 1.7351589804569656
+    },
+    {
+      "date": "2026-09-18",
+      "hour": 10,
+      "cloud_pct": 7.25,
+      "morning_level": 14.79,
+      "actual": 44.5,
+      "predicted": 44.88782355825496,
+      "error_pp": 0.38782355825495785
+    },
+    {
+      "date": "2026-09-18",
+      "hour": 11,
+      "cloud_pct": 7.0,
+      "morning_level": 21.9,
+      "actual": 44.5,
+      "predicted": 45.299339509410565,
+      "error_pp": 0.7993395094105651
+    },
+    {
+      "date": "2026-09-18",
+      "hour": 12,
+      "cloud_pct": 7.0,
+      "morning_level": 29.25,
+      "actual": 44.5,
+      "predicted": 44.766484103418236,
+      "error_pp": 0.2664841034182359
+    },
+    {
+      "date": "2026-09-18",
+      "hour": 13,
+      "cloud_pct": 11.0,
+      "morning_level": 37.67,
+      "actual": 44.5,
+      "predicted": 44.62273831018859,
+      "error_pp": 0.12273831018858772
+    },
+    {
+      "date": "2026-09-21",
+      "hour": 6,
+      "cloud_pct": 24.75,
+      "morning_level": 46.65,
+      "actual": 88.83,
+      "predicted": 92.56015439502873,
+      "error_pp": 3.730154395028734
+    },
+    {
+      "date": "2026-09-21",
+      "hour": 7,
+      "cloud_pct": 22.714285714285715,
+      "morning_level": 46.89,
+      "actual": 88.83,
+      "predicted": 91.7693897908916,
+      "error_pp": 2.939389790891596
+    },
+    {
+      "date": "2026-09-21",
+      "hour": 8,
+      "cloud_pct": 20.5,
+      "morning_level": 49.44,
+      "actual": 88.83,
+      "predicted": 91.65172147874753,
+      "error_pp": 2.821721478747534
+    },
+    {
+      "date": "2026-09-21",
+      "hour": 9,
+      "cloud_pct": 19.6,
+      "morning_level": 53.93,
+      "actual": 88.83,
+      "predicted": 89.97778064116298,
+      "error_pp": 1.1477806411629814
+    },
+    {
+      "date": "2026-09-21",
+      "hour": 10,
+      "cloud_pct": 16.75,
+      "morning_level": 59.74,
+      "actual": 88.83,
+      "predicted": 89.20956846171498,
+      "error_pp": 0.3795684617149817
+    },
+    {
+      "date": "2026-09-21",
+      "hour": 11,
+      "cloud_pct": 17.0,
+      "morning_level": 66.96,
+      "actual": 88.83,
+      "predicted": 89.93604846268255,
+      "error_pp": 1.1060484626825513
+    },
+    {
+      "date": "2026-09-21",
+      "hour": 12,
+      "cloud_pct": 13.5,
+      "morning_level": 74.86,
+      "actual": 88.83,
+      "predicted": 90.38732723765999,
+      "error_pp": 1.5573272376599903
+    },
+    {
+      "date": "2026-09-21",
+      "hour": 13,
+      "cloud_pct": 14.0,
+      "morning_level": 81.57,
+      "actual": 88.83,
+      "predicted": 88.52813688249529,
+      "error_pp": -0.30186311750470907
+    },
+    {
+      "date": "2026-09-22",
+      "hour": 6,
+      "cloud_pct": 81.125,
+      "morning_level": 14.18,
+      "actual": 39.03,
+      "predicted": 42.19289151795232,
+      "error_pp": 3.1628915179523176
+    },
+    {
+      "date": "2026-09-22",
+      "hour": 7,
+      "cloud_pct": 81.14285714285714,
+      "morning_level": 14.14,
+      "actual": 39.03,
+      "predicted": 41.908231750406934,
+      "error_pp": 2.8782317504069326
+    },
+    {
+      "date": "2026-09-22",
+      "hour": 8,
+      "cloud_pct": 79.33333333333333,
+      "morning_level": 15.03,
+      "actual": 39.03,
+      "predicted": 41.925067510712715,
+      "error_pp": 2.895067510712714
+    },
+    {
+      "date": "2026-09-22",
+      "hour": 9,
+      "cloud_pct": 80.2,
+      "morning_level": 17.94,
+      "actual": 39.03,
+      "predicted": 42.144716547845476,
+      "error_pp": 3.1147165478454752
+    },
+    {
+      "date": "2026-09-22",
+      "hour": 10,
+      "cloud_pct": 79.25,
+      "morning_level": 20.88,
+      "actual": 39.03,
+      "predicted": 40.977776554802,
+      "error_pp": 1.9477765548019974
+    },
+    {
+      "date": "2026-09-22",
+      "hour": 11,
+      "cloud_pct": 78.33333333333333,
+      "morning_level": 25.29,
+      "actual": 39.03,
+      "predicted": 40.814105362133354,
+      "error_pp": 1.784105362133353
+    },
+    {
+      "date": "2026-09-22",
+      "hour": 12,
+      "cloud_pct": 78.0,
+      "morning_level": 30.54,
+      "actual": 39.03,
+      "predicted": 40.67572815693012,
+      "error_pp": 1.6457281569301188
+    },
+    {
+      "date": "2026-09-22",
+      "hour": 13,
+      "cloud_pct": 83.0,
+      "morning_level": 35.15,
+      "actual": 39.03,
+      "predicted": 39.5476874722176,
+      "error_pp": 0.5176874722176024
+    },
+    {
+      "date": "2026-09-23",
+      "hour": 6,
+      "cloud_pct": 72.0,
+      "morning_level": 0.0,
+      "actual": 35.42,
+      "predicted": 37.23123175065793,
+      "error_pp": 1.8112317506579316
+    },
+    {
+      "date": "2026-09-23",
+      "hour": 7,
+      "cloud_pct": 70.14285714285714,
+      "morning_level": 0.0,
+      "actual": 35.42,
+      "predicted": 37.013071873785805,
+      "error_pp": 1.593071873785803
+    },
+    {
+      "date": "2026-09-23",
+      "hour": 8,
+      "cloud_pct": 65.83333333333333,
+      "morning_level": 0.52,
+      "actual": 35.42,
+      "predicted": 37.25022263010072,
+      "error_pp": 1.830222630100721
+    },
+    {
+      "date": "2026-09-23",
+      "hour": 9,
+      "cloud_pct": 63.8,
+      "morning_level": 3.64,
+      "actual": 35.42,
+      "predicted": 36.405330508189344,
+      "error_pp": 0.9853305081893424
+    },
+    {
+      "date": "2026-09-23",
+      "hour": 10,
+      "cloud_pct": 64.75,
+      "morning_level": 9.45,
+      "actual": 35.42,
+      "predicted": 35.70068721076113,
+      "error_pp": 0.2806872107611298
+    },
+    {
+      "date": "2026-09-23",
+      "hour": 11,
+      "cloud_pct": 67.0,
+      "morning_level": 16.56,
+      "actual": 35.42,
+      "predicted": 36.872019380232956,
+      "error_pp": 1.4520193802329544
+    },
+    {
+      "date": "2026-09-23",
+      "hour": 12,
+      "cloud_pct": 72.5,
+      "morning_level": 23.83,
+      "actual": 35.42,
+      "predicted": 36.190106221887405,
+      "error_pp": 0.7701062218874029
+    },
+    {
+      "date": "2026-09-23",
+      "hour": 13,
+      "cloud_pct": 76.0,
+      "morning_level": 30.02,
+      "actual": 35.42,
+      "predicted": 35.034290796003646,
+      "error_pp": -0.3857092039963561
+    },
+    {
+      "date": "2026-09-24",
+      "hour": 6,
+      "cloud_pct": 33.25,
+      "morning_level": 4.85,
+      "actual": 46.84,
+      "predicted": 52.9690297597332,
+      "error_pp": 6.1290297597332
+    },
+    {
+      "date": "2026-09-24",
+      "hour": 7,
+      "cloud_pct": 33.142857142857146,
+      "morning_level": 5.23,
+      "actual": 46.84,
+      "predicted": 52.57948087636575,
+      "error_pp": 5.7394808763657466
+    },
+    {
+      "date": "2026-09-24",
+      "hour": 8,
+      "cloud_pct": 35.833333333333336,
+      "morning_level": 8.27,
+      "actual": 46.84,
+      "predicted": 50.44643708432122,
+      "error_pp": 3.6064370843212146
+    },
+    {
+      "date": "2026-09-24",
+      "hour": 9,
+      "cloud_pct": 38.4,
+      "morning_level": 12.64,
+      "actual": 46.84,
+      "predicted": 49.98336935131411,
+      "error_pp": 3.1433693513141066
+    },
+    {
+      "date": "2026-09-24",
+      "hour": 10,
+      "cloud_pct": 40.25,
+      "morning_level": 18.58,
+      "actual": 46.84,
+      "predicted": 48.028998557708164,
+      "error_pp": 1.1889985577081603
+    },
+    {
+      "date": "2026-09-24",
+      "hour": 11,
+      "cloud_pct": 40.0,
+      "morning_level": 26.02,
+      "actual": 46.84,
+      "predicted": 48.872347202770214,
+      "error_pp": 2.032347202770211
+    },
+    {
+      "date": "2026-09-24",
+      "hour": 12,
+      "cloud_pct": 39.5,
+      "morning_level": 32.92,
+      "actual": 46.84,
+      "predicted": 48.340115076061224,
+      "error_pp": 1.5001150760612205
+    },
+    {
+      "date": "2026-09-24",
+      "hour": 13,
+      "cloud_pct": 46.0,
+      "morning_level": 39.46,
+      "actual": 46.84,
+      "predicted": 46.40054079455546,
+      "error_pp": -0.43945920544454253
+    },
+    {
+      "date": "2026-09-25",
+      "hour": 6,
+      "cloud_pct": 60.625,
+      "morning_level": 52.24,
+      "actual": 89.89,
+      "predicted": 94.13955537015053,
+      "error_pp": 4.2495553701505315
+    },
+    {
+      "date": "2026-09-25",
+      "hour": 7,
+      "cloud_pct": 60.857142857142854,
+      "morning_level": 52.44,
+      "actual": 89.89,
+      "predicted": 93.72887802730948,
+      "error_pp": 3.8388780273094767
+    },
+    {
+      "date": "2026-09-25",
+      "hour": 8,
+      "cloud_pct": 59.0,
+      "morning_level": 54.58,
+      "actual": 89.89,
+      "predicted": 92.29960530669302,
+      "error_pp": 2.409605306693024
+    },
+    {
+      "date": "2026-09-25",
+      "hour": 9,
+      "cloud_pct": 59.6,
+      "morning_level": 59.02,
+      "actual": 89.89,
+      "predicted": 92.66582537556155,
+      "error_pp": 2.7758253755615527
+    },
+    {
+      "date": "2026-09-25",
+      "hour": 10,
+      "cloud_pct": 60.25,
+      "morning_level": 64.71,
+      "actual": 89.89,
+      "predicted": 91.77822579118524,
+      "error_pp": 1.888225791185235
+    },
+    {
+      "date": "2026-09-25",
+      "hour": 11,
+      "cloud_pct": 59.333333333333336,
+      "morning_level": 70.93,
+      "actual": 89.89,
+      "predicted": 91.49277235435329,
+      "error_pp": 1.6027723543532915
+    },
+    {
+      "date": "2026-09-25",
+      "hour": 12,
+      "cloud_pct": 55.5,
+      "morning_level": 77.39,
+      "actual": 89.89,
+      "predicted": 91.94584954771578,
+      "error_pp": 2.0558495477157805
+    },
+    {
+      "date": "2026-09-25",
+      "hour": 13,
+      "cloud_pct": 53.0,
+      "morning_level": 84.01,
+      "actual": 89.89,
+      "predicted": 90.96615754880816,
+      "error_pp": 1.0761575488081547
+    },
+    {
+      "date": "2026-09-28",
+      "hour": 6,
+      "cloud_pct": 43.0,
+      "morning_level": 53.6,
+      "actual": 95.23,
+      "predicted": 99.53659433649031,
+      "error_pp": 4.306594336490306
+    },
+    {
+      "date": "2026-09-28",
+      "hour": 7,
+      "cloud_pct": 43.142857142857146,
+      "morning_level": 54.07,
+      "actual": 95.23,
+      "predicted": 98.94752839725967,
+      "error_pp": 3.71752839725967
+    },
+    {
+      "date": "2026-09-28",
+      "hour": 8,
+      "cloud_pct": 43.333333333333336,
+      "morning_level": 57.24,
+      "actual": 95.23,
+      "predicted": 99.304791404632,
+      "error_pp": 4.074791404631995
+    },
+    {
+      "date": "2026-09-28",
+      "hour": 9,
+      "cloud_pct": 43.2,
+      "morning_level": 61.65,
+      "actual": 95.23,
+      "predicted": 97.69888075517613,
+      "error_pp": 2.46888075517613
+    },
+    {
+      "date": "2026-09-28",
+      "hour": 10,
+      "cloud_pct": 41.75,
+      "morning_level": 68.21,
+      "actual": 95.23,
+      "predicted": 97.22481146454268,
+      "error_pp": 1.9948114645426784
+    },
+    {
+      "date": "2026-09-28",
+      "hour": 11,
+      "cloud_pct": 39.0,
+      "morning_level": 74.07,
+      "actual": 95.23,
+      "predicted": 96.01689669782652,
+      "error_pp": 0.7868966978265206
+    },
+    {
+      "date": "2026-09-28",
+      "hour": 12,
+      "cloud_pct": 34.5,
+      "morning_level": 80.6,
+      "actual": 95.23,
+      "predicted": 95.50437819154004,
+      "error_pp": 0.2743781915400376
+    },
+    {
+      "date": "2026-09-28",
+      "hour": 13,
+      "cloud_pct": 29.0,
+      "morning_level": 88.16,
+      "actual": 95.23,
+      "predicted": 95.529650495653,
+      "error_pp": 0.2996504956529975
+    },
+    {
+      "date": "2026-09-29",
+      "hour": 6,
+      "cloud_pct": 5.75,
+      "morning_level": 66.73,
+      "actual": 100.0,
+      "predicted": 99.87389406912533,
+      "error_pp": -0.12610593087467237
+    },
+    {
+      "date": "2026-09-29",
+      "hour": 7,
+      "cloud_pct": 4.285714285714286,
+      "morning_level": 67.45,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-09-29",
+      "hour": 8,
+      "cloud_pct": 3.6666666666666665,
+      "morning_level": 70.55,
+      "actual": 100.0,
+      "predicted": 99.95757309253247,
+      "error_pp": -0.04242690746752942
+    },
+    {
+      "date": "2026-09-29",
+      "hour": 9,
+      "cloud_pct": 2.4,
+      "morning_level": 75.78,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-09-29",
+      "hour": 10,
+      "cloud_pct": 2.0,
+      "morning_level": 82.25,
+      "actual": 100.0,
+      "predicted": 99.91142833694084,
+      "error_pp": -0.08857166305915598
+    },
+    {
+      "date": "2026-09-29",
+      "hour": 11,
+      "cloud_pct": 2.0,
+      "morning_level": 89.52,
+      "actual": 100.0,
+      "predicted": 99.8315793588356,
+      "error_pp": -0.1684206411644027
+    },
+    {
+      "date": "2026-09-29",
+      "hour": 12,
+      "cloud_pct": 1.5,
+      "morning_level": 97.42,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-09-29",
+      "hour": 13,
+      "cloud_pct": 2.0,
+      "morning_level": 100.0,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-09-30",
+      "hour": 6,
+      "cloud_pct": 26.375,
+      "morning_level": 71.62,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-09-30",
+      "hour": 7,
+      "cloud_pct": 29.857142857142858,
+      "morning_level": 72.34,
+      "actual": 100.0,
+      "predicted": 98.90719719967532,
+      "error_pp": -1.0928028003246766
+    },
+    {
+      "date": "2026-09-30",
+      "hour": 8,
+      "cloud_pct": 34.666666666666664,
+      "morning_level": 75.18,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-09-30",
+      "hour": 9,
+      "cloud_pct": 35.0,
+      "morning_level": 80.06,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-09-30",
+      "hour": 10,
+      "cloud_pct": 36.75,
+      "morning_level": 86.12,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-09-30",
+      "hour": 11,
+      "cloud_pct": 31.666666666666668,
+      "morning_level": 92.56,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-09-30",
+      "hour": 12,
+      "cloud_pct": 25.5,
+      "morning_level": 99.02,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-09-30",
+      "hour": 13,
+      "cloud_pct": 19.0,
+      "morning_level": 100.0,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-01",
+      "hour": 6,
+      "cloud_pct": 5.375,
+      "morning_level": 59.77,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-01",
+      "hour": 7,
+      "cloud_pct": 6.142857142857143,
+      "morning_level": 60.32,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-01",
+      "hour": 8,
+      "cloud_pct": 5.833333333333333,
+      "morning_level": 63.5,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-01",
+      "hour": 9,
+      "cloud_pct": 7.0,
+      "morning_level": 68.71,
+      "actual": 100.0,
+      "predicted": 99.83374457417582,
+      "error_pp": -0.16625542582417552
+    },
+    {
+      "date": "2026-10-01",
+      "hour": 10,
+      "cloud_pct": 7.25,
+      "morning_level": 75.01,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-01",
+      "hour": 11,
+      "cloud_pct": 6.666666666666667,
+      "morning_level": 82.81,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-01",
+      "hour": 12,
+      "cloud_pct": 3.0,
+      "morning_level": 90.71,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-01",
+      "hour": 13,
+      "cloud_pct": 2.0,
+      "morning_level": 97.42,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-02",
+      "hour": 6,
+      "cloud_pct": 37.375,
+      "morning_level": 36.71,
+      "actual": 80.07,
+      "predicted": 85.77802282166755,
+      "error_pp": 5.708022821667555
+    },
+    {
+      "date": "2026-10-02",
+      "hour": 7,
+      "cloud_pct": 35.57142857142857,
+      "morning_level": 37.37,
+      "actual": 80.07,
+      "predicted": 85.64993877196284,
+      "error_pp": 5.579938771962844
+    },
+    {
+      "date": "2026-10-02",
+      "hour": 8,
+      "cloud_pct": 35.5,
+      "morning_level": 40.26,
+      "actual": 80.07,
+      "predicted": 84.5694549752636,
+      "error_pp": 4.499454975263603
+    },
+    {
+      "date": "2026-10-02",
+      "hour": 9,
+      "cloud_pct": 37.4,
+      "morning_level": 46.04,
+      "actual": 80.07,
+      "predicted": 86.08308277823795,
+      "error_pp": 6.013082778237958
+    },
+    {
+      "date": "2026-10-02",
+      "hour": 10,
+      "cloud_pct": 39.0,
+      "morning_level": 52.82,
+      "actual": 80.07,
+      "predicted": 82.90179812061781,
+      "error_pp": 2.831798120617819
+    },
+    {
+      "date": "2026-10-02",
+      "hour": 11,
+      "cloud_pct": 40.0,
+      "morning_level": 59.04,
+      "actual": 80.07,
+      "predicted": 83.24226672573154,
+      "error_pp": 3.1722667257315464
+    },
+    {
+      "date": "2026-10-02",
+      "hour": 12,
+      "cloud_pct": 38.5,
+      "morning_level": 66.24,
+      "actual": 80.07,
+      "predicted": 81.97740808623229,
+      "error_pp": 1.9074080862322944
+    },
+    {
+      "date": "2026-10-02",
+      "hour": 13,
+      "cloud_pct": 44.0,
+      "morning_level": 73.88,
+      "actual": 80.07,
+      "predicted": 80.85956226679666,
+      "error_pp": 0.7895622667966649
+    },
+    {
+      "date": "2026-10-05",
+      "hour": 6,
+      "cloud_pct": 21.375,
+      "morning_level": 34.01,
+      "actual": 78.88,
+      "predicted": 85.30787185982058,
+      "error_pp": 6.427871859820584
+    },
+    {
+      "date": "2026-10-05",
+      "hour": 7,
+      "cloud_pct": 21.571428571428573,
+      "morning_level": 34.94,
+      "actual": 78.88,
+      "predicted": 84.01472415680686,
+      "error_pp": 5.134724156806868
+    },
+    {
+      "date": "2026-10-05",
+      "hour": 8,
+      "cloud_pct": 21.833333333333332,
+      "morning_level": 38.29,
+      "actual": 78.88,
+      "predicted": 85.32282875279552,
+      "error_pp": 6.442828752795521
+    },
+    {
+      "date": "2026-10-05",
+      "hour": 9,
+      "cloud_pct": 18.6,
+      "morning_level": 43.2,
+      "actual": 78.88,
+      "predicted": 84.13286987641399,
+      "error_pp": 5.252869876413996
+    },
+    {
+      "date": "2026-10-05",
+      "hour": 10,
+      "cloud_pct": 14.0,
+      "morning_level": 49.64,
+      "actual": 78.88,
+      "predicted": 82.87984944927038,
+      "error_pp": 3.9998494492703855
+    },
+    {
+      "date": "2026-10-05",
+      "hour": 11,
+      "cloud_pct": 9.666666666666666,
+      "morning_level": 56.55,
+      "actual": 78.88,
+      "predicted": 81.48938153195209,
+      "error_pp": 2.6093815319520957
+    },
+    {
+      "date": "2026-10-05",
+      "hour": 12,
+      "cloud_pct": 6.5,
+      "morning_level": 64.85,
+      "actual": 78.88,
+      "predicted": 80.75005621196333,
+      "error_pp": 1.8700562119633304
+    },
+    {
+      "date": "2026-10-05",
+      "hour": 13,
+      "cloud_pct": 13.0,
+      "morning_level": 72.3,
+      "actual": 78.88,
+      "predicted": 79.57497122826004,
+      "error_pp": 0.6949712282600444
+    },
+    {
+      "date": "2026-10-06",
+      "hour": 6,
+      "cloud_pct": 1.75,
+      "morning_level": 74.19,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-06",
+      "hour": 7,
+      "cloud_pct": 2.0,
+      "morning_level": 74.93,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-06",
+      "hour": 8,
+      "cloud_pct": 2.3333333333333335,
+      "morning_level": 78.17,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-06",
+      "hour": 9,
+      "cloud_pct": 2.2,
+      "morning_level": 83.64,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-06",
+      "hour": 10,
+      "cloud_pct": 0.25,
+      "morning_level": 90.69,
+      "actual": 100.0,
+      "predicted": 99.8227474702381,
+      "error_pp": -0.1772525297619012
+    },
+    {
+      "date": "2026-10-06",
+      "hour": 11,
+      "cloud_pct": 0.3333333333333333,
+      "morning_level": 98.39,
+      "actual": 100.0,
+      "predicted": 99.43515892857143,
+      "error_pp": -0.5648410714285745
+    },
+    {
+      "date": "2026-10-06",
+      "hour": 12,
+      "cloud_pct": 0.5,
+      "morning_level": 100.0,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-06",
+      "hour": 13,
+      "cloud_pct": 1.0,
+      "morning_level": 100.0,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-07",
+      "hour": 6,
+      "cloud_pct": 8.875,
+      "morning_level": 3.16,
+      "actual": 48.78,
+      "predicted": 54.56737996210195,
+      "error_pp": 5.7873799621019515
+    },
+    {
+      "date": "2026-10-07",
+      "hour": 7,
+      "cloud_pct": 9.857142857142858,
+      "morning_level": 4.16,
+      "actual": 48.78,
+      "predicted": 53.704190761735276,
+      "error_pp": 4.924190761735275
+    },
+    {
+      "date": "2026-10-07",
+      "hour": 8,
+      "cloud_pct": 9.166666666666666,
+      "morning_level": 7.33,
+      "actual": 48.78,
+      "predicted": 54.89890227805598,
+      "error_pp": 6.118902278055977
+    },
+    {
+      "date": "2026-10-07",
+      "hour": 9,
+      "cloud_pct": 8.6,
+      "morning_level": 12.76,
+      "actual": 48.78,
+      "predicted": 53.3632079078667,
+      "error_pp": 4.583207907866701
+    },
+    {
+      "date": "2026-10-07",
+      "hour": 10,
+      "cloud_pct": 8.75,
+      "morning_level": 18.71,
+      "actual": 48.78,
+      "predicted": 51.67283377733454,
+      "error_pp": 2.8928337773345376
+    },
+    {
+      "date": "2026-10-07",
+      "hour": 11,
+      "cloud_pct": 6.333333333333333,
+      "morning_level": 26.44,
+      "actual": 48.78,
+      "predicted": 51.31489264332819,
+      "error_pp": 2.5348926433281918
+    },
+    {
+      "date": "2026-10-07",
+      "hour": 12,
+      "cloud_pct": 7.5,
+      "morning_level": 34.21,
+      "actual": 48.78,
+      "predicted": 50.083968055368786,
+      "error_pp": 1.3039680553687845
+    },
+    {
+      "date": "2026-10-07",
+      "hour": 13,
+      "cloud_pct": 15.0,
+      "morning_level": 42.05,
+      "actual": 48.78,
+      "predicted": 49.281800462567396,
+      "error_pp": 0.5018004625673953
+    },
+    {
+      "date": "2026-10-08",
+      "hour": 6,
+      "cloud_pct": 12.25,
+      "morning_level": 0.0,
+      "actual": 44.58,
+      "predicted": 51.121957597034985,
+      "error_pp": 6.541957597034987
+    },
+    {
+      "date": "2026-10-08",
+      "hour": 7,
+      "cloud_pct": 11.571428571428571,
+      "morning_level": 1.02,
+      "actual": 44.58,
+      "predicted": 50.09813844252115,
+      "error_pp": 5.518138442521149
+    },
+    {
+      "date": "2026-10-08",
+      "hour": 8,
+      "cloud_pct": 11.333333333333334,
+      "morning_level": 4.04,
+      "actual": 44.58,
+      "predicted": 51.09113500279552,
+      "error_pp": 6.51113500279552
+    },
+    {
+      "date": "2026-10-08",
+      "hour": 9,
+      "cloud_pct": 13.6,
+      "morning_level": 8.95,
+      "actual": 44.58,
+      "predicted": 49.408007756594216,
+      "error_pp": 4.828007756594218
+    },
+    {
+      "date": "2026-10-08",
+      "hour": 10,
+      "cloud_pct": 13.75,
+      "morning_level": 15.03,
+      "actual": 44.58,
+      "predicted": 47.61544367700933,
+      "error_pp": 3.035443677009333
+    },
+    {
+      "date": "2026-10-08",
+      "hour": 11,
+      "cloud_pct": 18.333333333333332,
+      "morning_level": 22.39,
+      "actual": 44.58,
+      "predicted": 47.181181704924484,
+      "error_pp": 2.6011817049244854
+    },
+    {
+      "date": "2026-10-08",
+      "hour": 12,
+      "cloud_pct": 19.0,
+      "morning_level": 29.65,
+      "actual": 44.58,
+      "predicted": 45.529971091806026,
+      "error_pp": 0.9499710918060273
+    },
+    {
+      "date": "2026-10-08",
+      "hour": 13,
+      "cloud_pct": 22.0,
+      "morning_level": 37.87,
+      "actual": 44.58,
+      "predicted": 45.20386963015967,
+      "error_pp": 0.6238696301596747
+    },
+    {
+      "date": "2026-10-09",
+      "hour": 6,
+      "cloud_pct": 14.0,
+      "morning_level": 3.48,
+      "actual": 51.77,
+      "predicted": 55.239632620740906,
+      "error_pp": 3.469632620740903
+    },
+    {
+      "date": "2026-10-09",
+      "hour": 7,
+      "cloud_pct": 15.428571428571429,
+      "morning_level": 4.38,
+      "actual": 51.77,
+      "predicted": 55.52651414465404,
+      "error_pp": 3.7565141446540338
+    },
+    {
+      "date": "2026-10-09",
+      "hour": 8,
+      "cloud_pct": 16.5,
+      "morning_level": 8.16,
+      "actual": 51.77,
+      "predicted": 56.201099549759434,
+      "error_pp": 4.4310995497594305
+    },
+    {
+      "date": "2026-10-09",
+      "hour": 9,
+      "cloud_pct": 16.0,
+      "morning_level": 13.47,
+      "actual": 51.77,
+      "predicted": 54.60564105870417,
+      "error_pp": 2.8356410587041694
+    },
+    {
+      "date": "2026-10-09",
+      "hour": 10,
+      "cloud_pct": 15.0,
+      "morning_level": 19.9,
+      "actual": 51.77,
+      "predicted": 54.16083801176801,
+      "error_pp": 2.390838011768004
+    },
+    {
+      "date": "2026-10-09",
+      "hour": 11,
+      "cloud_pct": 13.0,
+      "morning_level": 28.17,
+      "actual": 51.77,
+      "predicted": 53.88785974678126,
+      "error_pp": 2.1178597467812565
+    },
+    {
+      "date": "2026-10-09",
+      "hour": 12,
+      "cloud_pct": 8.5,
+      "morning_level": 36.77,
+      "actual": 51.77,
+      "predicted": 53.5149216711195,
+      "error_pp": 1.7449216711194993
+    },
+    {
+      "date": "2026-10-09",
+      "hour": 13,
+      "cloud_pct": 15.0,
+      "morning_level": 44.63,
+      "actual": 51.77,
+      "predicted": 51.95444313031632,
+      "error_pp": 0.18444313031631765
+    },
+    {
+      "date": "2026-10-12",
+      "hour": 6,
+      "cloud_pct": 37.0,
+      "morning_level": 85.65,
+      "actual": 100.0,
+      "predicted": 99.71282833139084,
+      "error_pp": -0.28717166860916166
+    },
+    {
+      "date": "2026-10-12",
+      "hour": 7,
+      "cloud_pct": 36.57142857142857,
+      "morning_level": 86.71,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-12",
+      "hour": 8,
+      "cloud_pct": 35.666666666666664,
+      "morning_level": 90.24,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-12",
+      "hour": 9,
+      "cloud_pct": 35.8,
+      "morning_level": 96.08,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-12",
+      "hour": 10,
+      "cloud_pct": 35.0,
+      "morning_level": 100.0,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-12",
+      "hour": 11,
+      "cloud_pct": 35.666666666666664,
+      "morning_level": 100.0,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-12",
+      "hour": 12,
+      "cloud_pct": 38.5,
+      "morning_level": 100.0,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-12",
+      "hour": 13,
+      "cloud_pct": 34.0,
+      "morning_level": 100.0,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-13",
+      "hour": 6,
+      "cloud_pct": 8.875,
+      "morning_level": 59.21,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-13",
+      "hour": 7,
+      "cloud_pct": 10.0,
+      "morning_level": 60.45,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-13",
+      "hour": 8,
+      "cloud_pct": 9.833333333333334,
+      "morning_level": 63.81,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-13",
+      "hour": 9,
+      "cloud_pct": 11.4,
+      "morning_level": 68.79,
+      "actual": 100.0,
+      "predicted": 99.99596193528694,
+      "error_pp": -0.004038064713057565
+    },
+    {
+      "date": "2026-10-13",
+      "hour": 10,
+      "cloud_pct": 11.75,
+      "morning_level": 76.03,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-13",
+      "hour": 11,
+      "cloud_pct": 8.666666666666666,
+      "morning_level": 83.36,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-13",
+      "hour": 12,
+      "cloud_pct": 12.5,
+      "morning_level": 91.51,
+      "actual": 100.0,
+      "predicted": 99.59501790223666,
+      "error_pp": -0.4049820977633374
+    },
+    {
+      "date": "2026-10-13",
+      "hour": 13,
+      "cloud_pct": 19.0,
+      "morning_level": 100.0,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-14",
+      "hour": 6,
+      "cloud_pct": 16.0,
+      "morning_level": 71.71,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-14",
+      "hour": 7,
+      "cloud_pct": 15.857142857142858,
+      "morning_level": 72.95,
+      "actual": 100.0,
+      "predicted": 99.43048291396104,
+      "error_pp": -0.5695170860389567
+    },
+    {
+      "date": "2026-10-14",
+      "hour": 8,
+      "cloud_pct": 17.166666666666668,
+      "morning_level": 76.15,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-14",
+      "hour": 9,
+      "cloud_pct": 19.2,
+      "morning_level": 81.56,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-14",
+      "hour": 10,
+      "cloud_pct": 18.0,
+      "morning_level": 88.4,
+      "actual": 100.0,
+      "predicted": 99.92580610119047,
+      "error_pp": -0.07419389880952565
+    },
+    {
+      "date": "2026-10-14",
+      "hour": 11,
+      "cloud_pct": 13.0,
+      "morning_level": 96.02,
+      "actual": 100.0,
+      "predicted": 99.70489807900432,
+      "error_pp": -0.2951019209956769
+    },
+    {
+      "date": "2026-10-14",
+      "hour": 12,
+      "cloud_pct": 4.5,
+      "morning_level": 100.0,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-14",
+      "hour": 13,
+      "cloud_pct": 0.0,
+      "morning_level": 100.0,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-15",
+      "hour": 6,
+      "cloud_pct": 20.125,
+      "morning_level": 33.64,
+      "actual": 90.35,
+      "predicted": 85.66840861598264,
+      "error_pp": -4.681591384017352
+    },
+    {
+      "date": "2026-10-15",
+      "hour": 7,
+      "cloud_pct": 20.142857142857142,
+      "morning_level": 35.13,
+      "actual": 90.35,
+      "predicted": 86.70221370066704,
+      "error_pp": -3.6477862993329495
+    },
+    {
+      "date": "2026-10-15",
+      "hour": 8,
+      "cloud_pct": 19.333333333333332,
+      "morning_level": 38.88,
+      "actual": 90.35,
+      "predicted": 87.12889619247326,
+      "error_pp": -3.221103807526731
+    },
+    {
+      "date": "2026-10-15",
+      "hour": 9,
+      "cloud_pct": 17.2,
+      "morning_level": 45.47,
+      "actual": 90.35,
+      "predicted": 86.72096867991996,
+      "error_pp": -3.6290313200800313
+    },
+    {
+      "date": "2026-10-15",
+      "hour": 10,
+      "cloud_pct": 16.25,
+      "morning_level": 52.55,
+      "actual": 90.35,
+      "predicted": 87.34126172073663,
+      "error_pp": -3.008738279263369
+    },
+    {
+      "date": "2026-10-15",
+      "hour": 11,
+      "cloud_pct": 21.666666666666668,
+      "morning_level": 62.16,
+      "actual": 90.35,
+      "predicted": 87.60001985808378,
+      "error_pp": -2.749980141916211
+    },
+    {
+      "date": "2026-10-15",
+      "hour": 12,
+      "cloud_pct": 27.0,
+      "morning_level": 71.64,
+      "actual": 90.35,
+      "predicted": 88.48577180927732,
+      "error_pp": -1.8642281907226703
+    },
+    {
+      "date": "2026-10-15",
+      "hour": 13,
+      "cloud_pct": 31.0,
+      "morning_level": 81.97,
+      "actual": 90.35,
+      "predicted": 89.21819268163306,
+      "error_pp": -1.1318073183669384
+    },
+    {
+      "date": "2026-10-16",
+      "hour": 6,
+      "cloud_pct": 22.125,
+      "morning_level": 15.34,
+      "actual": 69.42,
+      "predicted": 67.28090148878965,
+      "error_pp": -2.1390985112103493
+    },
+    {
+      "date": "2026-10-16",
+      "hour": 7,
+      "cloud_pct": 21.428571428571427,
+      "morning_level": 16.87,
+      "actual": 69.42,
+      "predicted": 68.15696873482058,
+      "error_pp": -1.2630312651794213
+    },
+    {
+      "date": "2026-10-16",
+      "hour": 8,
+      "cloud_pct": 21.833333333333332,
+      "morning_level": 20.31,
+      "actual": 69.42,
+      "predicted": 68.44982484487252,
+      "error_pp": -0.9701751551274782
+    },
+    {
+      "date": "2026-10-16",
+      "hour": 9,
+      "cloud_pct": 22.8,
+      "morning_level": 27.3,
+      "actual": 69.42,
+      "predicted": 68.24925772074205,
+      "error_pp": -1.1707422792579507
+    },
+    {
+      "date": "2026-10-16",
+      "hour": 10,
+      "cloud_pct": 20.25,
+      "morning_level": 35.08,
+      "actual": 69.42,
+      "predicted": 69.02611807323669,
+      "error_pp": -0.3938819267633136
+    },
+    {
+      "date": "2026-10-16",
+      "hour": 11,
+      "cloud_pct": 21.666666666666668,
+      "morning_level": 43.99,
+      "actual": 69.42,
+      "predicted": 69.33800583924905,
+      "error_pp": -0.081994160750952
+    },
+    {
+      "date": "2026-10-16",
+      "hour": 12,
+      "cloud_pct": 20.5,
+      "morning_level": 51.8,
+      "actual": 69.42,
+      "predicted": 67.93618354550892,
+      "error_pp": -1.4838164544910768
+    },
+    {
+      "date": "2026-10-16",
+      "hour": 13,
+      "cloud_pct": 21.0,
+      "morning_level": 60.77,
+      "actual": 69.42,
+      "predicted": 68.5356575932596,
+      "error_pp": -0.8843424067404015
+    },
+    {
+      "date": "2026-10-19",
+      "hour": 6,
+      "cloud_pct": 19.375,
+      "morning_level": 92.97,
+      "actual": 100.0,
+      "predicted": 99.86589117063492,
+      "error_pp": -0.13410882936507562
+    },
+    {
+      "date": "2026-10-19",
+      "hour": 7,
+      "cloud_pct": 15.142857142857142,
+      "morning_level": 94.54,
+      "actual": 100.0,
+      "predicted": 99.79148031204907,
+      "error_pp": -0.20851968795092546
+    },
+    {
+      "date": "2026-10-19",
+      "hour": 8,
+      "cloud_pct": 9.666666666666666,
+      "morning_level": 98.7,
+      "actual": 100.0,
+      "predicted": 99.62829737103175,
+      "error_pp": -0.3717026289682508
+    },
+    {
+      "date": "2026-10-19",
+      "hour": 9,
+      "cloud_pct": 4.8,
+      "morning_level": 100.0,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-19",
+      "hour": 10,
+      "cloud_pct": 5.5,
+      "morning_level": 100.0,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-19",
+      "hour": 11,
+      "cloud_pct": 7.333333333333333,
+      "morning_level": 100.0,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-19",
+      "hour": 12,
+      "cloud_pct": 11.0,
+      "morning_level": 100.0,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-19",
+      "hour": 13,
+      "cloud_pct": 22.0,
+      "morning_level": 100.0,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-20",
+      "hour": 6,
+      "cloud_pct": 39.875,
+      "morning_level": 79.89,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-20",
+      "hour": 7,
+      "cloud_pct": 39.714285714285715,
+      "morning_level": 81.39,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-20",
+      "hour": 8,
+      "cloud_pct": 38.666666666666664,
+      "morning_level": 85.43,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-20",
+      "hour": 9,
+      "cloud_pct": 36.6,
+      "morning_level": 90.89,
+      "actual": 100.0,
+      "predicted": 99.78623913690477,
+      "error_pp": -0.21376086309523146
+    },
+    {
+      "date": "2026-10-20",
+      "hour": 10,
+      "cloud_pct": 35.5,
+      "morning_level": 98.85,
+      "actual": 100.0,
+      "predicted": 99.6935414186508,
+      "error_pp": -0.30645858134920445
+    },
+    {
+      "date": "2026-10-20",
+      "hour": 11,
+      "cloud_pct": 33.666666666666664,
+      "morning_level": 100.0,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-20",
+      "hour": 12,
+      "cloud_pct": 36.0,
+      "morning_level": 100.0,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-20",
+      "hour": 13,
+      "cloud_pct": 36.0,
+      "morning_level": 100.0,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-21",
+      "hour": 6,
+      "cloud_pct": 42.5,
+      "morning_level": 48.71,
+      "actual": 100.0,
+      "predicted": 98.30345464853491,
+      "error_pp": -1.6965453514650903
+    },
+    {
+      "date": "2026-10-21",
+      "hour": 7,
+      "cloud_pct": 42.142857142857146,
+      "morning_level": 50.6,
+      "actual": 100.0,
+      "predicted": 97.82108314419432,
+      "error_pp": -2.1789168558056815
+    },
+    {
+      "date": "2026-10-21",
+      "hour": 8,
+      "cloud_pct": 43.166666666666664,
+      "morning_level": 54.32,
+      "actual": 100.0,
+      "predicted": 99.1791982587707,
+      "error_pp": -0.8208017412293032
+    },
+    {
+      "date": "2026-10-21",
+      "hour": 9,
+      "cloud_pct": 43.4,
+      "morning_level": 59.86,
+      "actual": 100.0,
+      "predicted": 99.71681310673074,
+      "error_pp": -0.28318689326926005
+    },
+    {
+      "date": "2026-10-21",
+      "hour": 10,
+      "cloud_pct": 39.5,
+      "morning_level": 66.55,
+      "actual": 100.0,
+      "predicted": 96.44907222233768,
+      "error_pp": -3.5509277776623236
+    },
+    {
+      "date": "2026-10-21",
+      "hour": 11,
+      "cloud_pct": 37.0,
+      "morning_level": 75.34,
+      "actual": 100.0,
+      "predicted": 99.0459300788658,
+      "error_pp": -0.9540699211342059
+    },
+    {
+      "date": "2026-10-21",
+      "hour": 12,
+      "cloud_pct": 34.5,
+      "morning_level": 84.18,
+      "actual": 100.0,
+      "predicted": 99.21343009433183,
+      "error_pp": -0.7865699056681734
+    },
+    {
+      "date": "2026-10-21",
+      "hour": 13,
+      "cloud_pct": 28.0,
+      "morning_level": 93.43,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-22",
+      "hour": 6,
+      "cloud_pct": 49.25,
+      "morning_level": 65.19,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-22",
+      "hour": 7,
+      "cloud_pct": 49.285714285714285,
+      "morning_level": 66.67,
+      "actual": 100.0,
+      "predicted": 99.78340969412533,
+      "error_pp": -0.21659030587467498
+    },
+    {
+      "date": "2026-10-22",
+      "hour": 8,
+      "cloud_pct": 50.5,
+      "morning_level": 71.02,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-22",
+      "hour": 9,
+      "cloud_pct": 50.4,
+      "morning_level": 76.88,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-22",
+      "hour": 10,
+      "cloud_pct": 51.5,
+      "morning_level": 84.49,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-22",
+      "hour": 11,
+      "cloud_pct": 51.0,
+      "morning_level": 93.52,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-22",
+      "hour": 12,
+      "cloud_pct": 50.5,
+      "morning_level": 100.0,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-22",
+      "hour": 13,
+      "cloud_pct": 52.0,
+      "morning_level": 100.0,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-23",
+      "hour": 6,
+      "cloud_pct": 87.25,
+      "morning_level": 37.94,
+      "actual": 65.71,
+      "predicted": 63.556223630848024,
+      "error_pp": -2.15377636915197
+    },
+    {
+      "date": "2026-10-23",
+      "hour": 7,
+      "cloud_pct": 88.57142857142857,
+      "morning_level": 38.85,
+      "actual": 65.71,
+      "predicted": 63.43021716238463,
+      "error_pp": -2.2797828376153646
+    },
+    {
+      "date": "2026-10-23",
+      "hour": 8,
+      "cloud_pct": 87.66666666666667,
+      "morning_level": 40.32,
+      "actual": 65.71,
+      "predicted": 64.47558738559898,
+      "error_pp": -1.234412614401009
+    },
+    {
+      "date": "2026-10-23",
+      "hour": 9,
+      "cloud_pct": 88.8,
+      "morning_level": 44.51,
+      "actual": 65.71,
+      "predicted": 64.48621525398934,
+      "error_pp": -1.2237847460106508
+    },
+    {
+      "date": "2026-10-23",
+      "hour": 10,
+      "cloud_pct": 90.25,
+      "morning_level": 49.29,
+      "actual": 65.71,
+      "predicted": 64.81212463067548,
+      "error_pp": -0.8978753693245096
+    },
+    {
+      "date": "2026-10-23",
+      "hour": 11,
+      "cloud_pct": 91.33333333333333,
+      "morning_level": 53.66,
+      "actual": 65.71,
+      "predicted": 64.36836589721436,
+      "error_pp": -1.3416341027856333
+    },
+    {
+      "date": "2026-10-23",
+      "hour": 12,
+      "cloud_pct": 95.5,
+      "morning_level": 59.4,
+      "actual": 65.71,
+      "predicted": 65.2105713027003,
+      "error_pp": -0.49942869729969175
+    },
+    {
+      "date": "2026-10-23",
+      "hour": 13,
+      "cloud_pct": 99.0,
+      "morning_level": 63.5,
+      "actual": 65.71,
+      "predicted": 65.67250866980243,
+      "error_pp": -0.03749133019756812
+    },
+    {
+      "date": "2026-10-26",
+      "hour": 6,
+      "cloud_pct": 12.125,
+      "morning_level": 73.47,
+      "actual": 100.0,
+      "predicted": 99.69487706078644,
+      "error_pp": -0.30512293921356104
+    },
+    {
+      "date": "2026-10-26",
+      "hour": 7,
+      "cloud_pct": 13.714285714285714,
+      "morning_level": 75.25,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-26",
+      "hour": 8,
+      "cloud_pct": 16.0,
+      "morning_level": 79.82,
+      "actual": 100.0,
+      "predicted": 99.98582136994949,
+      "error_pp": -0.0141786300505089
+    },
+    {
+      "date": "2026-10-26",
+      "hour": 9,
+      "cloud_pct": 17.2,
+      "morning_level": 86.56,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-26",
+      "hour": 10,
+      "cloud_pct": 18.25,
+      "morning_level": 95.12,
+      "actual": 100.0,
+      "predicted": 99.85385124458875,
+      "error_pp": -0.1461487554112466
+    },
+    {
+      "date": "2026-10-26",
+      "hour": 11,
+      "cloud_pct": 20.666666666666668,
+      "morning_level": 100.0,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-26",
+      "hour": 12,
+      "cloud_pct": 24.0,
+      "morning_level": 100.0,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-26",
+      "hour": 13,
+      "cloud_pct": 30.0,
+      "morning_level": 100.0,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-27",
+      "hour": 6,
+      "cloud_pct": 13.875,
+      "morning_level": 56.36,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-27",
+      "hour": 7,
+      "cloud_pct": 14.428571428571429,
+      "morning_level": 58.23,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-27",
+      "hour": 8,
+      "cloud_pct": 16.833333333333332,
+      "morning_level": 62.42,
+      "actual": 100.0,
+      "predicted": 99.67460261509322,
+      "error_pp": -0.32539738490677905
+    },
+    {
+      "date": "2026-10-27",
+      "hour": 9,
+      "cloud_pct": 19.6,
+      "morning_level": 68.97,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-27",
+      "hour": 10,
+      "cloud_pct": 24.5,
+      "morning_level": 77.13,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-27",
+      "hour": 11,
+      "cloud_pct": 25.666666666666668,
+      "morning_level": 85.75,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-27",
+      "hour": 12,
+      "cloud_pct": 28.0,
+      "morning_level": 94.13,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-27",
+      "hour": 13,
+      "cloud_pct": 23.0,
+      "morning_level": 100.0,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-28",
+      "hour": 6,
+      "cloud_pct": 23.25,
+      "morning_level": 86.1,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-28",
+      "hour": 7,
+      "cloud_pct": 24.428571428571427,
+      "morning_level": 87.99,
+      "actual": 100.0,
+      "predicted": 99.55390927579364,
+      "error_pp": -0.446090724206357
+    },
+    {
+      "date": "2026-10-28",
+      "hour": 8,
+      "cloud_pct": 24.666666666666668,
+      "morning_level": 92.3,
+      "actual": 100.0,
+      "predicted": 99.7566283234127,
+      "error_pp": -0.24337167658730152
+    },
+    {
+      "date": "2026-10-28",
+      "hour": 9,
+      "cloud_pct": 22.0,
+      "morning_level": 98.5,
+      "actual": 100.0,
+      "predicted": 99.35931507936508,
+      "error_pp": -0.640684920634925
+    },
+    {
+      "date": "2026-10-28",
+      "hour": 10,
+      "cloud_pct": 23.75,
+      "morning_level": 100.0,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-28",
+      "hour": 11,
+      "cloud_pct": 21.666666666666668,
+      "morning_level": 100.0,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-28",
+      "hour": 12,
+      "cloud_pct": 23.5,
+      "morning_level": 100.0,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-28",
+      "hour": 13,
+      "cloud_pct": 23.0,
+      "morning_level": 100.0,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-29",
+      "hour": 6,
+      "cloud_pct": 12.5,
+      "morning_level": 67.36,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-29",
+      "hour": 7,
+      "cloud_pct": 13.571428571428571,
+      "morning_level": 69.38,
+      "actual": 100.0,
+      "predicted": 99.60158732864357,
+      "error_pp": -0.3984126713564251
+    },
+    {
+      "date": "2026-10-29",
+      "hour": 8,
+      "cloud_pct": 14.5,
+      "morning_level": 73.73,
+      "actual": 100.0,
+      "predicted": 99.86740518578645,
+      "error_pp": -0.13259481421354735
+    },
+    {
+      "date": "2026-10-29",
+      "hour": 9,
+      "cloud_pct": 13.8,
+      "morning_level": 79.78,
+      "actual": 100.0,
+      "predicted": 99.9458213699495,
+      "error_pp": -0.05417863005050094
+    },
+    {
+      "date": "2026-10-29",
+      "hour": 10,
+      "cloud_pct": 12.25,
+      "morning_level": 86.39,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-29",
+      "hour": 11,
+      "cloud_pct": 11.0,
+      "morning_level": 94.64,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-29",
+      "hour": 12,
+      "cloud_pct": 9.0,
+      "morning_level": 100.0,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-29",
+      "hour": 13,
+      "cloud_pct": 9.0,
+      "morning_level": 100.0,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-10-30",
+      "hour": 6,
+      "cloud_pct": 15.75,
+      "morning_level": 39.45,
+      "actual": 94.1,
+      "predicted": 93.77233669375329,
+      "error_pp": -0.3276633062467056
+    },
+    {
+      "date": "2026-10-30",
+      "hour": 7,
+      "cloud_pct": 15.714285714285714,
+      "morning_level": 41.69,
+      "actual": 94.1,
+      "predicted": 93.97169643678848,
+      "error_pp": -0.12830356321151726
+    },
+    {
+      "date": "2026-10-30",
+      "hour": 8,
+      "cloud_pct": 15.666666666666666,
+      "morning_level": 45.88,
+      "actual": 94.1,
+      "predicted": 92.69810340847569,
+      "error_pp": -1.4018965915243058
+    },
+    {
+      "date": "2026-10-30",
+      "hour": 9,
+      "cloud_pct": 17.4,
+      "morning_level": 52.11,
+      "actual": 94.1,
+      "predicted": 94.43297966250093,
+      "error_pp": 0.33297966250093225
+    },
+    {
+      "date": "2026-10-30",
+      "hour": 10,
+      "cloud_pct": 17.25,
+      "morning_level": 59.85,
+      "actual": 94.1,
+      "predicted": 94.7886628300511,
+      "error_pp": 0.6886628300511006
+    },
+    {
+      "date": "2026-10-30",
+      "hour": 11,
+      "cloud_pct": 19.666666666666668,
+      "morning_level": 69.07,
+      "actual": 94.1,
+      "predicted": 93.89076101990136,
+      "error_pp": -0.2092389800986325
+    },
+    {
+      "date": "2026-10-30",
+      "hour": 12,
+      "cloud_pct": 19.5,
+      "morning_level": 77.71,
+      "actual": 94.1,
+      "predicted": 94.44012004533646,
+      "error_pp": 0.34012004533646234
+    },
+    {
+      "date": "2026-10-30",
+      "hour": 13,
+      "cloud_pct": 20.0,
+      "morning_level": 86.06,
+      "actual": 94.1,
+      "predicted": 94.17145027779094,
+      "error_pp": 0.07145027779094448
+    },
+    {
+      "date": "2026-11-02",
+      "hour": 6,
+      "cloud_pct": 10.0,
+      "morning_level": 83.36,
+      "actual": 100.0,
+      "predicted": 99.93540314269063,
+      "error_pp": -0.06459685730936826
+    },
+    {
+      "date": "2026-11-02",
+      "hour": 7,
+      "cloud_pct": 9.857142857142858,
+      "morning_level": 85.4,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-02",
+      "hour": 8,
+      "cloud_pct": 9.833333333333334,
+      "morning_level": 89.33,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-02",
+      "hour": 9,
+      "cloud_pct": 8.8,
+      "morning_level": 95.97,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-02",
+      "hour": 10,
+      "cloud_pct": 10.75,
+      "morning_level": 100.0,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-02",
+      "hour": 11,
+      "cloud_pct": 10.0,
+      "morning_level": 100.0,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-02",
+      "hour": 12,
+      "cloud_pct": 8.5,
+      "morning_level": 100.0,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-02",
+      "hour": 13,
+      "cloud_pct": 15.0,
+      "morning_level": 100.0,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-03",
+      "hour": 6,
+      "cloud_pct": 4.75,
+      "morning_level": 63.5,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-03",
+      "hour": 7,
+      "cloud_pct": 5.142857142857143,
+      "morning_level": 65.33,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-03",
+      "hour": 8,
+      "cloud_pct": 6.0,
+      "morning_level": 69.59,
+      "actual": 100.0,
+      "predicted": 99.7623581619769,
+      "error_pp": -0.23764183802309446
+    },
+    {
+      "date": "2026-11-03",
+      "hour": 9,
+      "cloud_pct": 5.8,
+      "morning_level": 76.05,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-03",
+      "hour": 10,
+      "cloud_pct": 4.25,
+      "morning_level": 83.92,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-03",
+      "hour": 11,
+      "cloud_pct": 3.6666666666666665,
+      "morning_level": 93.37,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-03",
+      "hour": 12,
+      "cloud_pct": 3.0,
+      "morning_level": 100.0,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-03",
+      "hour": 13,
+      "cloud_pct": 2.0,
+      "morning_level": 100.0,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-04",
+      "hour": 6,
+      "cloud_pct": 11.875,
+      "morning_level": 63.75,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-04",
+      "hour": 7,
+      "cloud_pct": 12.714285714285714,
+      "morning_level": 65.84,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-04",
+      "hour": 8,
+      "cloud_pct": 12.166666666666666,
+      "morning_level": 70.23,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-04",
+      "hour": 9,
+      "cloud_pct": 12.0,
+      "morning_level": 75.97,
+      "actual": 100.0,
+      "predicted": 99.91964866522368,
+      "error_pp": -0.08035133477632428
+    },
+    {
+      "date": "2026-11-04",
+      "hour": 10,
+      "cloud_pct": 12.75,
+      "morning_level": 83.7,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-04",
+      "hour": 11,
+      "cloud_pct": 11.666666666666666,
+      "morning_level": 93.82,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-04",
+      "hour": 12,
+      "cloud_pct": 10.0,
+      "morning_level": 100.0,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-04",
+      "hour": 13,
+      "cloud_pct": 10.0,
+      "morning_level": 100.0,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-05",
+      "hour": 6,
+      "cloud_pct": 8.75,
+      "morning_level": 75.74,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-05",
+      "hour": 7,
+      "cloud_pct": 8.285714285714286,
+      "morning_level": 77.71,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-05",
+      "hour": 8,
+      "cloud_pct": 8.0,
+      "morning_level": 82.14,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-05",
+      "hour": 9,
+      "cloud_pct": 8.6,
+      "morning_level": 89.65,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-05",
+      "hour": 10,
+      "cloud_pct": 10.75,
+      "morning_level": 98.41,
+      "actual": 100.0,
+      "predicted": 99.43159246031746,
+      "error_pp": -0.5684075396825392
+    },
+    {
+      "date": "2026-11-05",
+      "hour": 11,
+      "cloud_pct": 13.0,
+      "morning_level": 100.0,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-05",
+      "hour": 12,
+      "cloud_pct": 14.5,
+      "morning_level": 100.0,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-05",
+      "hour": 13,
+      "cloud_pct": 21.0,
+      "morning_level": 100.0,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-06",
+      "hour": 6,
+      "cloud_pct": 18.5,
+      "morning_level": 80.08,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-06",
+      "hour": 7,
+      "cloud_pct": 18.142857142857142,
+      "morning_level": 82.11,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-06",
+      "hour": 8,
+      "cloud_pct": 19.833333333333332,
+      "morning_level": 86.43,
+      "actual": 100.0,
+      "predicted": 99.95334943528694,
+      "error_pp": -0.046650564713061726
+    },
+    {
+      "date": "2026-11-06",
+      "hour": 9,
+      "cloud_pct": 22.4,
+      "morning_level": 93.19,
+      "actual": 100.0,
+      "predicted": 99.73259603174603,
+      "error_pp": -0.26740396825397283
+    },
+    {
+      "date": "2026-11-06",
+      "hour": 10,
+      "cloud_pct": 24.75,
+      "morning_level": 100.0,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-06",
+      "hour": 11,
+      "cloud_pct": 23.333333333333332,
+      "morning_level": 100.0,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-06",
+      "hour": 12,
+      "cloud_pct": 21.5,
+      "morning_level": 100.0,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-06",
+      "hour": 13,
+      "cloud_pct": 23.0,
+      "morning_level": 100.0,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-09",
+      "hour": 6,
+      "cloud_pct": 23.25,
+      "morning_level": 83.52,
+      "actual": 100.0,
+      "predicted": 99.96147784507158,
+      "error_pp": -0.038522154928415375
+    },
+    {
+      "date": "2026-11-09",
+      "hour": 7,
+      "cloud_pct": 26.571428571428573,
+      "morning_level": 85.53,
+      "actual": 100.0,
+      "predicted": 99.94546692266067,
+      "error_pp": -0.054533077339328884
+    },
+    {
+      "date": "2026-11-09",
+      "hour": 8,
+      "cloud_pct": 28.0,
+      "morning_level": 89.95,
+      "actual": 100.0,
+      "predicted": 99.77505114087302,
+      "error_pp": -0.22494885912698237
+    },
+    {
+      "date": "2026-11-09",
+      "hour": 9,
+      "cloud_pct": 30.4,
+      "morning_level": 97.02,
+      "actual": 100.0,
+      "predicted": 99.64446806908369,
+      "error_pp": -0.35553193091631385
+    },
+    {
+      "date": "2026-11-09",
+      "hour": 10,
+      "cloud_pct": 30.5,
+      "morning_level": 100.0,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-09",
+      "hour": 11,
+      "cloud_pct": 29.333333333333332,
+      "morning_level": 100.0,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-09",
+      "hour": 12,
+      "cloud_pct": 26.5,
+      "morning_level": 100.0,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-09",
+      "hour": 13,
+      "cloud_pct": 20.0,
+      "morning_level": 100.0,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-10",
+      "hour": 6,
+      "cloud_pct": 42.75,
+      "morning_level": 63.75,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-10",
+      "hour": 7,
+      "cloud_pct": 41.285714285714285,
+      "morning_level": 65.49,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-10",
+      "hour": 8,
+      "cloud_pct": 40.333333333333336,
+      "morning_level": 69.4,
+      "actual": 100.0,
+      "predicted": 99.62209357864359,
+      "error_pp": -0.37790642135641406
+    },
+    {
+      "date": "2026-11-10",
+      "hour": 9,
+      "cloud_pct": 36.4,
+      "morning_level": 75.68,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-10",
+      "hour": 10,
+      "cloud_pct": 35.0,
+      "morning_level": 83.51,
+      "actual": 100.0,
+      "predicted": 99.9575885593573,
+      "error_pp": -0.0424114406426952
+    },
+    {
+      "date": "2026-11-10",
+      "hour": 11,
+      "cloud_pct": 34.333333333333336,
+      "morning_level": 92.35,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-10",
+      "hour": 12,
+      "cloud_pct": 38.0,
+      "morning_level": 100.0,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-10",
+      "hour": 13,
+      "cloud_pct": 41.0,
+      "morning_level": 100.0,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-11",
+      "hour": 6,
+      "cloud_pct": 52.75,
+      "morning_level": 75.82,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-11",
+      "hour": 7,
+      "cloud_pct": 54.42857142857143,
+      "morning_level": 77.96,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-11",
+      "hour": 8,
+      "cloud_pct": 53.833333333333336,
+      "morning_level": 81.94,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-11",
+      "hour": 9,
+      "cloud_pct": 55.4,
+      "morning_level": 87.14,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-11",
+      "hour": 10,
+      "cloud_pct": 56.5,
+      "morning_level": 95.32,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-11",
+      "hour": 11,
+      "cloud_pct": 56.0,
+      "morning_level": 100.0,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-11",
+      "hour": 12,
+      "cloud_pct": 55.0,
+      "morning_level": 100.0,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-11",
+      "hour": 13,
+      "cloud_pct": 50.0,
+      "morning_level": 100.0,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-12",
+      "hour": 6,
+      "cloud_pct": 84.25,
+      "morning_level": 57.05,
+      "actual": 89.73,
+      "predicted": 92.08333201737122,
+      "error_pp": 2.3533320173712156
+    },
+    {
+      "date": "2026-11-12",
+      "hour": 7,
+      "cloud_pct": 82.85714285714286,
+      "morning_level": 57.48,
+      "actual": 89.73,
+      "predicted": 90.13503438976105,
+      "error_pp": 0.4050343897610418
+    },
+    {
+      "date": "2026-11-12",
+      "hour": 8,
+      "cloud_pct": 81.33333333333333,
+      "morning_level": 59.31,
+      "actual": 89.73,
+      "predicted": 88.6359538880326,
+      "error_pp": -1.0940461119674012
+    },
+    {
+      "date": "2026-11-12",
+      "hour": 9,
+      "cloud_pct": 78.6,
+      "morning_level": 61.71,
+      "actual": 89.73,
+      "predicted": 89.20496484320162,
+      "error_pp": -0.5250351567983813
+    },
+    {
+      "date": "2026-11-12",
+      "hour": 10,
+      "cloud_pct": 75.25,
+      "morning_level": 64.5,
+      "actual": 89.73,
+      "predicted": 89.92193332551311,
+      "error_pp": 0.19193332551310505
+    },
+    {
+      "date": "2026-11-12",
+      "hour": 11,
+      "cloud_pct": 75.66666666666667,
+      "morning_level": 70.44,
+      "actual": 89.73,
+      "predicted": 89.26568618172189,
+      "error_pp": -0.46431381827811435
+    },
+    {
+      "date": "2026-11-12",
+      "hour": 12,
+      "cloud_pct": 77.0,
+      "morning_level": 77.62,
+      "actual": 89.73,
+      "predicted": 89.5822327787997,
+      "error_pp": -0.14776722120029717
+    },
+    {
+      "date": "2026-11-12",
+      "hour": 13,
+      "cloud_pct": 78.0,
+      "morning_level": 84.06,
+      "actual": 89.73,
+      "predicted": 89.60784303584506,
+      "error_pp": -0.12215696415493937
+    },
+    {
+      "date": "2026-11-13",
+      "hour": 6,
+      "cloud_pct": 72.75,
+      "morning_level": 15.37,
+      "actual": 60.15,
+      "predicted": 57.16441820567034,
+      "error_pp": -2.9855817943296614
+    },
+    {
+      "date": "2026-11-13",
+      "hour": 7,
+      "cloud_pct": 72.0,
+      "morning_level": 16.54,
+      "actual": 60.15,
+      "predicted": 57.216972496823395,
+      "error_pp": -2.9330275031766035
+    },
+    {
+      "date": "2026-11-13",
+      "hour": 8,
+      "cloud_pct": 70.0,
+      "morning_level": 19.28,
+      "actual": 60.15,
+      "predicted": 56.65690407006406,
+      "error_pp": -3.49309592993594
+    },
+    {
+      "date": "2026-11-13",
+      "hour": 9,
+      "cloud_pct": 70.2,
+      "morning_level": 24.37,
+      "actual": 60.15,
+      "predicted": 56.84857246676627,
+      "error_pp": -3.3014275332337277
+    },
+    {
+      "date": "2026-11-13",
+      "hour": 10,
+      "cloud_pct": 71.25,
+      "morning_level": 31.6,
+      "actual": 60.15,
+      "predicted": 57.371963856559205,
+      "error_pp": -2.7780361434407936
+    },
+    {
+      "date": "2026-11-13",
+      "hour": 11,
+      "cloud_pct": 69.0,
+      "morning_level": 38.01,
+      "actual": 60.15,
+      "predicted": 58.54273985356554,
+      "error_pp": -1.6072601464344558
+    },
+    {
+      "date": "2026-11-13",
+      "hour": 12,
+      "cloud_pct": 63.5,
+      "morning_level": 43.84,
+      "actual": 60.15,
+      "predicted": 58.551802772596844,
+      "error_pp": -1.5981972274031548
+    },
+    {
+      "date": "2026-11-13",
+      "hour": 13,
+      "cloud_pct": 64.0,
+      "morning_level": 52.05,
+      "actual": 60.15,
+      "predicted": 58.80251653101746,
+      "error_pp": -1.3474834689825386
+    },
+    {
+      "date": "2026-11-16",
+      "hour": 6,
+      "cloud_pct": 67.0,
+      "morning_level": 37.76,
+      "actual": 84.47,
+      "predicted": 81.03818799791088,
+      "error_pp": -3.431812002089117
+    },
+    {
+      "date": "2026-11-16",
+      "hour": 7,
+      "cloud_pct": 64.42857142857143,
+      "morning_level": 38.85,
+      "actual": 84.47,
+      "predicted": 81.06768172054136,
+      "error_pp": -3.4023182794586404
+    },
+    {
+      "date": "2026-11-16",
+      "hour": 8,
+      "cloud_pct": 64.66666666666667,
+      "morning_level": 42.75,
+      "actual": 84.47,
+      "predicted": 80.4278500721808,
+      "error_pp": -4.042149927819196
+    },
+    {
+      "date": "2026-11-16",
+      "hour": 9,
+      "cloud_pct": 68.8,
+      "morning_level": 48.6,
+      "actual": 84.47,
+      "predicted": 79.99927505911442,
+      "error_pp": -4.4707249408855745
+    },
+    {
+      "date": "2026-11-16",
+      "hour": 10,
+      "cloud_pct": 75.0,
+      "morning_level": 56.44,
+      "actual": 84.47,
+      "predicted": 81.90360423984785,
+      "error_pp": -2.5663957601521474
+    },
+    {
+      "date": "2026-11-16",
+      "hour": 11,
+      "cloud_pct": 77.0,
+      "morning_level": 64.8,
+      "actual": 84.47,
+      "predicted": 83.24590275554158,
+      "error_pp": -1.2240972444584202
+    },
+    {
+      "date": "2026-11-16",
+      "hour": 12,
+      "cloud_pct": 76.0,
+      "morning_level": 70.9,
+      "actual": 84.47,
+      "predicted": 83.47827780411384,
+      "error_pp": -0.9917221958861546
+    },
+    {
+      "date": "2026-11-16",
+      "hour": 13,
+      "cloud_pct": 81.0,
+      "morning_level": 78.7,
+      "actual": 84.47,
+      "predicted": 84.21588777816599,
+      "error_pp": -0.2541122218340064
+    },
+    {
+      "date": "2026-11-17",
+      "hour": 6,
+      "cloud_pct": 10.875,
+      "morning_level": 44.84,
+      "actual": 100.0,
+      "predicted": 98.80060043478026,
+      "error_pp": -1.1993995652197356
+    },
+    {
+      "date": "2026-11-17",
+      "hour": 7,
+      "cloud_pct": 11.142857142857142,
+      "morning_level": 47.24,
+      "actual": 100.0,
+      "predicted": 99.88856429445795,
+      "error_pp": -0.11143570554204985
+    },
+    {
+      "date": "2026-11-17",
+      "hour": 8,
+      "cloud_pct": 12.0,
+      "morning_level": 52.64,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-17",
+      "hour": 9,
+      "cloud_pct": 13.2,
+      "morning_level": 59.85,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-17",
+      "hour": 10,
+      "cloud_pct": 15.25,
+      "morning_level": 68.3,
+      "actual": 100.0,
+      "predicted": 97.32697912386878,
+      "error_pp": -2.6730208761312184
+    },
+    {
+      "date": "2026-11-17",
+      "hour": 11,
+      "cloud_pct": 14.666666666666666,
+      "morning_level": 77.16,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-17",
+      "hour": 12,
+      "cloud_pct": 7.0,
+      "morning_level": 85.29,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-17",
+      "hour": 13,
+      "cloud_pct": 9.0,
+      "morning_level": 94.05,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-18",
+      "hour": 6,
+      "cloud_pct": 45.625,
+      "morning_level": 75.05,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-18",
+      "hour": 7,
+      "cloud_pct": 45.0,
+      "morning_level": 77.04,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-18",
+      "hour": 8,
+      "cloud_pct": 45.0,
+      "morning_level": 81.49,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-18",
+      "hour": 9,
+      "cloud_pct": 47.2,
+      "morning_level": 87.73,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-18",
+      "hour": 10,
+      "cloud_pct": 46.0,
+      "morning_level": 94.42,
+      "actual": 100.0,
+      "predicted": 99.88826215728716,
+      "error_pp": -0.11173784271284148
+    },
+    {
+      "date": "2026-11-18",
+      "hour": 11,
+      "cloud_pct": 43.0,
+      "morning_level": 100.0,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-18",
+      "hour": 12,
+      "cloud_pct": 41.0,
+      "morning_level": 100.0,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-18",
+      "hour": 13,
+      "cloud_pct": 47.0,
+      "morning_level": 100.0,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-19",
+      "hour": 6,
+      "cloud_pct": 4.375,
+      "morning_level": 69.34,
+      "actual": 100.0,
+      "predicted": 99.7119410218254,
+      "error_pp": -0.2880589781746039
+    },
+    {
+      "date": "2026-11-19",
+      "hour": 7,
+      "cloud_pct": 5.0,
+      "morning_level": 71.43,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-19",
+      "hour": 8,
+      "cloud_pct": 5.5,
+      "morning_level": 75.57,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-19",
+      "hour": 9,
+      "cloud_pct": 5.2,
+      "morning_level": 82.25,
+      "actual": 100.0,
+      "predicted": 99.93802208694083,
+      "error_pp": -0.06197791305916667
+    },
+    {
+      "date": "2026-11-19",
+      "hour": 10,
+      "cloud_pct": 2.25,
+      "morning_level": 90.35,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-19",
+      "hour": 11,
+      "cloud_pct": 0.0,
+      "morning_level": 99.9,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-19",
+      "hour": 12,
+      "cloud_pct": 0.0,
+      "morning_level": 100.0,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-19",
+      "hour": 13,
+      "cloud_pct": 0.0,
+      "morning_level": 100.0,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-20",
+      "hour": 6,
+      "cloud_pct": 10.25,
+      "morning_level": 82.06,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-20",
+      "hour": 7,
+      "cloud_pct": 9.285714285714286,
+      "morning_level": 84.37,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-20",
+      "hour": 8,
+      "cloud_pct": 9.333333333333334,
+      "morning_level": 88.8,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-20",
+      "hour": 9,
+      "cloud_pct": 8.8,
+      "morning_level": 95.32,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-20",
+      "hour": 10,
+      "cloud_pct": 6.25,
+      "morning_level": 100.0,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-20",
+      "hour": 11,
+      "cloud_pct": 5.333333333333333,
+      "morning_level": 100.0,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-20",
+      "hour": 12,
+      "cloud_pct": 2.5,
+      "morning_level": 100.0,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    },
+    {
+      "date": "2026-11-20",
+      "hour": 13,
+      "cloud_pct": 2.0,
+      "morning_level": 100.0,
+      "actual": 100.0,
+      "predicted": 100.0,
+      "error_pp": 0.0
+    }
+  ],
+  "exploration_training_08": [
+    {
+      "date": "2025-11-24",
+      "radiation_wh_m2": 5503.0,
+      "gain_pp": 9.969999999999999,
+      "morning_level": 90.03,
+      "target_pct": 100.0
+    },
+    {
+      "date": "2025-11-25",
+      "radiation_wh_m2": 5551.0,
+      "gain_pp": 50.53000000000001,
+      "morning_level": 48.15,
+      "target_pct": 98.68
+    },
+    {
+      "date": "2025-11-26",
+      "radiation_wh_m2": 5534.0,
+      "gain_pp": 0.0,
+      "morning_level": 100.0,
+      "target_pct": 100.0
+    },
+    {
+      "date": "2025-11-27",
+      "radiation_wh_m2": 5496.0,
+      "gain_pp": 40.95,
+      "morning_level": 59.05,
+      "target_pct": 100.0
+    },
+    {
+      "date": "2025-11-28",
+      "radiation_wh_m2": 5225.0,
+      "gain_pp": 29.090000000000003,
+      "morning_level": 70.91,
+      "target_pct": 100.0
+    },
+    {
+      "date": "2025-12-01",
+      "radiation_wh_m2": 5601.0,
+      "gain_pp": 9.290000000000006,
+      "morning_level": 90.71,
+      "target_pct": 100.0
+    },
+    {
+      "date": "2025-12-02",
+      "radiation_wh_m2": 2389.0,
+      "gain_pp": 21.82,
+      "morning_level": 32.92,
+      "target_pct": 54.74
+    },
+    {
+      "date": "2025-12-03",
+      "radiation_wh_m2": 3724.0,
+      "gain_pp": 35.47,
+      "morning_level": 2.82,
+      "target_pct": 38.29
+    },
+    {
+      "date": "2025-12-04",
+      "radiation_wh_m2": 2421.0,
+      "gain_pp": 22.11,
+      "morning_level": 2.24,
+      "target_pct": 24.35
+    },
+    {
+      "date": "2025-12-05",
+      "radiation_wh_m2": 5593.0,
+      "gain_pp": 48.75,
+      "morning_level": 11.78,
+      "target_pct": 60.53
+    },
+    {
+      "date": "2025-12-08",
+      "radiation_wh_m2": 5471.0,
+      "gain_pp": 49.309999999999995,
+      "morning_level": 34.51,
+      "target_pct": 83.82
+    },
+    {
+      "date": "2025-12-09",
+      "radiation_wh_m2": 5033.0,
+      "gain_pp": 49.010000000000005,
+      "morning_level": 18.13,
+      "target_pct": 67.14
+    },
+    {
+      "date": "2025-12-10",
+      "radiation_wh_m2": 4401.0,
+      "gain_pp": 41.14,
+      "morning_level": 33.8,
+      "target_pct": 74.94
+    },
+    {
+      "date": "2025-12-11",
+      "radiation_wh_m2": 5480.0,
+      "gain_pp": 49.36000000000001,
+      "morning_level": 28.15,
+      "target_pct": 77.51
+    },
+    {
+      "date": "2025-12-12",
+      "radiation_wh_m2": 5518.0,
+      "gain_pp": 49.69,
+      "morning_level": 24.13,
+      "target_pct": 73.82
+    },
+    {
+      "date": "2025-12-15",
+      "radiation_wh_m2": 5503.0,
+      "gain_pp": 20.019999999999996,
+      "morning_level": 79.98,
+      "target_pct": 100.0
+    },
+    {
+      "date": "2025-12-16",
+      "radiation_wh_m2": 5466.0,
+      "gain_pp": 48.849999999999994,
+      "morning_level": 47.34,
+      "target_pct": 96.19
+    },
+    {
+      "date": "2025-12-17",
+      "radiation_wh_m2": 5405.0,
+      "gain_pp": 0.0,
+      "morning_level": 100.0,
+      "target_pct": 100.0
+    },
+    {
+      "date": "2025-12-18",
+      "radiation_wh_m2": 5403.0,
+      "gain_pp": 50.07999999999999,
+      "morning_level": 36.77,
+      "target_pct": 86.85
+    },
+    {
+      "date": "2025-12-19",
+      "radiation_wh_m2": 5400.0,
+      "gain_pp": 41.01,
+      "morning_level": 58.99,
+      "target_pct": 100.0
+    },
+    {
+      "date": "2025-12-22",
+      "radiation_wh_m2": 3640.0,
+      "gain_pp": 23.549999999999997,
+      "morning_level": 76.45,
+      "target_pct": 100.0
+    },
+    {
+      "date": "2025-12-23",
+      "radiation_wh_m2": 5477.0,
+      "gain_pp": 31.290000000000006,
+      "morning_level": 68.71,
+      "target_pct": 100.0
+    },
+    {
+      "date": "2025-12-24",
+      "radiation_wh_m2": 5522.0,
+      "gain_pp": 48.91,
+      "morning_level": 11.39,
+      "target_pct": 60.3
+    },
+    {
+      "date": "2025-12-25",
+      "radiation_wh_m2": 5505.0,
+      "gain_pp": 46.21,
+      "morning_level": 8.13,
+      "target_pct": 54.34
+    },
+    {
+      "date": "2025-12-26",
+      "radiation_wh_m2": 5368.0,
+      "gain_pp": 27.099999999999994,
+      "morning_level": 72.9,
+      "target_pct": 100.0
+    },
+    {
+      "date": "2025-12-29",
+      "radiation_wh_m2": 5474.0,
+      "gain_pp": 20.709999999999994,
+      "morning_level": 79.29,
+      "target_pct": 100.0
+    },
+    {
+      "date": "2025-12-30",
+      "radiation_wh_m2": 5409.0,
+      "gain_pp": 11.719999999999999,
+      "morning_level": 88.28,
+      "target_pct": 100.0
+    },
+    {
+      "date": "2025-12-31",
+      "radiation_wh_m2": 4836.0,
+      "gain_pp": 41.839999999999996,
+      "morning_level": 34.15,
+      "target_pct": 75.99
+    },
+    {
+      "date": "2026-01-01",
+      "radiation_wh_m2": 4819.0,
+      "gain_pp": 43.13,
+      "morning_level": 44.6,
+      "target_pct": 87.73
+    },
+    {
+      "date": "2026-01-02",
+      "radiation_wh_m2": 3297.0,
+      "gain_pp": 12.810000000000002,
+      "morning_level": 87.19,
+      "target_pct": 100.0
+    },
+    {
+      "date": "2026-01-05",
+      "radiation_wh_m2": 5356.0,
+      "gain_pp": 0.15000000000000568,
+      "morning_level": 99.85,
+      "target_pct": 100.0
+    },
+    {
+      "date": "2026-01-06",
+      "radiation_wh_m2": 5147.0,
+      "gain_pp": 30.340000000000003,
+      "morning_level": 69.66,
+      "target_pct": 100.0
+    },
+    {
+      "date": "2026-01-07",
+      "radiation_wh_m2": 5169.0,
+      "gain_pp": 48.25000000000001,
+      "morning_level": 33.51,
+      "target_pct": 81.76
+    },
+    {
+      "date": "2026-01-08",
+      "radiation_wh_m2": 3339.0,
+      "gain_pp": 31.87,
+      "morning_level": 31.27,
+      "target_pct": 63.14
+    },
+    {
+      "date": "2026-01-09",
+      "radiation_wh_m2": 3796.0,
+      "gain_pp": 34.96,
+      "morning_level": 2.9,
+      "target_pct": 37.86
+    },
+    {
+      "date": "2026-01-12",
+      "radiation_wh_m2": 1894.0,
+      "gain_pp": 16.840000000000003,
+      "morning_level": 50.33,
+      "target_pct": 67.17
+    },
+    {
+      "date": "2026-01-13",
+      "radiation_wh_m2": 3181.0,
+      "gain_pp": 27.880000000000003,
+      "morning_level": 35.89,
+      "target_pct": 63.77
+    },
+    {
+      "date": "2026-01-14",
+      "radiation_wh_m2": 5296.0,
+      "gain_pp": 48.09,
+      "morning_level": 14.29,
+      "target_pct": 62.38
+    },
+    {
+      "date": "2026-01-15",
+      "radiation_wh_m2": 5444.0,
+      "gain_pp": 50.269999999999996,
+      "morning_level": 21.72,
+      "target_pct": 71.99
+    },
+    {
+      "date": "2026-01-16",
+      "radiation_wh_m2": 5245.0,
+      "gain_pp": 49.21000000000001,
+      "morning_level": 19.16,
+      "target_pct": 68.37
+    },
+    {
+      "date": "2026-01-19",
+      "radiation_wh_m2": 5345.0,
+      "gain_pp": 11.200000000000003,
+      "morning_level": 88.8,
+      "target_pct": 100.0
+    },
+    {
+      "date": "2026-01-20",
+      "radiation_wh_m2": 5363.0,
+      "gain_pp": 45.11,
+      "morning_level": 11.04,
+      "target_pct": 56.15
+    },
+    {
+      "date": "2026-01-21",
+      "radiation_wh_m2": 5369.0,
+      "gain_pp": 46.989999999999995,
+      "morning_level": 26.45,
+      "target_pct": 73.44
+    },
+    {
+      "date": "2026-01-22",
+      "radiation_wh_m2": 4253.0,
+      "gain_pp": 38.019999999999996,
+      "morning_level": 30.17,
+      "target_pct": 68.19
+    },
+    {
+      "date": "2026-01-23",
+      "radiation_wh_m2": 5375.0,
+      "gain_pp": 46.97999999999999,
+      "morning_level": 26.73,
+      "target_pct": 73.71
+    },
+    {
+      "date": "2026-01-26",
+      "radiation_wh_m2": 2735.0,
+      "gain_pp": 23.790000000000006,
+      "morning_level": 66.74,
+      "target_pct": 90.53
+    },
+    {
+      "date": "2026-01-27",
+      "radiation_wh_m2": 5103.0,
+      "gain_pp": 47.69,
+      "morning_level": 41.47,
+      "target_pct": 89.16
+    },
+    {
+      "date": "2026-01-28",
+      "radiation_wh_m2": 4817.0,
+      "gain_pp": 27.14,
+      "morning_level": 72.86,
+      "target_pct": 100.0
+    },
+    {
+      "date": "2026-01-29",
+      "radiation_wh_m2": 2953.0,
+      "gain_pp": 26.349999999999994,
+      "morning_level": 40.2,
+      "target_pct": 66.55
+    },
+    {
+      "date": "2026-01-30",
+      "radiation_wh_m2": 2797.0,
+      "gain_pp": 25.28,
+      "morning_level": 15.31,
+      "target_pct": 40.59
+    },
+    {
+      "date": "2026-02-02",
+      "radiation_wh_m2": 4938.0,
+      "gain_pp": 44.940000000000005,
+      "morning_level": 46.96,
+      "target_pct": 91.9
+    },
+    {
+      "date": "2026-02-03",
+      "radiation_wh_m2": 1768.0,
+      "gain_pp": 15.670000000000002,
+      "morning_level": 47.3,
+      "target_pct": 62.97
+    },
+    {
+      "date": "2026-02-04",
+      "radiation_wh_m2": 5134.0,
+      "gain_pp": 46.72,
+      "morning_level": 26.06,
+      "target_pct": 72.78
+    },
+    {
+      "date": "2026-02-05",
+      "radiation_wh_m2": 5248.0,
+      "gain_pp": 48.13999999999999,
+      "morning_level": 30.93,
+      "target_pct": 79.07
+    },
+    {
+      "date": "2026-02-06",
+      "radiation_wh_m2": 5329.0,
+      "gain_pp": 45.63,
+      "morning_level": 11.93,
+      "target_pct": 57.56
+    },
+    {
+      "date": "2026-02-09",
+      "radiation_wh_m2": 5125.0,
+      "gain_pp": 12.629999999999995,
+      "morning_level": 87.37,
+      "target_pct": 100.0
+    },
+    {
+      "date": "2026-02-10",
+      "radiation_wh_m2": 5131.0,
+      "gain_pp": 47.480000000000004,
+      "morning_level": 34.33,
+      "target_pct": 81.81
+    },
+    {
+      "date": "2026-02-11",
+      "radiation_wh_m2": 4393.0,
+      "gain_pp": 40.900000000000006,
+      "morning_level": 14.41,
+      "target_pct": 55.31
+    },
+    {
+      "date": "2026-02-12",
+      "radiation_wh_m2": 4308.0,
+      "gain_pp": 41.49,
+      "morning_level": 1.79,
+      "target_pct": 43.28
+    },
+    {
+      "date": "2026-02-13",
+      "radiation_wh_m2": 5028.0,
+      "gain_pp": 45.78,
+      "morning_level": 3.12,
+      "target_pct": 48.9
+    },
+    {
+      "date": "2026-02-16",
+      "radiation_wh_m2": 3781.0,
+      "gain_pp": 36.48,
+      "morning_level": 59.01,
+      "target_pct": 95.49
+    },
+    {
+      "date": "2026-02-17",
+      "radiation_wh_m2": 4822.0,
+      "gain_pp": 45.18,
+      "morning_level": 22.21,
+      "target_pct": 67.39
+    },
+    {
+      "date": "2026-02-18",
+      "radiation_wh_m2": 5038.0,
+      "gain_pp": 46.68,
+      "morning_level": 10.43,
+      "target_pct": 57.11
+    },
+    {
+      "date": "2026-02-19",
+      "radiation_wh_m2": 4856.0,
+      "gain_pp": 44.72,
+      "morning_level": 11.47,
+      "target_pct": 56.19
+    },
+    {
+      "date": "2026-02-20",
+      "radiation_wh_m2": 4635.0,
+      "gain_pp": 41.589999999999996,
+      "morning_level": 15.21,
+      "target_pct": 56.8
+    },
+    {
+      "date": "2026-02-23",
+      "radiation_wh_m2": 5075.0,
+      "gain_pp": 30.019999999999996,
+      "morning_level": 69.98,
+      "target_pct": 100.0
+    },
+    {
+      "date": "2026-02-24",
+      "radiation_wh_m2": 4995.0,
+      "gain_pp": 46.480000000000004,
+      "morning_level": 42.03,
+      "target_pct": 88.51
+    },
+    {
+      "date": "2026-02-25",
+      "radiation_wh_m2": 5028.0,
+      "gain_pp": 45.36,
+      "morning_level": 21.49,
+      "target_pct": 66.85
+    },
+    {
+      "date": "2026-02-26",
+      "radiation_wh_m2": 5033.0,
+      "gain_pp": 46.730000000000004,
+      "morning_level": 10.15,
+      "target_pct": 56.88
+    },
+    {
+      "date": "2026-02-27",
+      "radiation_wh_m2": 5153.0,
+      "gain_pp": 46.84,
+      "morning_level": 11.94,
+      "target_pct": 58.78
+    },
+    {
+      "date": "2026-03-02",
+      "radiation_wh_m2": 4939.0,
+      "gain_pp": 45.88,
+      "morning_level": 44.38,
+      "target_pct": 90.26
+    },
+    {
+      "date": "2026-03-03",
+      "radiation_wh_m2": 4876.0,
+      "gain_pp": 46.56,
+      "morning_level": 20.3,
+      "target_pct": 66.86
+    },
+    {
+      "date": "2026-03-04",
+      "radiation_wh_m2": 4895.0,
+      "gain_pp": 45.62,
+      "morning_level": 8.79,
+      "target_pct": 54.41
+    },
+    {
+      "date": "2026-03-05",
+      "radiation_wh_m2": 3897.0,
+      "gain_pp": 34.239999999999995,
+      "morning_level": 8.84,
+      "target_pct": 43.08
+    },
+    {
+      "date": "2026-03-06",
+      "radiation_wh_m2": 4821.0,
+      "gain_pp": 44.95,
+      "morning_level": 2.37,
+      "target_pct": 47.32
+    },
+    {
+      "date": "2026-03-09",
+      "radiation_wh_m2": 4848.0,
+      "gain_pp": 34.650000000000006,
+      "morning_level": 65.35,
+      "target_pct": 100.0
+    },
+    {
+      "date": "2026-03-10",
+      "radiation_wh_m2": 1574.0,
+      "gain_pp": 14.579999999999998,
+      "morning_level": 51.94,
+      "target_pct": 66.52
+    },
+    {
+      "date": "2026-03-11",
+      "radiation_wh_m2": 4950.0,
+      "gain_pp": 46.86999999999999,
+      "morning_level": 26.73,
+      "target_pct": 73.6
+    },
+    {
+      "date": "2026-03-12",
+      "radiation_wh_m2": 4882.0,
+      "gain_pp": 46.980000000000004,
+      "morning_level": 27.83,
+      "target_pct": 74.81
+    },
+    {
+      "date": "2026-03-13",
+      "radiation_wh_m2": 4799.0,
+      "gain_pp": 44.800000000000004,
+      "morning_level": 16.79,
+      "target_pct": 61.59
+    },
+    {
+      "date": "2026-03-16",
+      "radiation_wh_m2": 3052.0,
+      "gain_pp": 27.4,
+      "morning_level": 32.46,
+      "target_pct": 59.86
+    },
+    {
+      "date": "2026-03-17",
+      "radiation_wh_m2": 3605.0,
+      "gain_pp": 34.68,
+      "morning_level": 21.28,
+      "target_pct": 55.96
+    },
+    {
+      "date": "2026-03-18",
+      "radiation_wh_m2": 3521.0,
+      "gain_pp": 33.02,
+      "morning_level": 2.73,
+      "target_pct": 35.75
+    },
+    {
+      "date": "2026-03-19",
+      "radiation_wh_m2": 4534.0,
+      "gain_pp": 43.300000000000004,
+      "morning_level": 7.94,
+      "target_pct": 51.24
+    },
+    {
+      "date": "2026-03-20",
+      "radiation_wh_m2": 4353.0,
+      "gain_pp": 40.419999999999995,
+      "morning_level": 24.32,
+      "target_pct": 64.74
+    },
+    {
+      "date": "2026-03-23",
+      "radiation_wh_m2": 4697.0,
+      "gain_pp": 34.44,
+      "morning_level": 65.56,
+      "target_pct": 100.0
+    },
+    {
+      "date": "2026-03-24",
+      "radiation_wh_m2": 4389.0,
+      "gain_pp": 39.230000000000004,
+      "morning_level": 16.58,
+      "target_pct": 55.81
+    },
+    {
+      "date": "2026-03-25",
+      "radiation_wh_m2": 4642.0,
+      "gain_pp": 41.78,
+      "morning_level": 7.18,
+      "target_pct": 48.96
+    },
+    {
+      "date": "2026-03-26",
+      "radiation_wh_m2": 4619.0,
+      "gain_pp": 40.26,
+      "morning_level": 11.99,
+      "target_pct": 52.25
+    },
+    {
+      "date": "2026-03-27",
+      "radiation_wh_m2": 4514.0,
+      "gain_pp": 40.38,
+      "morning_level": 3.4,
+      "target_pct": 43.78
+    },
+    {
+      "date": "2026-03-30",
+      "radiation_wh_m2": 4488.0,
+      "gain_pp": 41.28000000000001,
+      "morning_level": 50.98,
+      "target_pct": 92.26
+    },
+    {
+      "date": "2026-03-31",
+      "radiation_wh_m2": 4320.0,
+      "gain_pp": 39.63000000000001,
+      "morning_level": 55.66,
+      "target_pct": 95.29
+    },
+    {
+      "date": "2026-04-01",
+      "radiation_wh_m2": 4493.0,
+      "gain_pp": 40.75,
+      "morning_level": 33.72,
+      "target_pct": 74.47
+    },
+    {
+      "date": "2026-04-02",
+      "radiation_wh_m2": 3960.0,
+      "gain_pp": 36.68,
+      "morning_level": 15.25,
+      "target_pct": 51.93
+    },
+    {
+      "date": "2026-04-03",
+      "radiation_wh_m2": 4222.0,
+      "gain_pp": 38.9,
+      "morning_level": 12.61,
+      "target_pct": 51.51
+    },
+    {
+      "date": "2026-04-06",
+      "radiation_wh_m2": 2752.0,
+      "gain_pp": 25.129999999999995,
+      "morning_level": 61.59,
+      "target_pct": 86.72
+    },
+    {
+      "date": "2026-04-07",
+      "radiation_wh_m2": 4405.0,
+      "gain_pp": 11.569999999999993,
+      "morning_level": 88.43,
+      "target_pct": 100.0
+    },
+    {
+      "date": "2026-04-08",
+      "radiation_wh_m2": 4347.0,
+      "gain_pp": 39.13999999999999,
+      "morning_level": 56.07,
+      "target_pct": 95.21
+    },
+    {
+      "date": "2026-04-09",
+      "radiation_wh_m2": 4413.0,
+      "gain_pp": 41.650000000000006,
+      "morning_level": 43.69,
+      "target_pct": 85.34
+    },
+    {
+      "date": "2026-04-10",
+      "radiation_wh_m2": 4297.0,
+      "gain_pp": 37.31,
+      "morning_level": 23.4,
+      "target_pct": 60.71
+    },
+    {
+      "date": "2026-04-13",
+      "radiation_wh_m2": 4180.0,
+      "gain_pp": 38.400000000000006,
+      "morning_level": 19.02,
+      "target_pct": 57.42
+    },
+    {
+      "date": "2026-04-14",
+      "radiation_wh_m2": 4235.0,
+      "gain_pp": 37.77,
+      "morning_level": 5.15,
+      "target_pct": 42.92
+    },
+    {
+      "date": "2026-04-15",
+      "radiation_wh_m2": 4221.0,
+      "gain_pp": 38.85,
+      "morning_level": 2.55,
+      "target_pct": 41.4
+    },
+    {
+      "date": "2026-04-16",
+      "radiation_wh_m2": 3984.0,
+      "gain_pp": 36.220000000000006,
+      "morning_level": 1.66,
+      "target_pct": 37.88
+    },
+    {
+      "date": "2026-04-17",
+      "radiation_wh_m2": 1643.0,
+      "gain_pp": 13.970000000000002,
+      "morning_level": 7.81,
+      "target_pct": 21.78
+    },
+    {
+      "date": "2026-04-20",
+      "radiation_wh_m2": 3512.0,
+      "gain_pp": 30.630000000000003,
+      "morning_level": 22.47,
+      "target_pct": 53.1
+    },
+    {
+      "date": "2026-04-21",
+      "radiation_wh_m2": 4113.0,
+      "gain_pp": 37.0,
+      "morning_level": 1.57,
+      "target_pct": 38.57
+    },
+    {
+      "date": "2026-04-22",
+      "radiation_wh_m2": 4038.0,
+      "gain_pp": 36.67,
+      "morning_level": 1.41,
+      "target_pct": 38.08
+    },
+    {
+      "date": "2026-04-23",
+      "radiation_wh_m2": 3933.0,
+      "gain_pp": 33.07,
+      "morning_level": 1.32,
+      "target_pct": 34.39
+    },
+    {
+      "date": "2026-04-24",
+      "radiation_wh_m2": 4047.0,
+      "gain_pp": 35.22,
+      "morning_level": 3.27,
+      "target_pct": 38.49
+    },
+    {
+      "date": "2026-04-27",
+      "radiation_wh_m2": 3986.0,
+      "gain_pp": 34.919999999999995,
+      "morning_level": 44.46,
+      "target_pct": 79.38
+    },
+    {
+      "date": "2026-04-28",
+      "radiation_wh_m2": 3961.0,
+      "gain_pp": 17.689999999999998,
+      "morning_level": 82.31,
+      "target_pct": 100.0
+    },
+    {
+      "date": "2026-04-29",
+      "radiation_wh_m2": 3975.0,
+      "gain_pp": 34.11000000000001,
+      "morning_level": 54.93,
+      "target_pct": 89.04
+    },
+    {
+      "date": "2026-04-30",
+      "radiation_wh_m2": 3470.0,
+      "gain_pp": 32.9,
+      "morning_level": 2.75,
+      "target_pct": 35.65
+    },
+    {
+      "date": "2026-05-01",
+      "radiation_wh_m2": 3663.0,
+      "gain_pp": 35.67,
+      "morning_level": 1.12,
+      "target_pct": 36.79
+    },
+    {
+      "date": "2026-05-04",
+      "radiation_wh_m2": 3803.0,
+      "gain_pp": 16.439999999999998,
+      "morning_level": 83.56,
+      "target_pct": 100.0
+    },
+    {
+      "date": "2026-05-05",
+      "radiation_wh_m2": 1922.0,
+      "gain_pp": 18.12,
+      "morning_level": 24.06,
+      "target_pct": 42.18
+    },
+    {
+      "date": "2026-05-06",
+      "radiation_wh_m2": 3768.0,
+      "gain_pp": 35.49,
+      "morning_level": 1.1,
+      "target_pct": 36.59
+    },
+    {
+      "date": "2026-05-07",
+      "radiation_wh_m2": 3642.0,
+      "gain_pp": 34.269999999999996,
+      "morning_level": 4.17,
+      "target_pct": 38.44
+    },
+    {
+      "date": "2026-05-08",
+      "radiation_wh_m2": 3742.0,
+      "gain_pp": 35.55,
+      "morning_level": 1.39,
+      "target_pct": 36.94
+    },
+    {
+      "date": "2026-05-11",
+      "radiation_wh_m2": 3642.0,
+      "gain_pp": 34.72,
+      "morning_level": 17.3,
+      "target_pct": 52.02
+    },
+    {
+      "date": "2026-05-12",
+      "radiation_wh_m2": 3311.0,
+      "gain_pp": 32.580000000000005,
+      "morning_level": 33.1,
+      "target_pct": 65.68
+    },
+    {
+      "date": "2026-05-13",
+      "radiation_wh_m2": 3701.0,
+      "gain_pp": 34.75,
+      "morning_level": 1.11,
+      "target_pct": 35.86
+    },
+    {
+      "date": "2026-05-14",
+      "radiation_wh_m2": 3556.0,
+      "gain_pp": 32.9,
+      "morning_level": 3.86,
+      "target_pct": 36.76
+    },
+    {
+      "date": "2026-05-15",
+      "radiation_wh_m2": 3529.0,
+      "gain_pp": 34.12,
+      "morning_level": 1.04,
+      "target_pct": 35.16
+    },
+    {
+      "date": "2026-05-18",
+      "radiation_wh_m2": 3530.0,
+      "gain_pp": 33.25000000000001,
+      "morning_level": 42.04,
+      "target_pct": 75.29
+    },
+    {
+      "date": "2026-05-19",
+      "radiation_wh_m2": 3527.0,
+      "gain_pp": 33.49,
+      "morning_level": 0.68,
+      "target_pct": 34.17
+    },
+    {
+      "date": "2026-05-20",
+      "radiation_wh_m2": 3423.0,
+      "gain_pp": 32.01,
+      "morning_level": 1.74,
+      "target_pct": 33.75
+    },
+    {
+      "date": "2026-05-21",
+      "radiation_wh_m2": 3359.0,
+      "gain_pp": 31.41,
+      "morning_level": 1.51,
+      "target_pct": 32.92
+    },
+    {
+      "date": "2026-05-22",
+      "radiation_wh_m2": 3470.0,
+      "gain_pp": 32.349999999999994,
+      "morning_level": 1.31,
+      "target_pct": 33.66
+    },
+    {
+      "date": "2026-05-25",
+      "radiation_wh_m2": 3369.0,
+      "gain_pp": 29.99,
+      "morning_level": 0.82,
+      "target_pct": 30.81
+    },
+    {
+      "date": "2026-05-26",
+      "radiation_wh_m2": 2723.0,
+      "gain_pp": 25.22,
+      "morning_level": 0.6,
+      "target_pct": 25.82
+    },
+    {
+      "date": "2026-05-27",
+      "radiation_wh_m2": 2220.0,
+      "gain_pp": 19.8,
+      "morning_level": 1.9,
+      "target_pct": 21.7
+    },
+    {
+      "date": "2026-05-28",
+      "radiation_wh_m2": 3386.0,
+      "gain_pp": 29.55,
+      "morning_level": 0.59,
+      "target_pct": 30.14
+    },
+    {
+      "date": "2026-05-29",
+      "radiation_wh_m2": 2020.0,
+      "gain_pp": 18.16,
+      "morning_level": 0.0,
+      "target_pct": 18.16
+    },
+    {
+      "date": "2026-06-01",
+      "radiation_wh_m2": 3325.0,
+      "gain_pp": 30.049999999999997,
+      "morning_level": 5.86,
+      "target_pct": 35.91
+    },
+    {
+      "date": "2026-06-02",
+      "radiation_wh_m2": 1383.0,
+      "gain_pp": 10.879999999999999,
+      "morning_level": 0.71,
+      "target_pct": 11.59
+    },
+    {
+      "date": "2026-06-03",
+      "radiation_wh_m2": 2794.0,
+      "gain_pp": 24.6,
+      "morning_level": 0.5,
+      "target_pct": 25.1
+    },
+    {
+      "date": "2026-06-04",
+      "radiation_wh_m2": 3311.0,
+      "gain_pp": 29.32,
+      "morning_level": 2.1,
+      "target_pct": 31.42
+    },
+    {
+      "date": "2026-06-05",
+      "radiation_wh_m2": 3270.0,
+      "gain_pp": 28.419999999999998,
+      "morning_level": 0.41,
+      "target_pct": 28.83
+    },
+    {
+      "date": "2026-06-08",
+      "radiation_wh_m2": 2725.0,
+      "gain_pp": 23.610000000000003,
+      "morning_level": 29.27,
+      "target_pct": 52.88
+    },
+    {
+      "date": "2026-06-09",
+      "radiation_wh_m2": 3072.0,
+      "gain_pp": 26.51,
+      "morning_level": 0.34,
+      "target_pct": 26.85
+    },
+    {
+      "date": "2026-06-10",
+      "radiation_wh_m2": 3148.0,
+      "gain_pp": 26.15,
+      "morning_level": 2.93,
+      "target_pct": 29.08
+    },
+    {
+      "date": "2026-06-11",
+      "radiation_wh_m2": 3096.0,
+      "gain_pp": 27.200000000000003,
+      "morning_level": 0.31,
+      "target_pct": 27.51
+    },
+    {
+      "date": "2026-06-12",
+      "radiation_wh_m2": 3303.0,
+      "gain_pp": 28.009999999999998,
+      "morning_level": 0.35,
+      "target_pct": 28.36
+    },
+    {
+      "date": "2026-06-15",
+      "radiation_wh_m2": 3130.0,
+      "gain_pp": 27.07,
+      "morning_level": 1.79,
+      "target_pct": 28.86
+    },
+    {
+      "date": "2026-06-16",
+      "radiation_wh_m2": 3157.0,
+      "gain_pp": 27.44,
+      "morning_level": 0.24,
+      "target_pct": 27.68
+    },
+    {
+      "date": "2026-06-17",
+      "radiation_wh_m2": 3275.0,
+      "gain_pp": 28.54,
+      "morning_level": 26.28,
+      "target_pct": 54.82
+    },
+    {
+      "date": "2026-06-18",
+      "radiation_wh_m2": 3204.0,
+      "gain_pp": 25.23,
+      "morning_level": 0.28,
+      "target_pct": 25.51
+    },
+    {
+      "date": "2026-06-19",
+      "radiation_wh_m2": 3077.0,
+      "gain_pp": 26.32,
+      "morning_level": 2.05,
+      "target_pct": 28.37
+    },
+    {
+      "date": "2026-06-22",
+      "radiation_wh_m2": 3051.0,
+      "gain_pp": 25.740000000000002,
+      "morning_level": 14.19,
+      "target_pct": 39.93
+    },
+    {
+      "date": "2026-06-23",
+      "radiation_wh_m2": 3213.0,
+      "gain_pp": 27.71,
+      "morning_level": 0.14,
+      "target_pct": 27.85
+    },
+    {
+      "date": "2026-06-24",
+      "radiation_wh_m2": 3204.0,
+      "gain_pp": 26.79,
+      "morning_level": 0.17,
+      "target_pct": 26.96
+    },
+    {
+      "date": "2026-06-25",
+      "radiation_wh_m2": 3116.0,
+      "gain_pp": 26.24,
+      "morning_level": 0.17,
+      "target_pct": 26.41
+    },
+    {
+      "date": "2026-06-26",
+      "radiation_wh_m2": 1474.0,
+      "gain_pp": 11.72,
+      "morning_level": 0.0,
+      "target_pct": 11.72
+    },
+    {
+      "date": "2026-06-29",
+      "radiation_wh_m2": 3175.0,
+      "gain_pp": 26.869999999999997,
+      "morning_level": 20.5,
+      "target_pct": 47.37
+    }
+  ],
+  "profile": "team_180wh_25w_8sessions_v2",
+  "learning_policy": {
+    "max_sessions": 8,
+    "max_lessons": 32,
+    "max_learning_minutes": 160,
+    "learning_window_minutes": 180,
+    "unallocated_window_minutes": 20,
+    "session_duration_minutes": 20,
+    "lesson_duration_minutes": 5,
+    "lessons_per_session": 4,
+    "session_drain_pp": 10.0,
+    "drain_per_lesson_pp": 2.5,
+    "reserve_pct": 10.0,
+    "learning_start": "14:00",
+    "learning_end": "17:00"
+  },
+  "hardware_profile": {
+    "battery_wh": 180.0,
+    "panel_w": 25.0,
+    "start_hour": 14,
+    "end_hour": 17,
+    "session_minutes": 20,
+    "session_drain_pp": 10.0,
+    "lesson_minutes": 5,
+    "reserve_pct": 10.0,
+    "max_sessions": 8,
+    "max_lessons": 32
+  },
+  "reliability_by_hour": {
+    "6": {
+      "target_coverage": 0.9,
+      "radius_pp": 4.406389443848006,
+      "calibration_days": 26,
+      "test_days": 52,
+      "test_interval_hits": 45,
+      "test_interval_coverage": 0.8653846153846154,
+      "mae_pp": 1.8597204845644437,
+      "exact_rate": 0.6153846153846154,
+      "too_many_rate": 0.28846153846153844,
+      "too_few_rate": 0.09615384615384616,
+      "mean_lessons_lost_per_prediction": 0.19230769230769232,
+      "session_exact_rate": 0.7692307692307693,
+      "session_too_many_rate": 0.17307692307692307,
+      "session_too_few_rate": 0.057692307692307696,
+      "n": 52,
+      "within_5pp_rate": 0.8846153846153846
+    },
+    "7": {
+      "target_coverage": 0.9,
+      "radius_pp": 4.291711263032759,
+      "calibration_days": 26,
+      "test_days": 52,
+      "test_interval_hits": 46,
+      "test_interval_coverage": 0.8846153846153846,
+      "mae_pp": 1.609871824937162,
+      "exact_rate": 0.7115384615384616,
+      "too_many_rate": 0.19230769230769232,
+      "too_few_rate": 0.09615384615384616,
+      "mean_lessons_lost_per_prediction": 0.19230769230769232,
+      "session_exact_rate": 0.8461538461538461,
+      "session_too_many_rate": 0.09615384615384616,
+      "session_too_few_rate": 0.057692307692307696,
+      "n": 52,
+      "within_5pp_rate": 0.9038461538461539
+    },
+    "8": {
+      "target_coverage": 0.9,
+      "radius_pp": 3.591689351057248,
+      "calibration_days": 26,
+      "test_days": 52,
+      "test_interval_hits": 44,
+      "test_interval_coverage": 0.8461538461538461,
+      "mae_pp": 1.5028329732388446,
+      "exact_rate": 0.7115384615384616,
+      "too_many_rate": 0.17307692307692307,
+      "too_few_rate": 0.11538461538461539,
+      "mean_lessons_lost_per_prediction": 0.21153846153846154,
+      "session_exact_rate": 0.8653846153846154,
+      "session_too_many_rate": 0.07692307692307693,
+      "session_too_few_rate": 0.057692307692307696,
+      "n": 52,
+      "within_5pp_rate": 0.9423076923076923
+    },
+    "9": {
+      "target_coverage": 0.9,
+      "radius_pp": 3.2932044895843546,
+      "calibration_days": 26,
+      "test_days": 52,
+      "test_interval_hits": 44,
+      "test_interval_coverage": 0.8461538461538461,
+      "mae_pp": 1.2620772145282462,
+      "exact_rate": 0.6538461538461539,
+      "too_many_rate": 0.19230769230769232,
+      "too_few_rate": 0.15384615384615385,
+      "mean_lessons_lost_per_prediction": 0.2692307692307692,
+      "session_exact_rate": 0.8461538461538461,
+      "session_too_many_rate": 0.09615384615384616,
+      "session_too_few_rate": 0.057692307692307696,
+      "n": 52,
+      "within_5pp_rate": 0.9615384615384616
+    },
+    "10": {
+      "target_coverage": 0.9,
+      "radius_pp": 2.032580814699397,
+      "calibration_days": 26,
+      "test_days": 52,
+      "test_interval_hits": 42,
+      "test_interval_coverage": 0.8076923076923077,
+      "mae_pp": 0.8769591883500075,
+      "exact_rate": 0.7692307692307693,
+      "too_many_rate": 0.038461538461538464,
+      "too_few_rate": 0.19230769230769232,
+      "mean_lessons_lost_per_prediction": 0.25,
+      "session_exact_rate": 0.9038461538461539,
+      "session_too_many_rate": 0.019230769230769232,
+      "session_too_few_rate": 0.07692307692307693,
+      "n": 52,
+      "within_5pp_rate": 1.0
+    },
+    "11": {
+      "target_coverage": 0.9,
+      "radius_pp": 2.139366433449652,
+      "calibration_days": 26,
+      "test_days": 52,
+      "test_interval_hits": 47,
+      "test_interval_coverage": 0.9038461538461539,
+      "mae_pp": 0.7464880067266368,
+      "exact_rate": 0.8461538461538461,
+      "too_many_rate": 0.019230769230769232,
+      "too_few_rate": 0.1346153846153846,
+      "mean_lessons_lost_per_prediction": 0.19230769230769232,
+      "session_exact_rate": 0.9615384615384616,
+      "session_too_many_rate": 0.0,
+      "session_too_few_rate": 0.038461538461538464,
+      "n": 52,
+      "within_5pp_rate": 1.0
+    },
+    "12": {
+      "target_coverage": 0.9,
+      "radius_pp": 1.9544157950421024,
+      "calibration_days": 26,
+      "test_days": 52,
+      "test_interval_hits": 50,
+      "test_interval_coverage": 0.9615384615384616,
+      "mae_pp": 0.5998754233620699,
+      "exact_rate": 0.8653846153846154,
+      "too_many_rate": 0.0,
+      "too_few_rate": 0.1346153846153846,
+      "mean_lessons_lost_per_prediction": 0.17307692307692307,
+      "session_exact_rate": 0.9423076923076923,
+      "session_too_many_rate": 0.0,
+      "session_too_few_rate": 0.057692307692307696,
+      "n": 52,
+      "within_5pp_rate": 1.0
+    },
+    "13": {
+      "target_coverage": 0.9,
+      "radius_pp": 0.9607136998364538,
+      "calibration_days": 26,
+      "test_days": 52,
+      "test_interval_hits": 49,
+      "test_interval_coverage": 0.9423076923076923,
+      "mae_pp": 0.24543641732671106,
+      "exact_rate": 0.75,
+      "too_many_rate": 0.0,
+      "too_few_rate": 0.25,
+      "mean_lessons_lost_per_prediction": 0.28846153846153844,
+      "session_exact_rate": 0.9038461538461539,
+      "session_too_many_rate": 0.0,
+      "session_too_few_rate": 0.09615384615384616,
+      "n": 52,
+      "within_5pp_rate": 1.0
+    }
+  }
+}

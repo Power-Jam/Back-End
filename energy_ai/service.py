@@ -18,7 +18,11 @@ def forecast(cfg,bundle,battery_pct=65,active_minutes=45,hours=36,weather_source
         df=pd.DataFrame({'timestamp':ends}).merge(weather,on='timestamp',how='left',validate='one_to_one')
         weather_label='Open-Meteo forecast cache'; fetched=meta['fetched_at']
     elif weather_source=='demo':
+<<<<<<< HEAD
         df=demo_weather(ends,cfg,scenario=scenario); weather_label='SIMULATED weather'; fetched=None
+=======
+        df=demo_weather(ends,cfg,scenario=scenario); weather_label='Generated weather scenario'; fetched=None
+>>>>>>> origin/Final_Version
     else: raise ValueError('Unknown weather source')
     cols=['shortwave_radiation','temperature_2m','cloud_cover']
     if df[cols].isna().any().any() or not np.isfinite(df[cols].to_numpy()).all():

@@ -5,3 +5,11 @@ __pycache__/
 artifacts/
 data/cache/
 .env
+<<<<<<< HEAD
+=======
+
+data/battery_telemetry.sqlite3*
+data/battery_telemetry.csv
+data/daily_real_training.csv
+data/verified_days.csv
+>>>>>>> origin/Final_Version
