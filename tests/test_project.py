@@ -49,7 +49,11 @@ def test_forecast(cfg,bundle):
     d=forecast(cfg,bundle,65,45,48,'demo','cloudy',now='2026-11-18T12:30Z')
     assert len(d['forecast'])==48 and d['tomorrow_points']==24
     assert all(0<=r['battery_pct']<=100 for r in d['forecast'])
+<<<<<<< HEAD
     assert d['model_source']=='synthetic_demo' and 'SIMULATED' in d['weather_source']
+=======
+    assert d['model_source']=='synthetic_demo' and 'Generated weather scenario' == d['weather_source']
+>>>>>>> origin/Final_Version
     assert d['initial_battery_source'].startswith('manual')
     assert d['forecast'][0]['timestamp']=='2026-11-18T13:00:00+00:00'
 
@@ -113,5 +117,9 @@ def test_solar_api(cfg,bundle):
     with TestClient(create_app(cfg,bundle=bundle)) as client:
         r=client.get('/api/forecast?hours=24&scenario=sunny')
         assert r.status_code==200 and r.json()['solar_daily']
+<<<<<<< HEAD
         html=client.get('/').text
+=======
+        html=client.get('/research').text
+>>>>>>> origin/Final_Version
         assert 'sunChart' in html and 'powerChart' in html and 'renderSolar(d)' in html
