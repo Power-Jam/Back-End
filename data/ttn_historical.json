@@ -1,0 +1,8 @@
+[
+  {
+    "device_id": "scb-5000",
+    "battery_pct": 3.0,
+    "timestamp": "2026-11-25T09:48:34.565910060Z",
+    "source": "TTN historical storage (previously exported by user; physical SoC not verified)"
+  }
+]

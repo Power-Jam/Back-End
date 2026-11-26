@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+artifacts/
+data/cache/
+.env
+
+data/battery_telemetry.sqlite3*
+data/battery_telemetry.csv
+data/daily_real_training.csv
+data/verified_days.csv
